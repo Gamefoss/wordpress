@@ -1,0 +1,5 @@
+############
+## Compiled from jade
+############
+*.php
+!functions.php

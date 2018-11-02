@@ -1,0 +1,15 @@
+// @include font-face(
+// 	"AvenirLTStd Medium",
+// 	font-files(
+// 		"AvenirLTStd-Medium.woff",
+// 		"AvenirLTStd-Medium.ttf",
+// 		"AvenirLTStd-Medium.otf",
+// 		"AvenirLTStd-Medium.svg"),
+// 	"AvenirLTStd-Medium.eot"
+// );
+
+html, body {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,13 @@
+// COMPASS
+@import "compass"; // Compass
+@import "compass/reset"; // compass reset
+
+//PARTIALS PARTY
+@import "partials/partials"; // Sass partials
+
+// LAYOUT
+@import "layout/typography"; // typography
+@import "layout/buttons"; // Buttons
+@import "layout/forms"; // Forms (inputs & labels)
+@import "layout/header"; // Header
+@import "layout/footer"; // Footer

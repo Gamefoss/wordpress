@@ -1,0 +1,36 @@
+doctype html
+
+block template-name
+
+block variables
+
+block query
+
+head
+	block title
+		title!=wp_title( "|" )
+		
+	block meta
+		- get_template_part( 'includes/meta', 'meta' )
+
+	block og-meta
+		- get_template_part( 'includes/og-meta', 'og-meta' )
+
+	block favicon
+		- get_template_part( 'includes/favicon', 'favicon' )
+	
+	block styles
+
+body("<?php body_class(); ?>")
+	
+	block header
+		- get_header()
+	
+	block wrapper
+		div#wrapper
+			main
+				block main
+					h1 hello world, finally!
+	block footer
+		- get_footer()
+	block scripts
