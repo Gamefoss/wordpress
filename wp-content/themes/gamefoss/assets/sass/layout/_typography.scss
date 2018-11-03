@@ -1,15 +1,64 @@
-// @include font-face(
-// 	"AvenirLTStd Medium",
-// 	font-files(
-// 		"AvenirLTStd-Medium.woff",
-// 		"AvenirLTStd-Medium.ttf",
-// 		"AvenirLTStd-Medium.otf",
-// 		"AvenirLTStd-Medium.svg"),
-// 	"AvenirLTStd-Medium.eot"
-// );
+@include font-face(
+	"Roboto Regular",
+	font-files(
+		"Roboto/Roboto-Regular.woff",
+		"Roboto/Roboto-Regular.ttf",
+		"Roboto/Roboto-Regular.otf",
+		"Roboto/Roboto-Regular.svg"),
+	"Roboto/Roboto-Regular.eot"
+);
+
+@include font-face(
+	"Roboto Bold",
+	font-files(
+		"Roboto/Roboto-Bold.woff",
+		"Roboto/Roboto-Bold.ttf",
+		"Roboto/Roboto-Bold.otf",
+		"Roboto/Roboto-Bold.svg"),
+	"Roboto/Roboto-Bold.eot",
+	bold,
+	normal
+);
+
+@include font-face(
+	"Roboto Light",
+	font-files(
+		"Roboto/Roboto-Light.woff",
+		"Roboto/Roboto-Light.ttf",
+		"Roboto/Roboto-Light.otf",
+		"Roboto/Roboto-Light.svg"),
+	"Roboto/Roboto-Light.eot",
+	lighter,
+	normal
+);
 
 html, body {
 	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-family: $f-sans;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 {
+	@include fluid-type(24px, 36px);
+}
+
+h2 {
+	@include fluid-type(18px, 24px);
+}
+
+h3 {
+	@include fluid-type(16px, 18px);
+}
+
+a {
+	text-decoration: none;
+}
+
+.text-upper {
+	text-transform: uppercase;
 }

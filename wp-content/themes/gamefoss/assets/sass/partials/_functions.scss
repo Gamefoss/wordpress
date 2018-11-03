@@ -1,10 +1,7 @@
-@function get-map($map, $key) {
-	@if map-has-key($map, $key) {
-		@return map-get($map, $key);
-	}
-	@return null;
-}
-
 @function rem($size) {
 	@return ( $size / 16 ) * 1rem;
+}
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
 }
