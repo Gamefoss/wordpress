@@ -1,13 +1,19 @@
 // GENERAL VARS
 
-// COLORS
-$c-white: #ffffff;
-$c-black: #000000;
-$c-red:   #ff0000;
+// COLORS - http://www.color-blindness.com/color-name-hue/
+$c-white:   #ffffff;
+$c-black:   #000000;
+$c-red:     #ff0000;
+$c-silver:  #bbbbbb;
+$c-grape:   #3e3d4d;
 
+// color usage
+$c-bg:      $c-silver;
+$c-menu:    $c-grape;
 
 // FONTS
-$f-sans: "Roboto", sans-serif;
+$f-roboto: "Roboto", sans-serif;
+$f-open: "Open Sans", sans-serif;
 
 
 // SIZE

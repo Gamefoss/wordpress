@@ -1,0 +1,18 @@
+.icon {
+  display: inline-block;
+  width: 100%;
+  max-width: 50px;
+  height: 24px;
+  margin: 0 auto;
+  background: center no-repeat;
+  background-size: contain;
+  font-size: 24px;
+  @each $name, $file in (
+  ('facebook', 'facebook')
+  ('external-link', 'external-link')
+  ) {
+    &.#{$name} {
+      background-image: image-url('icons/#{$file}.svg');
+    }
+  }
+}

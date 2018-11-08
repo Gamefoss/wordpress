@@ -1,3 +1,37 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  background: $c-bg;
+}
+
+.badge {
+  height: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $c-white;
+  font-family: $f-roboto;
+  font-weight: lighter;
+  font-size: rem(12);
+  line-height: 16px;
+  display: inline-block;
+  &.category {
+    width: 120px;
+  }
+  @each $name, $color in (
+  ('black', $c-black)
+  ('red', $c-red)
+  ){
+    &.#{$name} {
+      background: $color;
+    }
+  }
+}
+
+// TODO: REMOVE
+.firula {
+  width: 100%;
+  min-height: 200px;
+  margin-bottom: 100px;
+}

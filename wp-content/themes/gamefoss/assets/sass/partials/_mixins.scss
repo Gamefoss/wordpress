@@ -71,15 +71,13 @@
 	$u3: unit($min-font-size);
 	$u4: unit($max-font-size);
 
-	@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-		& {
-			font-size: $min-font-size;
-			@include bp($min-vw) {
-				font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-			}
-			@include bp($max-vw) {
-				font-size: $max-font-size;
-			}
+	& {
+		font-size: rem($min-font-size);
+		@include bp($min-vw) {
+			font-size: calc(#{rem($min-font-size)} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+		}
+		@include bp($max-vw) {
+			font-size: rem($max-font-size);
 		}
 	}
 }

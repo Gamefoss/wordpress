@@ -5,7 +5,9 @@
 		"Roboto/Roboto-Regular.ttf",
 		"Roboto/Roboto-Regular.otf",
 		"Roboto/Roboto-Regular.svg"),
-	"Roboto/Roboto-Regular.eot"
+	"Roboto/Roboto-Regular.eot",
+	normal,
+	none
 );
 
 @include font-face(
@@ -29,36 +31,95 @@
 		"Roboto/Roboto-Light.svg"),
 	"Roboto/Roboto-Light.eot",
 	lighter,
-	normal
+	none
 );
+
+@include font-face(
+	"Open Sans",
+	font-files(
+		"Open-sans/OpenSans-Regular.woff",
+		"Open-sans/OpenSans-Regular.ttf",
+		"Open-sans/OpenSans-Regular.otf",
+		"Open-sans/OpenSans-Regular.svg"),
+	"Open-sans/OpenSans-Regular.eot",
+	normal,
+	none
+);
+
+@include font-face(
+	"Open Sans",
+	font-files(
+		"Open-sans/OpenSans-Light.woff",
+		"Open-sans/OpenSans-Light.ttf",
+		"Open-sans/OpenSans-Light.otf",
+		"Open-sans/OpenSans-Light.svg"),
+	"Open-sans/OpenSans-Light.eot",
+	lighter,
+	none
+);
+
+@include font-face(
+	"Open Sans",
+	font-files(
+		"Open-sans/OpenSans-Bold.woff",
+		"Open-sans/OpenSans-Bold.ttf",
+		"Open-sans/OpenSans-Bold.otf",
+		"Open-sans/OpenSans-Bold.svg"),
+	"Open-sans/OpenSans-Bold.eot",
+	bold,
+	none
+);
+
+
 
 html, body {
 	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-family: $f-sans;
+	font-family: $f-roboto;
 }
 
 h1, h2, h3 {
 	font-weight: bold;
 }
 
-h1 {
-	@include fluid-type(24px, 36px);
+.title-1,
+.title-2,
+.title-3 {
+	font-weight: bold;
+}
+.title-1 {
+	@include fluid-type(24, 36);
 }
 
-h2 {
-	@include fluid-type(18px, 24px);
+.title-2 {
+	@include fluid-type(18, 24);
 }
 
-h3 {
-	@include fluid-type(16px, 18px);
+.title-3 {
+	@include fluid-type(16, 18);
 }
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 .text-upper {
 	text-transform: uppercase;
+}
+
+.text {
+	font-family: $f-open;
+	font-weight: lighter;
+	font-size: rem(16);
+}
+
+.tag {
+	font-family: $f-roboto;
+	font-weight: lighter;
+	font-size: rem(14);
+	&:before {
+		content: "#";
+	}
 }

@@ -1,0 +1,58 @@
+@import "../partials/partials"; // Sass partials
+
+.live {
+  display: table;
+  background: $c-white;
+  min-height: 120px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  .img, .live-content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .img {
+    width: 120px;
+    height: 100%;
+    background: $c-black center center no-repeat;
+    background-size: cover;
+  }
+  .live-content {
+    position: relative;
+    padding: $gutter;
+  }
+  .live-badge-container {
+    overflow: hidden;
+  }
+  .live-badge {
+    background: $c-red;
+    color: $c-white;
+    display: inline-block;
+    padding: $gutter/2 $gutter/2 $gutter/2 $gutter;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: $gutter;
+    float: right;
+    position: relative;
+    &:before {
+      content: "";
+      width: $gutter/2;
+			height: $gutter/2;
+      position: absolute;
+      left: $gutter/2;
+      margin-left: -3px;
+      top: 50%;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: $c-white;
+      @include animation-live;
+    }
+  }
+  .title-3 {
+    margin: $gutter/2 auto;
+  }
+  .icon {
+    background-position: center right;
+    float: right;
+  }
+}

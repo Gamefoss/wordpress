@@ -11,13 +11,13 @@ head
 		title!=wp_title( "|" )
 		
 	block meta
-		- get_template_part( 'includes/meta', 'meta' )
+		- get_template_part( 'layout/meta', 'meta' )
 
 	block og-meta
-		- get_template_part( 'includes/og-meta', 'og-meta' )
+		- get_template_part( 'layout/og-meta', 'og-meta' )
 
 	block favicon
-		- get_template_part( 'includes/favicon', 'favicon' )
+		- get_template_part( 'layout/favicon', 'favicon' )
 	
 	block styles
 

@@ -67,10 +67,7 @@ if ( ! isset( $content_width ) ) {
 /************************************
 CUSTOM FUNCTIONS
 ************************************/
-
-// ACF OPTIONS PAGE
-if( function_exists('acf_add_options_page') ) acf_add_options_page();
-
+require_once('custom-functions.php');
 
 /* DON'T DELETE THIS CLOSING TAG */
 ?>

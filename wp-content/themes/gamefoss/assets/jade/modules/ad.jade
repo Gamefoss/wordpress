@@ -1,0 +1,4 @@
+append styles
+	- wp_enqueue_style( 'ad-css', get_template_directory_uri() . "/library/css/modules/ad.css", false );
+  
+.ad(class!=echo('"ad-{$size}"')) Ad
