@@ -6,11 +6,11 @@
 
 // LAYOUT
 @import "layout/typography"; // typography
+@import "layout/grid"; // grid
+@import "layout/icons"; // Icons
 @import "layout/buttons"; // Buttons
 @import "layout/forms"; // Forms (inputs & labels)
 @import "layout/header"; // Header
 @import "layout/footer"; // Footer
-@import "layout/icons"; // Icons
 
-@import "layout/general"; // typography
-@import "layout/post-block"; // typography
+@import "layout/general"; // general styles

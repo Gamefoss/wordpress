@@ -64,7 +64,7 @@
 @mixin fluid-type($min-font-size, $max-font-size) {
 
 	$min-vw: 320px;
-	$max-vw: $site-max-width;
+	$max-vw: $s-max-width;
 
 	$u1: unit($min-vw);
 	$u2: unit($max-vw);

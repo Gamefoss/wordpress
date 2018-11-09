@@ -1,0 +1,49 @@
+extends ../index
+
+block main
+  h1.title-1.text-upper lorem dolor
+  h2.title-2 lorem dolor
+  h3.title-3 lorem dolor
+  p.text lorem dolor sit amet
+  button.btn.btn-black button
+  a(href="#").btn.btn-black link as button
+  - ad();
+  - ad('large-mobile-banner');
+  span.tag lorem
+  span.tag dolor
+  span.tag sit
+  span.tag amet
+  - include(locate_template('modules/live.php'));
+  
+  .firula
+    article.post-block.highlight
+      a(href="#")
+      .img(style!=background('"https://www.placecage.com/g/600/600"', true))
+      .content
+        a.badge.category.black category
+        h2.title-2 lorem dolor sit amet
+        a.author(href="#")
+          img(src!=image('test/dihgg.png') alt="")
+          | @dihgg
+  .firula
+    article.post-block.vertical.white
+      a(href="#")
+      .img(style!=background('"https://www.placecage.com/g/600/600"', true))
+      .content
+        a.badge.category.black category
+        h2.title-2 lorem dolor sit amet
+        a.author(href="#")
+          img(src!=image('test/dihgg.png') alt="")
+          | @dihgg
+  .firula
+    article.post-block.horizontal
+      a(href="#")
+      .img(style!=background('"https://www.placecage.com/g/600/600"', true))
+      .content
+        a.badge.category.black category
+        h2.title-2 lorem dolor sit amet
+        .author
+          a(href="#")
+            img(src!=image('test/dihgg.png') alt="")
+            | @dihgg
+          | &nbsp;|&nbsp; 30 de Janeiro

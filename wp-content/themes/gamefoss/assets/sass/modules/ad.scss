@@ -6,21 +6,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: $gutter*2 auto;
   @each $name, $width, $height in (
     // square - rectangle
-    ('square', 200, 200),
-    ('square2', 250, 250),
-    ('inline-rectangle', 350, 250),
-    ('large-rectangle', 336, 280),
-    ('mobile-leaderboard', 320, 50),
-    ('large-mobile-banner', 320, 100),
+    ('square', 200, 200)
+    ('square2', 250, 250)
+    ('inline-rectangle', 350, 250)
+    ('large-rectangle', 336, 280)
+    ('mobile-leaderboard', 320, 50)
+    ('large-mobile-banner', 320, 100)
     // banner
-    ('banner', 468, 60),
-    ('leaderboard', 728, 90),
-    ('large-leaderboard', 970, 90),
+    ('banner', 468, 60)
+    ('leaderboard', 728, 90)
+    ('large-leaderboard', 970, 90)
     // skyscraprer
-    ('skyscraprer', 120, 600),
-    ('wide-skyscraprer', 160, 600),
+    ('skyscraprer', 120, 600)
+    ('wide-skyscraprer', 160, 600)
     ('half-page', 300, 600)
   ) {
     &.ad-#{$name} {

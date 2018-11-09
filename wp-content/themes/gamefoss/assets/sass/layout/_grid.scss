@@ -1,0 +1,77 @@
+.row {
+	margin: 0 calc((#{$gutter}/2) * -1);
+	width: 100%;
+}
+
+.wrap {
+	display: block;
+	max-width: $s-max-width;
+	margin: 0 auto;
+	padding: 0 $gutter;
+	position: relative;
+}
+
+.cf {
+	zoom: 1;
+	clear: both;
+}
+
+[class*="col"] {
+	padding: 0 calc((#{$gutter} / 2));
+	display: block;
+	float: left;
+}
+
+[class*="visible-"] { display: none; }
+
+@mixin make-grid($size) {
+	@for $i from 1 through 12 {
+		.col-#{$size}-#{$i} {
+			width: calc((#{$i}/12) * 100%);
+		}
+		.col-#{$size}-offset-#{$i} {
+			margin-left: calc((#{$i}/12) * 100%);
+		}
+	}
+}
+
+$sizes : (
+	"sm" : ($s-sm, $s-md - 1px),
+	"md" : ($s-md, $s-lg - 1px),
+	"lg" : ($s-lg, $s-xl - 1px),
+	"xl" : ($s-xl)
+);
+
+.hidden {
+	display: none !important;
+}
+
+@media (max-width: $s-sm - 1px) {
+	.hidden-xs { display: none !important; }
+	.visible-xs { display: block !important; }
+}
+
+@media (min-width: $s-xl) {
+	.hidden-xl { display: none; }
+	.visible-xl { display: block; }
+}
+
+@include make-grid("xs");
+
+@each $col in map-keys($sizes) {
+
+	@if length(map-get($sizes, $col)) == 2 {
+		@media screen and (min-width: nth(map-get($sizes, $col), 1)) and (max-width: nth(map-get($sizes, $col), 2)) {
+			.hidden-#{$col} {
+				display: none;
+			}
+			.visible-#{$col} {
+				display: block;
+			}
+		}
+	}
+
+	@media screen and (min-width: nth(map-get($sizes, $col), 1)) {
+		@include make-grid($col);
+	}
+}

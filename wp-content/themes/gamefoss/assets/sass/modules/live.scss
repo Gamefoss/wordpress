@@ -28,7 +28,7 @@
     background: $c-red;
     color: $c-white;
     display: inline-block;
-    padding: $gutter/2 $gutter/2 $gutter/2 $gutter;
+    padding: $gutter/2 $gutter $gutter/2 $gutter*2;
     border-radius: 2px;
     text-transform: uppercase;
     font-size: $gutter;
@@ -39,7 +39,7 @@
       width: $gutter/2;
 			height: $gutter/2;
       position: absolute;
-      left: $gutter/2;
+      left: $gutter;
       margin-left: -3px;
       top: 50%;
       margin-top: -3px;

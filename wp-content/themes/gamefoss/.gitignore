@@ -3,3 +3,4 @@
 ############
 *.php
 !functions.php
+!custom-functions.php
