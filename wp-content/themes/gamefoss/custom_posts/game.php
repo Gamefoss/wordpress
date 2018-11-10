@@ -1,17 +1,17 @@
 <?php
 // News Custom Post Type
-function news() {
+function game() {
 
 	$labels = array(
-		'name'                  => _x( 'Custom Post Exemplo', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Custom Post Exemplo', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Custom Post Exemplo', 'text_domain' ),
-		'name_admin_bar'        => __( 'Custom Post Exemplo', 'text_domain' ),
+		'name'                  => _x( __("[:pb]Jogos[:en]Games[:]"), 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( __("[:pb]Jogo[:en]Game[:]"), 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( __("[:pb]Jogos[:en]Games[:]"), 'text_domain' ),
+		'name_admin_bar'        => __( __("[:pb]Jogos[:en]Games[:]"), 'text_domain' ),
 		'archives'              => __( 'Arquivos', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'Todos', 'text_domain' ),
-		'add_new_item'          => __( 'Adicionar nova notícia', 'text_domain' ),
-		'add_new'               => __( 'Nova', 'text_domain' ),
+		'all_items'             => __( 'Jogos', 'text_domain' ),
+		'add_new_item'          => __( 'Novo Jogo', 'text_domain' ),
+		'add_new'               => __( 'Novo Jogo', 'text_domain' ),
 		'new_item'              => __( 'Novo', 'text_domain' ),
 		'edit_item'             => __( 'Editar', 'text_domain' ),
 		'update_item'           => __( 'Atualizar', 'text_domain' ),
@@ -30,18 +30,18 @@ function news() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'noticias',
+		'slug'                  => 'game',
 		'with_front'            => true,
-		'pages'                 => false,
-		'feeds'                 => false,
+		'pages'                 => true,
+		'feeds'                 => true,
 	);
 	$args = array(
-		'label'                 => __( 'Custom Post Exemplo', 'text_domain' ),
-		'description'           => __( 'Custom Post Exemplo', 'text_domain' ),
+		'label'                 => __( 'Game', 'text_domain' ),
+		'description'           => __( 'Game', 'text_domain' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor'),
-		'taxonomies'            => array( 'news_categories' ),
-		'menu_icon'							=> "dashicons-rss",
+		'taxonomies'            => array( 'categorias' ),
+		'menu_icon'							=> 'dashicons-heart',
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -57,13 +57,13 @@ function news() {
 		'capability_type'       => 'page',
 		'supports'							=> array('title', 'editor', 'thumbnail')
 	);
-	register_post_type( 'news', $args );
+	register_post_type( 'game', $args );
 }
-add_action( 'init', 'news', 0 );
-function create_news_taxonomies() {
+add_action( 'init', 'game', 0 );
+function create_game_taxonomies() {
 		$labels = array(
-				'name'              => _x( 'Custom Post Exemplo', 'taxonomy general name' ),
-				'singular_name'     => _x( 'Categorias', 'taxonomy singular name' ),
+				'name'              => _x( 'Categorias', 'taxonomy general name' ),
+				'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
 				'search_items'      => __( 'Buscar Categorias' ),
 				'all_items'         => __( 'Todas as categorias' ),
 				'edit_item'         => __( 'Editar Categoria' ),
@@ -74,13 +74,13 @@ function create_news_taxonomies() {
 		);
 
 		$args = array(
-				'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+				'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 				'labels'            => $labels,
 				'show_ui'           => true,
-				'rewrite'           => array( 'slug' => 'noticias' )
+				'rewrite'           => array( 'slug' => 'categorias' )
 		);
 
-		register_taxonomy( 'news_categories', array( 'news' ), $args );
+		register_taxonomy( 'game_categories', array( 'game' ), $args );
 }
-add_action( 'init', 'create_news_taxonomies', 0 );
+add_action( 'init', 'create_game_taxonomies', 0 );
 ?>
