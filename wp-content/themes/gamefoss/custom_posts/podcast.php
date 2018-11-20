@@ -1,17 +1,17 @@
 <?php
 // News Custom Post Type
-function developer() {
+function podcast() {
 
 	$labels = array(
-		'name'                  => _x( "Developers", 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( "Developer", 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( "Developers", 'text_domain' ),
-		'name_admin_bar'        => __( "Developers", 'text_domain' ),
+		'name'                  => _x( "Podcasts", 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( "Podcast", 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( "Podcasts", 'text_domain' ),
+		'name_admin_bar'        => __( "Podcasts", 'text_domain' ),
 		'archives'              => __( 'Arquivos', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'Developers', 'text_domain' ),
-		'add_new_item'          => __( 'Novo Developer', 'text_domain' ),
-		'add_new'               => __( 'Novo Developer', 'text_domain' ),
+		'all_items'             => __( 'Podcasts', 'text_domain' ),
+		'add_new_item'          => __( 'Novo Podcast', 'text_domain' ),
+		'add_new'               => __( 'Novo Podcast', 'text_domain' ),
 		'new_item'              => __( 'Novo', 'text_domain' ),
 		'edit_item'             => __( 'Editar', 'text_domain' ),
 		'update_item'           => __( 'Atualizar', 'text_domain' ),
@@ -30,18 +30,18 @@ function developer() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'developer',
+		'slug'                  => 'podcast',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
 	);
 	$args = array(
-		'label'                 => __( 'Developer', 'text_domain' ),
-		'description'           => __( 'Developer', 'text_domain' ),
+		'label'                 => __( 'Podcast', 'text_domain' ),
+		'description'           => __( 'Podcast', 'text_domain' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'categorias' ),
-		'menu_icon'							=> 'dashicons-store',
+		'menu_icon'							=> 'dashicons-microphone',
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -57,8 +57,8 @@ function developer() {
 		'capability_type'       => 'page',
 		'supports'							=> array('title', 'editor', 'thumbnail')
 	);
-	register_post_type( 'developer', $args );
+	register_post_type( 'podcast', $args );
 }
-add_action( 'init', 'developer', 0 );
+add_action( 'init', 'podcast', 0 );
 
 ?>

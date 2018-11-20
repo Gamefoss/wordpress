@@ -69,5 +69,15 @@ CUSTOM FUNCTIONS
 ************************************/
 require_once('custom-functions.php');
 
+/************************************
+CUSTOM HOOKS
+************************************/
+require_once('custom-hooks.php');
+
+/************************************
+CRONS
+************************************/
+require_once('cron.php');
+
 /* DON'T DELETE THIS CLOSING TAG */
 ?>

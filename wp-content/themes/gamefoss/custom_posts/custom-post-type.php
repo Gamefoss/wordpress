@@ -74,4 +74,5 @@ add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');
 require_once('ludokratia.php');
 require_once('game.php');
 require_once('developer.php');
+require_once('podcast.php');
 ?>

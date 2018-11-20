@@ -3,3 +3,4 @@ js/
 tmp/
 images/
 fonts/
+!**/*.php

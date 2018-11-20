@@ -3,5 +3,7 @@
 ############
 *.php
 !functions.php
+!cron.php
 !custom-functions.php
+!custom-hooks.php
 !custom_posts/**/*.php

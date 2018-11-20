@@ -83,4 +83,28 @@ function create_game_taxonomies() {
 		register_taxonomy( 'game_categories', array( 'game' ), $args );
 }
 add_action( 'init', 'create_game_taxonomies', 0 );
+
+function create_game_tags() {
+		$labels = array(
+				'name'              => _x( 'Tags', 'taxonomy general name' ),
+				'singular_name'     => _x( 'Tag', 'taxonomy singular name' ),
+				'search_items'      => __( 'Buscar Tags' ),
+				'all_items'         => __( 'Todas as Tags' ),
+				'edit_item'         => __( 'Editar Tag' ),
+				'update_item'       => __( 'Atualizar Tag' ),
+				'add_new_item'      => __( 'Adicionar Tag' ),
+				'new_item_name'     => __( 'Novo Nome de Tag' ),
+				'menu_name'         => __( 'Tags' ),
+		);
+
+		$args = array(
+				'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+				'labels'            => $labels,
+				'show_ui'           => true,
+				'rewrite'           => array( 'slug' => 'tags' )
+		);
+
+		register_taxonomy( 'game_tags', array( 'game' ), $args );
+}
+add_action( 'init', 'create_game_tags', 0 );
 ?>
