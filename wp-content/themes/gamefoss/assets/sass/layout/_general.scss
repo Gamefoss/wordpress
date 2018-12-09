@@ -6,6 +6,7 @@ body {
   background: $c-bg;
 }
 
+/* ==== ==== ==== BADGE ==== ==== ==== */
 .badge {
   height: 16px;
   text-transform: uppercase;
@@ -27,11 +28,4 @@ body {
       background: $color;
     }
   }
-}
-
-// TODO: REMOVE
-.firula {
-  width: 100%;
-  min-height: 200px;
-  margin-bottom: 100px;
 }

@@ -1,5 +1,5 @@
 .row {
-	margin: 0 calc((#{$gutter}/2) * -1);
+	margin: 0 calc((#{$gutter}) * -1);
 	width: 100%;
 }
 
@@ -46,6 +46,10 @@ $sizes : (
 	display: none !important;
 }
 
+.visible-xs {
+	display: none !important;
+}
+
 @media (max-width: $s-sm - 1px) {
 	.hidden-xs { display: none !important; }
 	.visible-xs { display: block !important; }
@@ -63,10 +67,10 @@ $sizes : (
 	@if length(map-get($sizes, $col)) == 2 {
 		@media screen and (min-width: nth(map-get($sizes, $col), 1)) and (max-width: nth(map-get($sizes, $col), 2)) {
 			.hidden-#{$col} {
-				display: none;
+				display: none !important;
 			}
 			.visible-#{$col} {
-				display: block;
+				display: block !important;
 			}
 		}
 	}

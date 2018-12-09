@@ -10,9 +10,11 @@
   @each $name, $file in (
   ('facebook', 'facebook')
   ('external-link', 'external-link')
+  ('search', 'search')
+  ('menu-mobile', 'mobile-menu')
   ) {
-    &.#{$name} {
-      background-image: image-url('icons/#{$file}.svg');
+    &.icon-#{$name} {
+      @include svg-mask(image-url('icons/#{$file}.svg'));
     }
   }
 }

@@ -1,3 +1,26 @@
 - wp_head();
 
-header
+header#header
+	.wrap
+		button.btn.btn-transparent.btn-menu-mobile.visible-xs.visible-sm
+			.icon.icon-menu-mobile
+		nav.logo
+			h1
+				a(href!=echo('home_url()') title!=echo('bloginfo("name")'))
+					img(src!=image('logo/horizontal-logo.svg') alt!=echo('bloginfo("name")'))
+		.menu-container
+			:php
+				wp_nav_menu(
+					array(
+						'theme_location' 	=> "main-nav",
+						'menu_class'		=> "menu f-bold transition transform",
+						'container'			=> "nav"
+					)
+				)
+		.hidden-xs.hidden-sm
+			- include( locate_template( 'modules/socials.php' ) )
+		form(name="search").search-header
+			.input-search.transition.width
+				input(type="text" name="s" placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")'))
+			button.btn.btn-transparent.transition.background-color
+				.icon.icon-search

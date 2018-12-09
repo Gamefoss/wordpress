@@ -1,0 +1,18 @@
+@import "../partials/partials"; // Sass partials
+
+.socials {
+  display: flex;
+  // height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  .social {
+    width: 24px;
+    margin: 0 6px;
+    @each $social in ('facebook', 'twitter', 'instagram', 'youtube', 'twitch') {
+      &.social-#{$social} {
+        @include svg-mask(image-url("icons/socials/#{$social}.svg"));
+        background-color: $c-white;
+      }
+    }
+  }
+}

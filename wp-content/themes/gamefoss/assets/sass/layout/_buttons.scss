@@ -1,5 +1,6 @@
 .btn {
   border: none;
+  background: none;
   text-transform: uppercase;
   font-family: $f-roboto;
   font-size: 16px;
@@ -11,12 +12,12 @@
   overflow: hidden;
   position: relative;
   vertical-align: middle;
+  cursor: pointer;
 
   // BUTTON COLORS
   @each $name, $bg-color, $color in (
     ('black' , $c-black, $c-white),
     ('red' , $c-red, $c-white)
-
   ) {
     &.btn-#{$name} {
       background: $bg-color;
@@ -24,7 +25,7 @@
     }
   }
   // DECORATION
-  &:after {
+  &:not(.btn-transparent):after {
     content: "";
     position: absolute;
     background: $c-white;

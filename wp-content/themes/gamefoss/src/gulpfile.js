@@ -85,11 +85,16 @@ gulp.task('styles', function(){
 			sass: "../assets/sass",
 			css: "../library/css"
 		}))
-		.pipe(autoprefixer({
-			browsers : ['last 2 versions']
-		}))
 		.pipe(plumber.stop())
 		.pipe(gulp.dest('../library/css/'))
+});
+
+gulp.task('autoprefixer', function () {
+	gulp.src(['../library/css/**/*.css'])
+	.pipe(autoprefixer({
+		browsers : ['last 2 versions']
+	}))
+	.pipe(gulp.dest('../library/css/'));
 });
 
 gulp.task('coffee', function(){
@@ -155,7 +160,7 @@ gulp.task('fonts', function () {
 
 
 gulp.task('build', function(){
-	runSequence(['jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'fonts', 'images']);
+	runSequence(['jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'autoprefixer', 'fonts', 'images']);
 });
 
 gulp.task('default', ['build']);
@@ -163,7 +168,7 @@ gulp.task('default', ['build']);
 gulp.task('watch', function() {
 	runSequence(['build']);
 	gulp.watch("../assets/jade/**/*.jade", ['jade']);
-	gulp.watch("../assets/sass/**/*.scss", ['styles']);
+	gulp.watch("../assets/sass/**/*.scss", ['styles', 'autoprefixer']);
 	gulp.watch("../assets/js/**/*.js", ['libs']);
 	gulp.watch(["../assets/coffee/**/*.coffee", "!../assets/coffee/libs/**/*.coffee"], ['coffee']);
 	gulp.watch("../assets/coffee/libs/**/*.coffee", ['coffee-libs']);

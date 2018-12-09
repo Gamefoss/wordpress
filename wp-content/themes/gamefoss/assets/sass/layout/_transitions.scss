@@ -1,0 +1,8 @@
+.transition {
+	@each $prop in (transform, all, font-size, width, height, opacity, background-color, background-color) {
+		&.#{$prop} {
+			@include transition($prop $transition-default);
+			will-change: $prop;
+		}
+	}
+}
