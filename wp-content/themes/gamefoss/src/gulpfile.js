@@ -168,7 +168,7 @@ gulp.task('default', ['build']);
 gulp.task('watch', function() {
 	runSequence(['build']);
 	gulp.watch("../assets/jade/**/*.jade", ['jade']);
-	gulp.watch("../assets/sass/**/*.scss", ['styles', 'autoprefixer']);
+	gulp.watch("../assets/sass/**/*.scss", ['styles']);
 	gulp.watch("../assets/js/**/*.js", ['libs']);
 	gulp.watch(["../assets/coffee/**/*.coffee", "!../assets/coffee/libs/**/*.coffee"], ['coffee']);
 	gulp.watch("../assets/coffee/libs/**/*.coffee", ['coffee-libs']);
