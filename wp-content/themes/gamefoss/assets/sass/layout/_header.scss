@@ -59,11 +59,18 @@ header#header {
           background: $c-black;
         }
       }
-      
-      .menu {
+
+      .menu-nav {
+        height: 100vh;
+      }
+
+      .menu, .mobile-socials {
         width: 100%;
         max-width: 240px;
-        height: 100vh;
+      }
+
+      .menu {
+        height: 100%;
         padding: $gutter * 2;
         background: $c-white;
         box-shadow: 1px 1px 1px rgba($c-black, 0.95);
@@ -73,6 +80,19 @@ header#header {
           margin: 12px auto;
         }
       }
+
+      .mobile-socials {
+        position: absolute;
+        bottom: 0;
+        height: 48px;
+        background: $c-white;
+        padding: 12px;
+        @include transform(translate3d(-100%,0,0));
+        .icon {
+          background: $c-menu;
+        }
+      }
+
       &.show {
         z-index: 10;
       }
@@ -83,6 +103,9 @@ header#header {
         }
         .menu {
           @include transform(translate3d(0%,0,0));
+        }
+        .mobile-socials {
+          @include transform(translate3d(0,0,0));
         }
       }
     }
