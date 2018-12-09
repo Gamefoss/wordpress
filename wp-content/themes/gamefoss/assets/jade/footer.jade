@@ -2,23 +2,31 @@
 
 footer#footer
 
-  .wrap
-    .row
-      .col-xs-12.col-md-3
-        a(href!=echo('home_url()') title!=echo('bloginfo("name")'))
-          img(src!=image('logo/vertical-logo.svg') alt!=echo('bloginfo("name")')).logo
-      .col-xs-12.col-md-6
-        .menu-container &nbsp;
-      .col-xs-12.col-md-3
-        .buttons-container
-          a(href="#").btn.btn-black Anuncie aqui
-          a(href="#").btn.btn-black Apoie
-          a(href="#").btn.btn-black Seu jogo aqui
-      .cf
-    .row
-      .col-xs-12.col-sm-6
-        .social-container
-          - include( locate_template( 'modules/socials.php' ) )
-      .col-xs-12.col-sm-6
-        p.disclaimer © 2018 Todos os direitos Reservados
-      .cf
+	.wrap
+		.row
+			.col-xs-12.col-md-3
+				a(href!=echo('home_url()') title!=echo('bloginfo("name")'))
+					img(src!=image('logo/vertical-logo.svg') alt!=echo('bloginfo("name")')).logo
+			.col-xs-12.col-md-6
+				.menu-container
+					:php
+						wp_nav_menu(
+							array(
+								'theme_location'	=> "footer-links",
+								'container'			=> "nav",
+								'container_class'	=> "accordion"
+							)          
+						);
+			.col-xs-12.col-md-3
+				.buttons-container
+					a(href="#").btn.btn-black Anuncie aqui
+					a(href="#").btn.btn-black Apoie
+					a(href="#").btn.btn-black Seu jogo aqui
+			.cf
+		.row
+			.col-xs-12.col-sm-6
+				.social-container
+					- include( locate_template( 'modules/socials.php' ) )
+			.col-xs-12.col-sm-6
+				p.disclaimer © 2018 Todos os direitos Reservados
+			.cf
