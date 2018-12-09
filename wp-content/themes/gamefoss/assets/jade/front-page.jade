@@ -14,7 +14,7 @@ block main
       .visible-md.visible-lg.visible-xl
         - ad( 'large-leaderboard' )
     .live-container
-      - include( locate_template( 'modules/live.php' ) )      
+      - include( locate_template( 'modules/live.php' ) )
     .mosaic
       .mosaic-item
         - post_block()
@@ -30,3 +30,8 @@ block main
         - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
     #ludokratia
       +compound-header("Ludokratia")
+      +compound-header("Ludokratia").ludokratia
+        a(href="#").btn.btn-black teste
+        a(href="#").btn.btn-black teste
+        a(href="#").btn.btn-black teste
+        a(href="#").btn.btn-black ...
