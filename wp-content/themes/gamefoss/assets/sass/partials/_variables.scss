@@ -7,6 +7,14 @@ $c-red:     #ff0000;
 $c-silver:  #bbbbbb;
 $c-grape:   #3e3d4d;
 
+$colors:  (
+  ('white', $c-white)
+  ('black', $c-black)
+  ('red', $c-red)
+  ('silver', $c-silver)
+  ('grape', $c-grape)
+);
+
 // color usage
 $c-bg:      $c-silver;
 $c-menu:    $c-grape;
