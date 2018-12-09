@@ -58,7 +58,7 @@
 	}
 	&.accordion-black {
 		.menu-item-has-children:after {
-			background-color: $black;
+			background-color: $c-black;
 		}
 	}
 	@mixin clear-accordion {
