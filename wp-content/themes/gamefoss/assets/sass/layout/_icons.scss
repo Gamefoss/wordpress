@@ -12,6 +12,7 @@
   ('external-link', 'external-link')
   ('search', 'search')
   ('menu-mobile', 'mobile-menu')
+  ('close', 'close')
   ) {
     &.icon-#{$name} {
       @include svg-mask(image-url('icons/#{$file}.svg'));

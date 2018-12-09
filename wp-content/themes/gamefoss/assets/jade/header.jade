@@ -9,6 +9,8 @@ header#header
 				a(href!=echo('home_url()') title!=echo('bloginfo("name")'))
 					img(src!=image('logo/horizontal-logo.svg') alt!=echo('bloginfo("name")'))
 		.menu-container
+			button.btn.btn-transparent.btn-close.transition.transform
+				.icon.icon-close
 			:php
 				wp_nav_menu(
 					array(

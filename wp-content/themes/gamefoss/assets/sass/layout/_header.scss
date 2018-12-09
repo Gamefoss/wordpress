@@ -31,21 +31,35 @@ header#header {
   }
 
 
-  .menu-main-menu-container {
+  .menu-container {
+
     .menu {
       text-transform: uppercase;
     }
-    
+
     @include bp(false, $s-md) {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      z-index: 10;
+      z-index: -1;
       background: rgba($c-black, 0.95);
       @include transition(opacity $transition-default);
+      @include opacity(0);
       overflow: hidden;
+
+      .btn-close {
+        position: absolute;
+        top: 24px;
+        left: 240px - 24px - 24px;
+        z-index: 1;
+        @include transform(translate3d(100%,0,0));
+        .icon {
+          background: $c-black;
+        }
+      }
+      
       .menu {
         width: 100%;
         max-width: 240px;
@@ -53,15 +67,30 @@ header#header {
         padding: $gutter * 2;
         background: $c-white;
         box-shadow: 1px 1px 1px rgba($c-black, 0.95);
-        @include transform(translate3d(0,0,0));
+        @include transform(translate3d(-100%,0,0));
         color: $c-black;
         li {
           margin: 12px auto;
         }
       }
+      &.show {
+        z-index: 10;
+      }
+      &.opened {
+        @include opacity(1);
+        .btn-close {
+          @include transform(translate3d(0,0,0));
+        }
+        .menu {
+          @include transform(translate3d(0%,0,0));
+        }
+      }
     }
 
     @include bp($s-md) {
+      .btn-close {
+        display: none;
+      }
       .menu {
         display: flex;
         justify-content: flex-start;
@@ -71,49 +100,7 @@ header#header {
         }
       }
     }
-    /*@include bp(false, $s-md) {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      z-index: 10;
-      width: 100%;
-      max-width: 240px;
-      padding: 0 24px;
-      color: $c-black;
-      @include transform(translate3d(0,0,0));
-      box-shadow: 1px 1px 1px rgba($c-black, 0.25);
-      &:before, &:after {
-        position: absolute;
-        content: "";
-        left: 0;
-        top: 0;
-        height: 100%;
-      }
-      &:before {
-        background: $c-white;
-        width: 100%;
-        z-index: 0;
-      }
-      &:after {
-        width: 100vw;
-        background: rgba($c-black, 0.95);
-        z-index: -1;
-      }
-    }
-    @include bp($s-md) {
-      display: flex;
-      justify-content: flex-start;
-    }
-    li {
-      margin: 0 12px;
-      text-transform: uppercase;
-      @include fluid-type(16, 18);
-      @include bp(false, $s-md) {
-        margin: 24px auto;
-        position: relative;
-      }
-    }*/
+
   }
 
   .socials {
