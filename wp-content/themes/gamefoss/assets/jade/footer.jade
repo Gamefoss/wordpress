@@ -4,20 +4,20 @@ footer#footer
 
 	.wrap
 		.row
-			.col-xs-12.col-md-3
-				a(href!=echo('home_url()') title!=echo('bloginfo("name")'))
-					img(src!=image('logo/vertical-logo.svg') alt!=echo('bloginfo("name")')).logo
-			.col-xs-12.col-md-6
+			.col-xs-12.col-md-2.col-lg-3
+				a(href!=echo('home_url()') title!=echo('bloginfo("name")')).logo
+					img(src!=image('logo/vertical-logo.svg') alt!=echo('bloginfo("name")'))
+			.col-xs-12.col-md-8.col-lg-6
 				.menu-container
 					:php
 						wp_nav_menu(
 							array(
 								'theme_location'	=> "footer-links",
 								'container'			=> "nav",
-								'container_class'	=> "accordion"
-							)          
+								'container_class'	=> "accordion accordion-mobile"
+							)
 						);
-			.col-xs-12.col-md-3
+			.col-xs-12.col-md-2.col-lg-3
 				.buttons-container
 					a(href="#").btn.btn-black Anuncie aqui
 					a(href="#").btn.btn-black Apoie

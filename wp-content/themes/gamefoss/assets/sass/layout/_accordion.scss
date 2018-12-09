@@ -9,16 +9,16 @@
 			bottom: -2px;
 		}
 	}
-	.menu-item-has-children {
+	.menu-item-has-children:not(.no-accordion) {
 		cursor: pointer;
 		&:after {
 			position: absolute;
 			content: "";
 			width: 20px;
 			height: 20px;
-			top: 10px;
+			top: 0;
 			right: 24px;
-			background: image-url('down-arrow.svg') center no-repeat;
+			background: image-url('icons/arrow.svg') center no-repeat;
 			background-size: contain;
 			will-change: transform;
 
@@ -31,29 +31,32 @@
 			cursor: default;
 		}
 	}
-	.sub-menu {
-		overflow: hidden;
-		height: 0;
-		@include transition(height $transition-default);
-		will-change: height;
-		margin-left: 20px;
-		li {
-			margin: 12px 0;
-		}
-		.current-menu-item {
-			> a:after {
-				display: none;
+	li:not(.no-accordion) {
+		position: relative;
+		.sub-menu {
+			overflow: hidden;
+			height: 0;
+			@include transition(height $transition-default);
+			will-change: height;
+			margin-left: 20px;
+			li {
+				margin: 12px 0;
+			}
+			.current-menu-item {
+				> a:after {
+					display: none;
+				}
 			}
 		}
-	}
-	> ul.menu > li {
-		// margin: 12px auto;
-		position: relative;
-		@media only screen and (max-width: $s-sm - 1px) {
+		> ul.menu > li {
+			// margin: 12px auto;
 			position: relative;
-		}
-		@media only screen and (min-width: $s-xl) {
-			margin-bottom: 30px;
+			@media only screen and (max-width: $s-sm - 1px) {
+				position: relative;
+			}
+			@media only screen and (min-width: $s-xl) {
+				margin-bottom: 30px;
+			}
 		}
 	}
 	&.accordion-black {
@@ -65,7 +68,7 @@
 		.menu-item-has-children:after {
 			display: none;
 		}
-		.sub-menu {
+		li .sub-menu {
 			margin: 0 auto;
 			height: auto !important;
 			overflow: visible;

@@ -3,14 +3,21 @@ footer#footer {
   padding-top: 24px;
   padding-bottom: 12px;
 
-
   .logo {
     margin: 0 auto;
     margin-bottom: 48px;
     display: block;
     @include bp($s-md){
-      margin-left: 48px;
-      margin-top: 0px;
+      margin: 12px auto 48px;
+    }
+    img {
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      @include bp($s-md) {
+        max-width: 300px;
+      }
     }
   }
 
@@ -56,4 +63,27 @@ footer#footer {
         margin: 0;
       }
     }
+
+  .menu-container {
+    margin: 0 auto 48px;
+    @include bp($s-sm) {
+      .menu {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    @include bp($s-lg) {
+      margin-bottom: 96px;
+    }
+    li {
+      color: $c-white;
+      margin: 12px auto;
+      font-size: rem(18);
+      &.menu-item-has-children >a ,
+      &.no-accordion a {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+  }
 }
