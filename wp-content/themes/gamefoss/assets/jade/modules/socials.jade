@@ -1,7 +1,10 @@
 append styles
   - wp_enqueue_style( 'socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", false );
 nav.socials
-  - foreach ( get_field('socials', 'options') as $social ):
-    - $social = (object) $social
+  :php
+    $_socials = get_field('socials');
+    if (!$_socials) $_socials = get_field('socials', 'options');
+  - foreach ( $_socials as $social ): $social = (object) $social
     a.icon.social(class!=echo('"social-{$social->network}"') href!=echo('$social->url') target="_blank")
   - endforeach
+  - $_socials = NULL

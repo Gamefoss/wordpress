@@ -16,9 +16,12 @@ header#header
 					array(
 						'theme_location' 	=> "main-nav",
 						'menu_class'		=> "menu f-bold transition transform",
-						'container'			=> "nav"
+						'container'			=> "nav",
+						'container_class'			=> "menu-nav"
 					)
 				)
+			.mobile-socials.transition.transform.visible-xs.visible-sm
+				- include( locate_template( 'modules/socials.php' ) )
 		.hidden-xs.hidden-sm
 			- include( locate_template( 'modules/socials.php' ) )
 		form(name="search").search-header

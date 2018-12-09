@@ -20,12 +20,16 @@ body {
   &.category {
     width: 120px;
   }
-  @each $name, $color in (
-  ('black', $c-black)
-  ('red', $c-red)
-  ){
+  @each $name, $color in $colors {
     &.#{$name} {
       background: $color;
     }
+  }
+}
+
+/* ==== ==== ==== BACKGROUND ==== ==== ==== */
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color;
   }
 }
