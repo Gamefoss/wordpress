@@ -1,5 +1,5 @@
 .mosaic {
-  height: 100vh;
+  min-height: 100vh;
   margin: $gutter*2 auto $gutter*4;
   display: grid;
   grid-gap: $gutter $gutter;
