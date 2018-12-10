@@ -23,6 +23,11 @@ head
 	
 	block styles
 
+	block analytics
+		- get_template_part( 'layout/analytics/google-analytics', 'google-analytics' )
+		- get_template_part( 'layout/analytics/facebook', 'facebook' )
+		- get_template_part( 'layout/analytics/mautic', 'mautic' )
+
 body("<?php body_class(); ?>")
 	
 	block header
