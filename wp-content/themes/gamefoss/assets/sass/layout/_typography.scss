@@ -70,7 +70,10 @@
 	none
 );
 
-
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 html, body {
 	font-size: 16px;

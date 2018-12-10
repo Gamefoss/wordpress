@@ -15,17 +15,21 @@ footer#footer {
       display: block;
       width: 100%;
       max-width: 200px;
-      @include bp($s-md) {
-        max-width: 300px;
-      }
     }
   }
 
+  .bottom-footer {
+    @include bp($s-lg) {
+      padding: 0 72px;      
+    }
+  }
   .disclaimer{
     font-family: Open Sans, sans-serif;
     font-size: 12px;
     color: white;
     text-align: center;
+    height: 24px;
+    line-height: 24px;
     @include bp($s-sm){
       text-align: right;
     }
@@ -79,9 +83,9 @@ footer#footer {
       color: $c-white;
       margin: 12px auto;
       font-size: rem(18);
+      text-transform: uppercase;
       &.menu-item-has-children >a ,
       &.no-accordion a {
-        text-transform: uppercase;
         font-weight: bold;
       }
     }
