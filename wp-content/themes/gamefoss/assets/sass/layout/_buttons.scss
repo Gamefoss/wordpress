@@ -16,13 +16,13 @@
 
   // BUTTON COLORS
   @each $name, $bg-color in $colors {
-    &.btn-#{$name} {
+    &.btn--#{$name} {
       background: $bg-color;
       color: $c-white;
     }
   }
   // DECORATION
-  &:not(.btn-transparent):after {
+  &:not(.btn--transparent):after {
     content: "";
     position: absolute;
     background: $c-white;
