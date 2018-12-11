@@ -29,9 +29,15 @@ block main
       .mosaic-item
         - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
     #ludokratia
-      +compound-header("Ludokratia")
+      +compound-header("Entretenimento")
+        a(href="#").badge.badge--red.hidden-xs Reviews
+        a(href="#").badge.badge--red.hidden-xs Entrevistas
+        a(href="#").badge.badge--red.hidden-xs Cinema
+        a(href="#").badge.badge--red.hidden-xs Notícias
+        a(href="#").badge.badge--red.badge--more ...
       +compound-header("Ludokratia").ludokratia
-        a(href="#").btn.btn-black teste
-        a(href="#").btn.btn-black teste
-        a(href="#").btn.btn-black teste
-        a(href="#").btn.btn-black ...
+        a(href="#").badge.badge--black.hidden-xs Gave Dev
+        a(href="#").badge.badge--black.hidden-xs Programação
+        a(href="#").badge.badge--black.hidden-xs Animação
+        a(href="#").badge.badge--black.hidden-xs Marketing
+        a(href="#").badge.badge--black.badge--more ...

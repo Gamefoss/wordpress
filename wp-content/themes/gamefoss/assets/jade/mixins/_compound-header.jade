@@ -1,6 +1,7 @@
-mixin compound-header(title="")
+mixin compound-header(title="", link="#")
   header.compound-header(class=attributes.class)
-    h2.title-1 !{title}
+    h2.title-1
+      a(href=link) !{title}
     hr
     .compound-header-buttons.pull-right
       block
