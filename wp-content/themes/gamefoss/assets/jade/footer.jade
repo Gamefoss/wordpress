@@ -28,5 +28,5 @@ footer#footer
 				.social-container
 					- include( locate_template( 'modules/socials.php' ) )
 			.col-xs-12.col-sm-6
-				p.disclaimer © 2018 Todos os direitos Reservados
+				p.disclaimer!= "&copy; ". date("Y") . " " . __("[:pb]Todos os direitos Reservados[:en]All rights reserved[:]")
 			.cf

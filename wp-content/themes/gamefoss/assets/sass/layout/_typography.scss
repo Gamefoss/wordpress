@@ -1,5 +1,5 @@
 @include font-face(
-	"Roboto Regular",
+	"Roboto",
 	font-files(
 		"Roboto/Roboto-Regular.woff",
 		"Roboto/Roboto-Regular.ttf",
@@ -11,7 +11,7 @@
 );
 
 @include font-face(
-	"Roboto Bold",
+	"Roboto",
 	font-files(
 		"Roboto/Roboto-Bold.woff",
 		"Roboto/Roboto-Bold.ttf",
@@ -23,7 +23,7 @@
 );
 
 @include font-face(
-	"Roboto Light",
+	"Roboto",
 	font-files(
 		"Roboto/Roboto-Light.woff",
 		"Roboto/Roboto-Light.ttf",
@@ -31,7 +31,7 @@
 		"Roboto/Roboto-Light.svg"),
 	"Roboto/Roboto-Light.eot",
 	lighter,
-	none
+	normal
 );
 
 @include font-face(
@@ -43,7 +43,7 @@
 		"Open-sans/OpenSans-Regular.svg"),
 	"Open-sans/OpenSans-Regular.eot",
 	normal,
-	none
+	normal
 );
 
 @include font-face(
@@ -55,7 +55,7 @@
 		"Open-sans/OpenSans-Light.svg"),
 	"Open-sans/OpenSans-Light.eot",
 	lighter,
-	none
+	normal
 );
 
 @include font-face(
@@ -67,17 +67,13 @@
 		"Open-sans/OpenSans-Bold.svg"),
 	"Open-sans/OpenSans-Bold.eot",
 	bold,
-	none
+	normal
 );
-
-* {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
 
 html, body {
 	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: $f-roboto;
 }

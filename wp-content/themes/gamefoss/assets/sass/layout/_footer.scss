@@ -20,11 +20,12 @@ footer#footer {
 
   .bottom-footer {
     @include bp($s-lg) {
-      padding: 0 72px;      
+      padding: 0 72px;
     }
   }
   .disclaimer{
-    font-family: Open Sans, sans-serif;
+    font-family: $f-open;
+    font-weight: lighter;
     font-size: 12px;
     color: white;
     text-align: center;
