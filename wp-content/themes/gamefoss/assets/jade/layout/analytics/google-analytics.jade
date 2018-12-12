@@ -1,9 +1,14 @@
+//- UA-117664776-1
+//- UA-117664776-2
+//- google_analytics
 
-script(async src="https://www.googletagmanager.com/gtag/js?id=UA-117664776-1")
+//- script(async src="https://www.googletagmanager.com/gtag/js?id=UA-117664776-1")
+script(async src="https://www.googletagmanager.com/gtag/js")
 script(type="text/javascript").
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
-	gtag('config', 'UA-117664776-1');
-	gtag('config', 'UA-117664776-2');
+	<?php foreach ( get_field('google_analytics') as $ga ): ?>
+		gtag('config', '<?php echo $ga ?>');
+	<?php endforeach ?>

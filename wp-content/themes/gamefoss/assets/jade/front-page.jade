@@ -1,43 +1,44 @@
 extends index
 
 append styles
-  - wp_enqueue_style( 'home-css', get_template_directory_uri() . "/library/css/pages/home.css", false );
+	- wp_enqueue_style( 'home-css', get_template_directory_uri() . "/library/css/pages/home.css", false );
 
 block main
-  #home.wrap
-    .ad-container
-      .visible-xs
-        .row
-          - ad( 'mobile-leaderboard' )
-      .visible-sm
-        - ad( 'leaderboard' )
-      .visible-md.visible-lg.visible-xl
-        - ad( 'large-leaderboard' )
-    .live-container
-      - include( locate_template( 'modules/live.php' ) )
-    .mosaic
-      .mosaic-item
-        - post_block()
-      .mosaic-item
-        - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
-      .mosaic-item
-        - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
-      .mosaic-item
-        - post_block()
-      .mosaic-item
-        - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
-      .mosaic-item
-        - post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
-    #ludokratia
-      +compound-header("Entretenimento")
-        a(href="#").badge.badge--red.hidden-xs Reviews
-        a(href="#").badge.badge--red.hidden-xs Entrevistas
-        a(href="#").badge.badge--red.hidden-xs Cinema
-        a(href="#").badge.badge--red.hidden-xs Notícias
-        a(href="#").badge.badge--red.badge--more ...
-      +compound-header("Ludokratia").ludokratia
-        a(href="#").badge.badge--black.hidden-xs Gave Dev
-        a(href="#").badge.badge--black.hidden-xs Programação
-        a(href="#").badge.badge--black.hidden-xs Animação
-        a(href="#").badge.badge--black.hidden-xs Marketing
-        a(href="#").badge.badge--black.badge--more ...
+	#home.wrap
+		.ad-container
+			.visible-xs
+				.row
+					- ad( 'mobile-leaderboard' )
+			.visible-sm
+				- ad( 'leaderboard' )
+			.visible-md.visible-lg.visible-xl
+				- ad( 'large-leaderboard' )
+		.live-container
+			- include( locate_template( 'modules/live.php' ) )
+		.mosaic
+			.mosaic-item
+				- post_block()
+			.mosaic-item
+				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+			.mosaic-item
+				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+			.mosaic-item
+				- post_block()
+			.mosaic-item
+				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+			.mosaic-item
+				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+		#ludokratia
+			+compound-header("Ludokratia").ludokratia
+				a(href="#").badge.badge--black.hidden-xs Gave Dev
+				a(href="#").badge.badge--black.hidden-xs Programação
+				a(href="#").badge.badge--black.hidden-xs Animação
+				a(href="#").badge.badge--black.hidden-xs Marketing
+				a(href="#").badge.badge--black.badge--more ...
+		#entertainment
+			+compound-header("Entretenimento")
+				a(href="#").badge.badge--red.hidden-xs Reviews
+				a(href="#").badge.badge--red.hidden-xs Entrevistas
+				a(href="#").badge.badge--red.hidden-xs Cinema
+				a(href="#").badge.badge--red.hidden-xs Notícias
+				a(href="#").badge.badge--red.badge--more ...
