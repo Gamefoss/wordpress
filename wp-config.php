@@ -35,10 +35,10 @@ define('WP_PROTOCOL', $_SERVER['HTTPS']? "https://" : "http://");
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 switch (WP_ENV) {
 	case "localhost":
-		define('DB_NAME', 'u566229331_gf');
-		define('DB_USER', 'u566229331_gf');
-		define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
-		define('DB_HOST', 'sql154.main-hosting.eu');
+		define('DB_NAME', 'gamefoss');
+		define('DB_USER', 'root');
+		define('DB_PASSWORD', 'root');
+		define('DB_HOST', 'localhost');
 		break;	
 	case "production":
 		define('DB_NAME', 'u566229331_gf');
