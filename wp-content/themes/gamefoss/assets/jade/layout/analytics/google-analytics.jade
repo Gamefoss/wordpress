@@ -3,12 +3,14 @@
 //- google_analytics
 
 //- script(async src="https://www.googletagmanager.com/gtag/js?id=UA-117664776-1")
-script(async src="https://www.googletagmanager.com/gtag/js")
-script(type="text/javascript").
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+- if ( get_field('google_analytics') ):
+	script(async src="https://www.googletagmanager.com/gtag/js")
+	script(type="text/javascript").
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	<?php foreach ( get_field('google_analytics') as $ga ): ?>
-		gtag('config', '<?php echo $ga ?>');
-	<?php endforeach ?>
+		<?php foreach ( get_field('google_analytics') as $ga ): ?>
+			gtag('config', '<?php echo $ga["id"] ?>');
+		<?php endforeach ?>
+- endif
