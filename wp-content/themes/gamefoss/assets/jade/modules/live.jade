@@ -1,7 +1,10 @@
 append styles
 	- wp_enqueue_style( 'live-css', get_template_directory_uri() . "/library/css/modules/live.css", false );
 
-- $live = get_field ( 'live' )? reset( get_field ( 'live', get_option( 'page_on_front' ) ) ) : NULL
+:php
+	$live = get_field ( 'live', get_option( 'page_on_front' ) );
+	if ( is_array( $live ) ) $live = reset( $live );
+
 - if ( $live ):
 	a.live(href="#" target="_blank")
 		.img(style!=background('$live["image"]',true))

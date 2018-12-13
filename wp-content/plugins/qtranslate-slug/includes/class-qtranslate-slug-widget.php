@@ -6,31 +6,31 @@
  * @since 1.0
  */
 class QtranslateSlugWidget extends WP_Widget {
-     
-    function QtranslateSlugWidget() {
+
+    function __construct() {
         $widget_ops = array('classname' => 'qts_widget', 'description' => __('Allows your visitors to choose a Language.','qts') );
         parent::__construct('qtranslateslug', __('Language selector (QTS)', 'qts'), $widget_ops);
     }
-    
+
     function widget($args, $instance) {
         extract($args);
-        
+
         echo $before_widget;
         $title = empty($instance['title']) ? __('Language', 'qts') : apply_filters('widget_title', $instance['title']);
         $hide_title = empty($instance['hide-title']) ? false : 'on';
         $type = $instance['type'];
         $short_text = ($instance['short_text'] == 'on') ? true : false ;
-        
+
         if( $type!='text' && $type!='image' && $type!='both' && $type!='dropdown' ) $type='text';
 
         if( $hide_title!='on')
             echo $before_title . $title . $after_title;
-        
+
         qts_language_menu($type, array( 'id' => $this->id, 'short' => $short_text ) );
-        
+
         echo $after_widget;
     }
-    
+
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance['title'] = $new_instance['title'];
@@ -40,7 +40,7 @@ class QtranslateSlugWidget extends WP_Widget {
 
         return $instance;
     }
-    
+
     function form($instance) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'hide-title' => false, 'type' => 'text' ) );
         $title = $instance['title'];
