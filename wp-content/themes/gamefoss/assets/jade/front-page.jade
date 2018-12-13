@@ -17,17 +17,17 @@ block main
 			- include( locate_template( 'modules/live.php' ) )
 		.mosaic
 			.mosaic-item
-				- post_block()
+				- post_block( array('variation' => "post-block--highlight") )
 			.mosaic-item
-				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+				- post_block( array('class' => array( "post-block--white" ) ) )
 			.mosaic-item
-				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+				- post_block( array('class' => array( "post-block--white" ) ) )
 			.mosaic-item
-				- post_block()
+				- post_block( array('variation' => "post-block--highlight") )
 			.mosaic-item
-				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+				- post_block( array('class' => array( "post-block--white", "post-block--ludokratia" ) ) )
 			.mosaic-item
-				- post_block( array( 'variation' => "vertical", 'class' => array( "white" ) ) )
+				- post_block( array('class' => array( "post-block--white" ) ) )
 		#ludokratia
 			+compound-header("Ludokratia").ludokratia
 				a(href="#").badge.badge--black.hidden-xs Gave Dev
@@ -35,6 +35,17 @@ block main
 				a(href="#").badge.badge--black.hidden-xs Animação
 				a(href="#").badge.badge--black.hidden-xs Marketing
 				a(href="#").badge.badge--black.badge--more ...
+			.col-xs-12
+				.row
+					.col-xs-12.col-sm-6.col-md-3
+						- post_block()
+					.col-xs-12.col-sm-6.col-md-3
+						- post_block()
+					.col-xs-12.col-sm-6.col-md-3
+						- post_block()
+					.col-xs-12.col-sm-6.col-md-3
+						- post_block()
+					.cf
 		#entertainment
 			+compound-header("Entretenimento")
 				a(href="#").badge.badge--red.hidden-xs Reviews
@@ -42,3 +53,15 @@ block main
 				a(href="#").badge.badge--red.hidden-xs Cinema
 				a(href="#").badge.badge--red.hidden-xs Notícias
 				a(href="#").badge.badge--red.badge--more ...
+			.col-xs-12.col-md-8
+				.row
+					.col-xs-12
+						- post_block( array('variation' => "post-block--horizontal") )
+					.col-xs-12
+						- post_block( array('variation' => "post-block--horizontal post-block--highlight") )
+					.col-xs-12
+						- post_block( array('variation' => "post-block--horizontal") )
+					.col-xs-12
+						- post_block( array('variation' => "post-block--horizontal") )
+					.cf
+			.cf

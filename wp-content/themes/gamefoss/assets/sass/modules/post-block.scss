@@ -3,6 +3,8 @@
 .post-block {
   position: relative;
   height: 100%;
+  display: grid;
+  grid-template-rows: 150px auto;
 
   // basic styles
   >a {
@@ -19,10 +21,15 @@
     position: relative;
   }
 
+  .badge {
+    margin: 0 auto;
+  }
+
   .img {
     background: $c-grape top center no-repeat;
     background-size: cover;
     height: 100%;
+    @include aspect-ratio(16,9);
     &:after {
       content: "";
       position: absolute;
@@ -45,7 +52,7 @@
   }
 
   .title-2 {
-    margin: $gutter*2 auto;
+    margin: $gutter auto;
   }
 
   .author {
@@ -63,9 +70,8 @@
     }
   }
 
-  // variations
-  &.highlight,
-  &.vertical {
+  // VARIATIONS
+  &.post-block--highlight {
     color: $c-white;
     display: flex;
     align-items: flex-end;
@@ -75,44 +81,51 @@
     }
   }
 
-  &.vertical {
-    min-height: 240px;
+  &.post-block--vertical {
     .content {
       padding-top: 0;
       .category {
         top: -8px;
       }
-      .title-2 {
-        margin-top: 6px;
-      }
     }
   }
 
-  &.horizontal {
-    @include bp($s-sm) {
-      display: table;
-      width: 100%;
-      .img, .content {
-        display: table-cell;
-        vertical-align: middle;
-        width: 50%;
-      }
-      .img {
-        height: 100%;
-      }
-      .content {
-        padding-top: $gutter*2;
-      }
-      .category {
-        top: auto;
+  @include bp($s-sm) {
+    &.post-block--horizontal {
+      grid-template-rows: auto;
+      grid-template-columns: auto auto;
+      margin-bottom: $gutter;
+      min-height: 195px;
+      &.post-block--highlight {
+        min-height: 270px;
       }
     }
   }
+  // &.horizontal {
+  //   @include bp($s-sm) {
+  //     display: table;
+  //     width: 100%;
+  //     .img, .content {
+  //       display: table-cell;
+  //       vertical-align: middle;
+  //       width: 50%;
+  //     }
+  //     .img {
+  //       height: 100%;
+  //     }
+  //     .content {
+  //       padding-top: $gutter*2;
+  //     }
+  //     .category {
+  //       top: auto;
+  //     }
+  //   }
+  // }
 
-  &.white {
+  &.post-block--white {
+    color: $c-black;
     .content {
       background: $c-white;
-      color: $c-black;
     }
   }
 }

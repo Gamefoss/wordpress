@@ -16,7 +16,7 @@ function ad( $size = 'square' ) {
 // POST BLOCK HANDLER
 function post_block( $_options = NULL ) {
   $options = array(
-    'variation' => isset($_options['variation'])? $_options['variation'] : "highlight" ,
+    'variation' => isset($_options['variation'])? $_options['variation'] : "post-block--vertical" ,
     'author'    => isset($_options['author'])? $_options['author'] : "default" ,
     'class'    => isset($_options['class'])? $_options['class'] : array()
   );

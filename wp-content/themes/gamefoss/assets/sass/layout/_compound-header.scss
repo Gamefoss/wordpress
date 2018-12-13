@@ -1,5 +1,7 @@
 .compound-header {
   position: relative;
+  margin: $gutter*4 auto $gutter;
+  z-index: 1;
 
   .title-1 {
     text-transform: uppercase;
@@ -9,6 +11,7 @@
     border: 2px solid $c-black;
     overflow: visible;
     position: relative;
+    margin: $gutter auto;
 
     &:before,
     &:after {

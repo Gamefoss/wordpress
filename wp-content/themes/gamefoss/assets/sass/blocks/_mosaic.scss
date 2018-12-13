@@ -22,7 +22,6 @@
       'mi-5 mi-5 mi-5 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6 mi-6 mi-6 mi-6';
   }
   @include bp($s-md) {
-    max-height: 800px;
     grid-template-rows:  repeat(3, 1fr);
     grid-template-areas:
       'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-2 mi-2 mi-2 mi-2'
@@ -30,6 +29,9 @@
       'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6';
   }
   .mosaic-item {
+    .img:before {
+      display: none;
+    }
     @for $i from 1 through 6 {
       &:nth-child(#{$i}) {
         grid-area: mi-#{$i};
