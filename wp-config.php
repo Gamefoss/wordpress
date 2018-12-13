@@ -18,18 +18,35 @@
  * @package WordPress
  */
 
+// Environment configuration
+switch ($_SERVER['SERVER_NAME']) {
+	case "gamefoss.com":
+	case "gamefoss.com.br":
+		define('WP_ENV', 'production');
+		break;	
+	default:
+		define('WP_ENV', 'localhost');
+		break;
+}
+
+// Protocol configuration
+define('WP_PROTOCOL', $_SERVER['HTTPS']? "https://" : "http://");
+
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
-/** O nome do banco de dados do WordPress */
-define('DB_NAME', 'gamefoss');
-
-/** Usuário do banco de dados MySQL */
-define('DB_USER', 'root');
-
-/** Senha do banco de dados MySQL */
-define('DB_PASSWORD', 'root');
-
-/** Nome do host do MySQL */
-define('DB_HOST', 'localhost');
+switch (WP_ENV) {
+	case "localhost":
+		define('DB_NAME', 'u566229331_gf');
+		define('DB_USER', 'u566229331_gf');
+		define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
+		define('DB_HOST', 'sql154.main-hosting.eu');
+		break;	
+	case "production":
+		define('DB_NAME', 'u566229331_gf');
+		define('DB_USER', 'u566229331_gf');
+		define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
+		define('DB_HOST', 'localhost');
+		break;	
+}
 
 /** Charset do banco de dados a ser usado na criação das tabelas. */
 define('DB_CHARSET', 'utf8mb4');
@@ -82,7 +99,24 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/pt-br:Depura%C3%A7%C3%A3o_no_WordPress
  */
-define('WP_DEBUG', false);
+
+/* more changes of env */
+switch (WP_ENV) {
+	case "localhost":
+	case "development":
+		define('WP_SITEURL', WP_PROTOCOL . $_SERVER['SERVER_NAME'] ."/gamefoss");
+		define('WP_HOME',    WP_PROTOCOL . $_SERVER['SERVER_NAME'] . "/gamefoss");
+		define('WP_DEBUG', true);
+		break;
+	case "production":
+		define('WP_SITEURL', WP_PROTOCOL . $_SERVER['SERVER_NAME']);
+		define('WP_HOME',    WP_PROTOCOL . $_SERVER['SERVER_NAME']);
+		define('WP_DEBUG', false);
+		// Force SSL for administrator and sign in pages
+		define('FORCE_SSL_ADMIN', true);
+		break;
+}
+
 
 /* Isto é tudo, pode parar de editar! :) */
 
