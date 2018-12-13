@@ -1,11 +1,15 @@
 append styles
 	- wp_enqueue_style( 'post-block-css', get_template_directory_uri() . "/library/css/modules/post-block.css", false )
-article.post-block(class!=echo('"{$options[\'variation\']} " . implode( " ", $options["class"] )'))
+article.post-block(class!=echo('"post-block--{$options[\'variation\']} " . implode( " ", $options["class"] )'))
 	a(href="#")
 	.img(style!=background('"https://www.placecage.com/". rand(600, 700) ."/600"', true))
 	.content
-		a(href="#" title="category").category.badge.badge--black category
+		- if ( $options['category'] ):
+			a(href="#" title="category").category.badge.badge--black category
+		- endif
 		h2.title-2 lorem dolor sit amet
-		a(href="#" title="@dihgg").author
-			img(src!=image('test/dihgg.png') alt="")
-			| @dihgg
+		- if ( $options['author'] ):
+			a(href="#" title="@dihgg").author
+				img(src!=image('test/dihgg.png') alt="")
+				| @dihgg
+		- endif

@@ -122,3 +122,9 @@ a {
 		content: "#";
 	}
 }
+
+@each $pos in (left, center, right, justify) {
+	.t--#{$pos} {
+		text-align: $pos;
+	}
+}

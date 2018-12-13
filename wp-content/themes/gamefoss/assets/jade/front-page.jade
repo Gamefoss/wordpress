@@ -17,13 +17,13 @@ block main
 			- include( locate_template( 'modules/live.php' ) )
 		.mosaic
 			.mosaic-item
-				- post_block( array('variation' => "post-block--highlight") )
+				- post_block( array( 'variation' => "highlight") )
 			.mosaic-item
 				- post_block( array('class' => array( "post-block--white" ) ) )
 			.mosaic-item
 				- post_block( array('class' => array( "post-block--white" ) ) )
 			.mosaic-item
-				- post_block( array('variation' => "post-block--highlight") )
+				- post_block( array( 'variation' => "highlight") )
 			.mosaic-item
 				- post_block( array('class' => array( "post-block--white", "post-block--ludokratia" ) ) )
 			.mosaic-item
@@ -56,12 +56,47 @@ block main
 			.col-xs-12.col-md-8
 				.row
 					.col-xs-12
-						- post_block( array('variation' => "post-block--horizontal") )
+						- post_block( array( 'variation' => "horizontal") )
 					.col-xs-12
-						- post_block( array('variation' => "post-block--horizontal post-block--highlight") )
+						- post_block( array( 'variation' => "horizontal", 'class' => array( "post-block--highlight" ) ) )
 					.col-xs-12
-						- post_block( array('variation' => "post-block--horizontal") )
+						- post_block( array( 'variation' => "horizontal") )
 					.col-xs-12
-						- post_block( array('variation' => "post-block--horizontal") )
+						- post_block( array( 'variation' => "horizontal") )
 					.cf
+					.col-xs-12
+						a.btn.btn--red(href="#").pull-right Ver Mais
+			.col-xs-12.col-md-4
+				.visible-xs
+					- ad( 'square' )
+				.visible-sm
+					- ad( 'leaderboard' )
+				.hidden-xs.hidden-sm
+					- ad( 'half-page' )
+			.cf
+			.col-md-12.hidden-xs.hidden-sm
+				- ad( 'large-leaderboard' )
+			.cf
+		#podcasts
+			.col-xs-12.col-md-8
+				+compound-header( "Podcasts" )
+					a(href="#").badge.badge--red.hidden-xs Podcasts
+				.col-xs-12
+					.row
+						.col-xs-12.col-sm-3
+							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
+						.col-xs-12.col-sm-3
+							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
+						.col-xs-12.col-sm-3
+							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
+						.col-xs-12.col-sm-3
+							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
+				.hidden-xs.hidden-sm
+					- ad( 'banner' )
+			.col-xs-12.col-sm-8.col-md-4
+				+compound-header( "Feeds" )
+			.visible-sm.col-sm-4
+				- ad( 'skyscraprer' )
+			.visible-xs
+				- ad( 'square2' )
 			.cf

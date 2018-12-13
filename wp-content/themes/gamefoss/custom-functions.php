@@ -25,8 +25,9 @@ function ad( $size = 'square' ) {
 function post_block( $_options = NULL ) {
 	$options = array(
 		'variation' => isset($_options['variation'])? $_options['variation'] : "post-block--vertical" ,
-		'author'    => isset($_options['author'])? $_options['author'] : "default" ,
-		'class'    => isset($_options['class'])? $_options['class'] : array()
+		'author'    => isset($_options['author'])? $_options['author'] : true ,
+		'category'  => isset($_options['category'])? $_options['category'] : true ,
+		'class'    	=> isset($_options['class'])? $_options['class'] : array()
 	);
 	include(locate_template('modules/post-block.php'));
 }
