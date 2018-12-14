@@ -1,5 +1,5 @@
 css_dir = '../library/css/'
-sass_dir = '../assets/scss/'
+sass_dir = '../assets/sass/'
 images_dir = '../library/images/'
 fonts_dir = '../library/fonts/'
 javascripts_dir = '../library/js'
