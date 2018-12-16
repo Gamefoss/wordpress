@@ -7,7 +7,7 @@ article.post-block(class!=echo('"post-block--{$options[\'variation\']} " . implo
 		- if ( $options['category'] ):
 			a(href="#" title="category").category.badge.badge--ludokratia category
 		- endif
-		h2.title-2 lorem dolor sit amet
+		h2.title-2!= get_the_title()
 		- if ( $options['author'] ):
 			a(href="#" title="@dihgg").author
 				img(src!=image('test/dihgg.png') alt="")

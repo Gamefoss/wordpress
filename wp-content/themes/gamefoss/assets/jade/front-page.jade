@@ -16,18 +16,21 @@ block main
 		.live-container
 			- include( locate_template( 'modules/live.php' ) )
 		.mosaic
-			.mosaic-item
-				- post_block( array( 'variation' => "highlight") )
-			.mosaic-item
-				- post_block( array('class' => array( "post-block--white" ) ) )
-			.mosaic-item
-				- post_block( array('class' => array( "post-block--white" ) ) )
-			.mosaic-item
-				- post_block( array( 'variation' => "highlight") )
-			.mosaic-item
-				- post_block( array('class' => array( "post-block--white", "post-block--ludokratia" ) ) )
-			.mosaic-item
-				- post_block( array('class' => array( "post-block--white" ) ) )
+			:php
+				$_mosaic = get_posts( array(
+					'post_type'		=> array('ludokratia', 'post'),
+					'numberposts'	=> 6
+				));
+			- foreach ( $_mosaic as $i => $post ):
+				- setup_postdata( $post )
+				.mosaic-item
+					:php
+						post_block( array(
+							'variation'	=> (($i == 0 | $i == 3)? "highlight" : false),
+							'class'			=> array("post-block--white", ( ( get_post_type() == "ludokratia" )? "post-block--ludokratia" : false ))
+						) );
+				- wp_reset_postdata()
+			- endforeach
 		#ludokratia
 			+compound-header("Ludokratia").ludokratia
 				a(href="#").badge.badge--ludokratia.hidden-xs Gave Dev
@@ -37,14 +40,17 @@ block main
 				a(href="#").badge.badge--ludokratia.badge--more ...
 			.col-xs-12
 				.row
-					.col-xs-12.col-sm-6.col-md-3
-						- post_block()
-					.col-xs-12.col-sm-6.col-md-3
-						- post_block()
-					.col-xs-12.col-sm-6.col-md-3
-						- post_block()
-					.col-xs-12.col-sm-6.col-md-3
-						- post_block()
+					:php
+						$_posts = get_posts( array(
+							'post_type'		=> "ludokratia",
+							'numberposts'	=> 4
+						) )
+					- foreach ( $_posts as $post ):
+						- setup_postdata( $post )
+							.col-xs-12.col-sm-6.col-md-3
+								- post_block()
+						- wp_reset_postdata()
+					- endforeach					
 					.cf
 			.cf
 		#entertainment
@@ -56,15 +62,17 @@ block main
 				a(href="#").badge.badge--entertainment.badge--more ...
 			.col-xs-12.col-md-8
 				.row
-					.col-xs-12
-						- post_block( array( 'variation' => "horizontal") )
-					.col-xs-12
-						- post_block( array( 'variation' => "horizontal", 'class' => array( "post-block--highlight" ) ) )
-					.col-xs-12
-						- post_block( array( 'variation' => "horizontal") )
-					.col-xs-12
-						- post_block( array( 'variation' => "horizontal") )
-					.cf
+					:php
+						$_posts = get_posts( array(
+							'post_type'		=> "ludokratia",
+							'numberposts'	=> 4
+						) )
+					- foreach( $_posts as $post ):
+						- setup_postdata( $post )
+							.col-xs-12
+								- post_block( array( 'variation' => "horizontal") )
+						- wp_reset_postdata()
+					- endforeach
 					.col-xs-12.t--center
 						a.btn.btn--entertainment(href="#")!= __("[:pb]Ver Mais[:en]See more[:]")
 			.col-xs-12.col-md-4
