@@ -104,8 +104,14 @@ a {
 	color: inherit;
 }
 
-.text-upper {
-	text-transform: uppercase;
+@each $transform in (
+	uppercase,
+	lowercase,
+	capitalize
+) {
+	.tt--#{$transform} {
+		text-transform: $transform;
+	}
 }
 
 .text {

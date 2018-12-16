@@ -3,9 +3,11 @@
 // COLORS - http://www.color-blindness.com/color-name-hue/
 $c-white:   #ffffff;
 $c-black:   #000000;
-$c-red:     #ff0000;
+$c-red:     #ed1c24;
 $c-silver:  #bbbbbb;
 $c-grape:   #3e3d4d;
+$c-tyrian:  #490847;
+$c-falured: #890f33;
 
 $colors:  (
   ('white', $c-white)
@@ -13,11 +15,17 @@ $colors:  (
   ('red', $c-red)
   ('silver', $c-silver)
   ('grape', $c-grape)
+  ('ludokratia', $c-tyrian)
+  ('entertainment', $c-red)
+  ('podcast', $c-falured)
 );
 
 // color usage
-$c-bg:      $c-silver;
-$c-menu:    $c-grape;
+$c-bg:              $c-silver;
+$c-menu:            $c-grape;
+$c-ludokratia:      $c-tyrian;
+$c-entertainment:   $c-red;
+$c-podcast:         $c-falured;
 
 // FONTS
 $f-roboto: "Roboto", Tahoma, sans-serif;

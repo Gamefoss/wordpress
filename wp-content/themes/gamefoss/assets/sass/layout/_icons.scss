@@ -13,6 +13,13 @@
   ('search', 'search')
   ('menu-mobile', 'mobile-menu')
   ('close', 'close')
+  ('rss', 'rss')
+  ('itunes', 'itunes')
+  ('facebook','socials/facebook')
+  ('twitter', 'socials/twitter')
+  ('instagram', 'socials/instagram')
+  ('youtube', 'socials/youtube')
+  ('twitch', 'socials/twitch')
   ) {
     &.icon-#{$name} {
       @include svg-mask(image-url('icons/#{$file}.svg'));

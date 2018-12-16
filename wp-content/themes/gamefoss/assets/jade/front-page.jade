@@ -30,11 +30,11 @@ block main
 				- post_block( array('class' => array( "post-block--white" ) ) )
 		#ludokratia
 			+compound-header("Ludokratia").ludokratia
-				a(href="#").badge.badge--black.hidden-xs Gave Dev
-				a(href="#").badge.badge--black.hidden-xs Programação
-				a(href="#").badge.badge--black.hidden-xs Animação
-				a(href="#").badge.badge--black.hidden-xs Marketing
-				a(href="#").badge.badge--black.badge--more ...
+				a(href="#").badge.badge--ludokratia.hidden-xs Gave Dev
+				a(href="#").badge.badge--ludokratia.hidden-xs Programação
+				a(href="#").badge.badge--ludokratia.hidden-xs Animação
+				a(href="#").badge.badge--ludokratia.hidden-xs Marketing
+				a(href="#").badge.badge--ludokratia.badge--more ...
 			.col-xs-12
 				.row
 					.col-xs-12.col-sm-6.col-md-3
@@ -46,13 +46,14 @@ block main
 					.col-xs-12.col-sm-6.col-md-3
 						- post_block()
 					.cf
+			.cf
 		#entertainment
-			+compound-header("Entretenimento")
-				a(href="#").badge.badge--red.hidden-xs Reviews
-				a(href="#").badge.badge--red.hidden-xs Entrevistas
-				a(href="#").badge.badge--red.hidden-xs Cinema
-				a(href="#").badge.badge--red.hidden-xs Notícias
-				a(href="#").badge.badge--red.badge--more ...
+			+compound-header("Entretenimento").entertainment
+				a(href="#").badge.badge--entertainment.hidden-xs Reviews
+				a(href="#").badge.badge--entertainment.hidden-xs Entrevistas
+				a(href="#").badge.badge--entertainment.hidden-xs Cinema
+				a(href="#").badge.badge--entertainment.hidden-xs Notícias
+				a(href="#").badge.badge--entertainment.badge--more ...
 			.col-xs-12.col-md-8
 				.row
 					.col-xs-12
@@ -64,8 +65,8 @@ block main
 					.col-xs-12
 						- post_block( array( 'variation' => "horizontal") )
 					.cf
-					.col-xs-12
-						a.btn.btn--red(href="#").pull-right Ver Mais
+					.col-xs-12.t--center
+						a.btn.btn--entertainment(href="#")!= __("[:pb]Ver Mais[:en]See more[:]")
 			.col-xs-12.col-md-4
 				.visible-xs
 					- ad( 'square' )
@@ -79,8 +80,8 @@ block main
 			.cf
 		#podcasts
 			.col-xs-12.col-md-8
-				+compound-header( "Podcasts" )
-					a(href="#").badge.badge--red.hidden-xs Podcasts
+				+compound-header( "Podcasts" ).podcast
+					a(href="#").badge.badge--podcast.hidden-xs Podcasts
 				.col-xs-12
 					.row
 						.col-xs-12.col-sm-3
@@ -94,7 +95,14 @@ block main
 				.hidden-xs.hidden-sm
 					- ad( 'banner' )
 			.col-xs-12.col-sm-8.col-md-4
-				+compound-header( "Feeds" )
+				+compound-header( "Feeds" ).podcast
+				ul
+					li.feed-links
+						h3 Gamefoss
+						nav
+							a.icon.icon-facebook(href="#" target="_blank")
+							a.icon.icon-itunes(href="#" target="_blank")
+							a.icon.icon-rss(href="#" target="_blank")
 			.visible-sm.col-sm-4
 				- ad( 'skyscraprer' )
 			.visible-xs

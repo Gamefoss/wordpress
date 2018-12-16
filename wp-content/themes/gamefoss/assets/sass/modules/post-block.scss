@@ -81,8 +81,7 @@
 		}
 	}
 
-	&.post-block--vertical,
-	&.post-block--horizontal:not(.post-block--highlight) {
+	&.post-block--vertical {
 		.content {
 			padding-top: 0;
 			.category {
@@ -92,20 +91,21 @@
 	}
 
 	&.post-block--horizontal {
-		@include bp($s-sm) {
-			grid-template-rows: auto;
-			grid-template-columns: auto auto;
-			margin-bottom: $gutter;
-			min-height: 195px;
-			.content {
-				padding-top: $gutter*2;
-			}
-			&.post-block--highlight {
+		margin-bottom: $gutter;
+		min-height: 195px;
+		&.post-block--highlight {
+			@include bp($s-sm) {
 				min-height: 270px;
 			}
 		}
-		&.post-block--highlight {
-			margin-bottom: $gutter*2;
+	}
+	&.post-block--horizontal:not(.post-block--highlight) {
+		@include bp($s-sm) {
+			grid-template-rows: auto;
+			grid-template-columns: auto auto;
+			.content {
+				padding-top: $gutter*2;
+			}
 		}
 	}
 

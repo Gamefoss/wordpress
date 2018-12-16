@@ -1,0 +1,22 @@
+/* ==== ==== ==== BADGE ==== ==== ==== */
+.badge {
+  min-width: 120px;
+  padding: 3px 6px;
+  margin: 0 6px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $c-white;
+  font-family: $f-roboto;
+  font-weight: lighter;
+  font-size: rem(12);
+  line-height: 16px;
+  display: inline-block;
+  @each $name, $color in $colors {
+    &.badge--#{$name} {
+      background: $color;
+    }
+  }
+  &.badge--more {
+    min-width: 40px
+  }
+}
