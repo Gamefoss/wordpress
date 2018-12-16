@@ -2,3 +2,37 @@ extends ../index
 
 block template-name
 	- // Template Name: Sobre
+
+	append styles
+		- wp_enqueue_style( 'about-css', get_template_directory_uri() . "/library/css/pages/about.css", false );
+
+block main
+	#about
+		.title-1.tt--uppercase.t--center.sobre!= get_the_title()
+		
+		.wrap
+			.row
+				.col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
+					.text!= nl2br($post->post_content)
+			.cf
+			.row 
+				.col-xs-12.col-sm-4
+					+compound-header("Ludokratia").ludokratia
+					.text.t--left.txt lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </br></br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </br></br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				.col-xs-12.col-sm-4
+					+compound-header("Entretenimento").entertainment
+					.text.t--justify.txt lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </br></br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </br></br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+				.col-xs-12.col-sm-4
+					+compound-header( "Podcasts" ).podcast
+					.text.t--justify.txt lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </br></br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </br></br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.cf
+		.help
+			h2.title-2.tt--uppercase.t--center Nos ajude a continuar
+			a(href="#").btn.btn--black apoie
+		.wrap
+			+compound-header( "Equipe" )
+			.row 
+				.col-xs-12.col-sm-4
+				.col-xs-12.col-sm-4
+				.col-xs-12.col-sm-4
+			.cf

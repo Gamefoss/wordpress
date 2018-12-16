@@ -88,7 +88,7 @@ h1, h2, h3 {
 	font-weight: bold;
 }
 .title-1 {
-	@include fluid-type(24, 36);
+	@include fluid-type(20, 36);
 }
 
 .title-2 {
@@ -133,4 +133,8 @@ a {
 	.t--#{$pos} {
 		text-align: $pos;
 	}
+}
+
+strong {
+	font-weight: bold;
 }
