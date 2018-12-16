@@ -4,6 +4,7 @@ append styles
 	- wp_enqueue_style( 'home-css', get_template_directory_uri() . "/library/css/pages/home.css", false );
 
 block main
+	- gf_update_podcasts_feeds_func();
 	#home.wrap
 		.ad-container
 			.visible-xs
@@ -18,7 +19,7 @@ block main
 		.mosaic
 			:php
 				$_mosaic = get_posts( array(
-					'post_type'		=> array('ludokratia', 'post'),
+					'post_type'		=> array('ludokratia', 'post', 'podcast'),
 					'numberposts'	=> 6
 				));
 			- foreach ( $_mosaic as $i => $post ):
@@ -63,10 +64,7 @@ block main
 			.col-xs-12.col-md-8
 				.row
 					:php
-						$_posts = get_posts( array(
-							'post_type'		=> "ludokratia",
-							'numberposts'	=> 4
-						) )
+						$_posts = get_posts()
 					- foreach( $_posts as $post ):
 						- setup_postdata( $post )
 							.col-xs-12
