@@ -55,15 +55,16 @@ function ludokratia() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail')
+		'supports'							=> array('title', 'editor', 'thumbnail', 'author')
 	);
 	register_post_type( 'ludokratia', $args );
 }
-add_action( 'init', 'ludokratia', 0 );
+add_action( 'init', 'ludokratia' );
+
 function create_ludokratia_taxonomies() {
 		$labels = array(
-				'name'              => _x( 'Categorias', 'taxonomy general name' ),
-				'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
+				'name'              => _x( 'Categorias (Ludokratia)', 'taxonomy general name' ),
+				'singular_name'     => _x( 'Categoria (Ludokratia)', 'taxonomy singular name' ),
 				'search_items'      => __( 'Buscar Categorias' ),
 				'all_items'         => __( 'Todas as categorias' ),
 				'edit_item'         => __( 'Editar Categoria' ),
@@ -82,5 +83,5 @@ function create_ludokratia_taxonomies() {
 
 		register_taxonomy( 'ludokratia_categories', array( 'ludokratia' ), $args );
 }
-add_action( 'init', 'create_ludokratia_taxonomies', 0 );
+add_action( 'init', 'create_ludokratia_taxonomies' );
 ?>

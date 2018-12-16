@@ -3,15 +3,15 @@
 function podcast() {
 
 	$labels = array(
-		'name'                  => _x( "Podcasts", 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( "Podcast", 'Post Type Singular Name', 'text_domain' ),
+		'name'                  => _x( "Episódios", 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( "Episódio", 'Post Type Singular Name', 'text_domain' ),
 		'menu_name'             => __( "Podcasts", 'text_domain' ),
 		'name_admin_bar'        => __( "Podcasts", 'text_domain' ),
-		'archives'              => __( 'Arquivos', 'text_domain' ),
+		'archives'              => __( 'Episódios', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'Podcasts', 'text_domain' ),
-		'add_new_item'          => __( 'Novo Podcast', 'text_domain' ),
-		'add_new'               => __( 'Novo Podcast', 'text_domain' ),
+		'all_items'             => __( 'Todos os episódios', 'text_domain' ),
+		'add_new_item'          => __( 'Novo Episódio', 'text_domain' ),
+		'add_new'               => __( 'Adicionar Episódio', 'text_domain' ),
 		'new_item'              => __( 'Novo', 'text_domain' ),
 		'edit_item'             => __( 'Editar', 'text_domain' ),
 		'update_item'           => __( 'Atualizar', 'text_domain' ),
@@ -30,17 +30,17 @@ function podcast() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'podcast',
+		'slug'                  => 'episodio',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
 	);
 	$args = array(
-		'label'                 => __( 'Podcast', 'text_domain' ),
-		'description'           => __( 'Podcast', 'text_domain' ),
+		'label'                 => __( 'Episódio', 'text_domain' ),
+		'description'           => __( 'Episódio de Podcast', 'text_domain' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor'),
-		'taxonomies'            => array( 'categorias' ),
+		'taxonomies'            => array( 'podcasts' ),
 		'menu_icon'							=> 'dashicons-microphone',
 		'hierarchical'          => false,
 		'public'                => true,
@@ -59,6 +59,30 @@ function podcast() {
 	);
 	register_post_type( 'podcast', $args );
 }
-add_action( 'init', 'podcast', 0 );
+add_action( 'init', 'podcast' );
+
+function create_podcast_taxonomies() {
+		$labels = array(
+				'name'              => _x( 'Podcasts', 'taxonomy general name' ),
+				'singular_name'     => _x( 'Podcast', 'taxonomy singular name' ),
+				'search_items'      => __( 'Buscar Podcasts' ),
+				'all_items'         => __( 'Todos os Podcasts' ),
+				'edit_item'         => __( 'Editar Podcast' ),
+				'update_item'       => __( 'Atualizar Podcast' ),
+				'add_new_item'      => __( 'Adicionar Podcast' ),
+				'new_item_name'     => __( 'Novo Nome de Podcast' ),
+				'menu_name'         => __( 'Podcasts' ),
+		);
+
+		$args = array(
+				'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+				'labels'            => $labels,
+				'show_ui'           => true,
+				'rewrite'           => array( 'slug' => 'podcasts' )
+		);
+
+		register_taxonomy( 'podcasts', array( 'podcast' ), $args );
+}
+add_action( 'init', 'create_podcast_taxonomies' );
 
 ?>
