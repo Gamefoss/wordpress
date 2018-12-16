@@ -23,7 +23,7 @@ switch ($_SERVER['SERVER_NAME']) {
 	case "gamefoss.com":
 	case "gamefoss.com.br":
 		define('WP_ENV', 'production');
-		break;	
+		break;
 	default:
 		define('WP_ENV', 'localhost');
 		break;
@@ -35,17 +35,21 @@ define('WP_PROTOCOL', $_SERVER['HTTPS']? "https://" : "http://");
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 switch (WP_ENV) {
 	case "localhost":
+		// define('DB_NAME', 'u566229331_gf');
 		define('DB_NAME', 'gamefoss');
+		// define('DB_USER', 'u566229331_gf');
 		define('DB_USER', 'root');
+		// define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
 		define('DB_PASSWORD', 'root');
+		// define('DB_HOST', 'sql154.main-hosting.eu');
 		define('DB_HOST', 'localhost');
-		break;	
+		break;
 	case "production":
 		define('DB_NAME', 'u566229331_gf');
 		define('DB_USER', 'u566229331_gf');
 		define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
 		define('DB_HOST', 'localhost');
-		break;	
+		break;
 }
 
 /** Charset do banco de dados a ser usado na criação das tabelas. */
@@ -117,6 +121,7 @@ switch (WP_ENV) {
 		break;
 }
 
+define('CONCATENATE_SCRIPTS', false);
 
 /* Isto é tudo, pode parar de editar! :) */
 
