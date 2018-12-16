@@ -1,0 +1,23 @@
+@import "../partials/partials"; // Sass partials
+
+#about {
+	.sobre {
+		margin: 48px auto;
+	}
+
+	.txt {
+		padding: 48px 4px;
+	}
+
+	.help {
+		background-color: #999999;
+		width: 100%;
+		padding: 24px 0;
+		.btn {
+			width: 180px;
+			display: block;
+			margin: 24px auto;
+			margin-bottom: 0;
+		}
+	}
+}
