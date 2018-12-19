@@ -34,11 +34,16 @@ block main
 			- endforeach
 		#ludokratia
 			+compound-header("Ludokratia").ludokratia
-				a(href="#").badge.badge--ludokratia.hidden-xs Gave Dev
-				a(href="#").badge.badge--ludokratia.hidden-xs Programação
-				a(href="#").badge.badge--ludokratia.hidden-xs Animação
-				a(href="#").badge.badge--ludokratia.hidden-xs Marketing
-				a(href="#").badge.badge--ludokratia.badge--more ...
+				:php
+					$_categories = get_terms("ludokratia_categories", array(
+						'orderby'			=> "count",
+						'order'				=> "DESC",
+						'number'			=> 4
+					))
+				- foreach ( $_categories as $_category ):
+					a(href!=echo('get_term_link($_category)')).badge.badge--ludokratia.hidden-xs!= $_category->name
+				- endforeach
+				a(href!=echo('get_post_type_archive_link( "ludokratia" )')).badge.badge--ludokratia.badge--more ...
 			.col-xs-12
 				.row
 					:php
@@ -56,11 +61,16 @@ block main
 			.cf
 		#entertainment
 			+compound-header("Entretenimento").entertainment
-				a(href="#").badge.badge--entertainment.hidden-xs Reviews
-				a(href="#").badge.badge--entertainment.hidden-xs Entrevistas
-				a(href="#").badge.badge--entertainment.hidden-xs Cinema
-				a(href="#").badge.badge--entertainment.hidden-xs Notícias
-				a(href="#").badge.badge--entertainment.badge--more ...
+				:php
+					$_categories = get_categories(array(
+						'orderby'			=> "count",
+						'order'				=> "DESC",
+						'number'			=> 4
+					))
+				- foreach ( $_categories as $_category ):
+					a(href!=echo('get_term_link($_category)')).badge.badge--entertainment.hidden-xs!= $_category->name
+				- endforeach
+				a(href!=echo('get_post_type_archive_link( "post" )')).badge.badge--entertainment.badge--more ...
 			.col-xs-12.col-md-8
 				.row
 					:php
@@ -87,28 +97,30 @@ block main
 		#podcasts
 			.col-xs-12.col-md-8
 				+compound-header( "Podcasts" ).podcast
-					a(href="#").badge.badge--podcast.hidden-xs Podcasts
+					a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
 				.col-xs-12
 					.row
-						.col-xs-12.col-sm-3
-							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
-						.col-xs-12.col-sm-3
-							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
-						.col-xs-12.col-sm-3
-							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
-						.col-xs-12.col-sm-3
-							- post_block( array( 'variation' => "square", 'author' => false, 'category' => false, 'class' => array( "t--center" ) ) )
+						:php
+						- foreach( get_terms( "podcasts" ) as $_podcast ):
+							.col-xs-12.col-sm-3
+								article.post-block.post-block--square.t--center
+									a(href!=echo('get_term_link($_podcast)'))
+									.img(style!=background('get_field("logo", $_podcast)', true))
+									.content
+										a(href!=echo('get_term_link($_podcast)'))
+											h2.title-2!= $_podcast->name
+						- endforeach
 				.hidden-xs.hidden-sm
 					- ad( 'banner' )
 			.col-xs-12.col-sm-8.col-md-4
 				+compound-header( "Feeds" ).podcast
 				ul
-					li.feed-links
-						h3 Gamefoss
-						nav
-							a.icon.icon-facebook(href="#" target="_blank")
-							a.icon.icon-itunes(href="#" target="_blank")
-							a.icon.icon-rss(href="#" target="_blank")
+					- foreach( get_terms( "podcasts" ) as $_podcast ):
+						li.feed-links
+							h3!= $_podcast->name
+							nav
+								a.icon.icon-rss(href!=echo('get_field( "rss_feed", $_podcast )') alt!=echo('$_podcast->name') target="_blank")
+					- endforeach
 			.visible-sm.col-sm-4
 				- ad( 'skyscraprer' )
 			.visible-xs

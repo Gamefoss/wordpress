@@ -30,7 +30,7 @@ function podcast() {
 		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'episodio',
+		'slug'                  => 'podcasts',
 		'with_front'            => true,
 		'pages'                 => true,
 		'feeds'                 => true,
@@ -78,7 +78,7 @@ function create_podcast_taxonomies() {
 				'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 				'labels'            => $labels,
 				'show_ui'           => true,
-				'rewrite'           => array( 'slug' => 'podcasts' )
+				'rewrite'           => array( 'slug' => 'podcast' )
 		);
 
 		register_taxonomy( 'podcasts', array( 'podcast' ), $args );
