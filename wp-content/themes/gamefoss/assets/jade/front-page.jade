@@ -15,7 +15,7 @@ block main
 			.visible-md.visible-lg.visible-xl
 				- ad( 'large-leaderboard' )
 		.live-container
-			- include( locate_template( 'modules/live.php' ) )
+			- include( locate_template( 'layout/live.php' ) )
 		.mosaic
 			:php
 				$_mosaic = get_posts( array(
@@ -116,10 +116,7 @@ block main
 				+compound-header( "Feeds" ).podcast
 				ul
 					- foreach( get_terms( "podcasts" ) as $_podcast ):
-						li.feed-links
-							h3!= $_podcast->name
-							nav
-								a.icon.icon-rss(href!=echo('get_field( "rss_feed", $_podcast )') alt!=echo('$_podcast->name') target="_blank")
+						+feed-links
 					- endforeach
 			.visible-sm.col-sm-4
 				- ad( 'skyscraprer' )
