@@ -101,7 +101,7 @@ block main
 						- wp_reset_postdata()
 					- endforeach
 					.col-xs-12.t--center
-						a.btn.btn--entertainment(href="#")!= __("[:pb]Ver Mais[:en]See more[:]")
+						a.btn.btn--entertainment(href!=echo('get_post_type_archive_link( "post" )'))!= __("[:pb]Ver Mais[:en]See more[:]")
 			.col-xs-12.col-md-4
 				.visible-xs
 					- ad( 'square' )
