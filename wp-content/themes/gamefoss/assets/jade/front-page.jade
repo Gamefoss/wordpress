@@ -18,10 +18,26 @@ block main
 			- include( locate_template( 'layout/live.php' ) )
 		.mosaic
 			:php
-				$_mosaic = get_posts( array(
-					'post_type'		=> array('ludokratia', 'post', 'podcast'),
-					'numberposts'	=> 6
-				));
+				$_mosaic = get_field( "mosaic" ); // highlighted posts, picked in homepage page
+				
+				$_exclude_ids = array(); // get theses id's
+				foreach ( $_mosaic as $post ) {
+					array_push( $_exclude_ids, $post->ID );
+				}
+				
+				//- Get the rest of posts (a mosaic must have 6 items)				
+				$_mosaic = array_merge( $_mosaic, get_posts( array(
+					'post_type'				=> array('ludokratia', 'post', 'podcast'),
+					'numberposts'			=> 6 - sizeof( $_mosaic ),
+					'exclude'					=> $_exclude_ids
+				)));
+				
+				//- re-fetch the excluded ids, for others homepage lists
+				$_exclude_ids = array(); // get theses id's
+				foreach ( $_mosaic as $post ) {
+					array_push( $_exclude_ids, $post->ID );
+				}
+			
 			- foreach ( $_mosaic as $i => $post ):
 				- setup_postdata( $post )
 				.mosaic-item
@@ -49,7 +65,8 @@ block main
 					:php
 						$_posts = get_posts( array(
 							'post_type'		=> "ludokratia",
-							'numberposts'	=> 4
+							'numberposts'	=> 4,
+							'exclude'			=> $_exclude_ids
 						) )
 					- foreach ( $_posts as $post ):
 						- setup_postdata( $post )
@@ -74,7 +91,9 @@ block main
 			.col-xs-12.col-md-8
 				.row
 					:php
-						$_posts = get_posts()
+						$_posts = get_posts(array(
+							'exclude'			=> $_exclude_ids
+						))
 					- foreach( $_posts as $post ):
 						- setup_postdata( $post )
 							.col-xs-12
