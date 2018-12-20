@@ -18,6 +18,12 @@ require_once('theme/theme.php');
 require_once( 'custom_posts/custom-post-type.php' );
 
 /************************************
+MODULES
+************************************/
+require_once('functions/modules.php');
+
+
+/************************************
 CUSTOM FUNCTIONS
 ************************************/
 require_once('functions/custom-functions.php');

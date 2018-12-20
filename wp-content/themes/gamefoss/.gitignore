@@ -3,7 +3,7 @@
 ############
 *.php
 !functions.php
-!cron.php
-!custom-functions.php
-!custom-hooks.php
+!functions/**/*.php
+!functions/**/*.php
+!theme/**/*.php
 !custom_posts/**/*.php
