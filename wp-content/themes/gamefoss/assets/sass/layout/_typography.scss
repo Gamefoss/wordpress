@@ -104,16 +104,6 @@ a {
 	color: inherit;
 }
 
-@each $transform in (
-	uppercase,
-	lowercase,
-	capitalize
-) {
-	.tt--#{$transform} {
-		text-transform: $transform;
-	}
-}
-
 .text {
 	font-family: $f-open;
 	font-weight: lighter;
@@ -129,9 +119,25 @@ a {
 	}
 }
 
+@each $transform in (
+	uppercase,
+	lowercase,
+	capitalize
+) {
+	.tt--#{$transform} {
+		text-transform: $transform;
+	}
+}
+
 @each $pos in (left, center, right, justify) {
 	.t--#{$pos} {
 		text-align: $pos;
+	}
+}
+
+@each $weight in (lighter, normal, bold) {
+	.f--#{$weight} {
+		font-weight: $weight;
 	}
 }
 
