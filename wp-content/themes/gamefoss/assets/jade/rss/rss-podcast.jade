@@ -1,0 +1,58 @@
+extends rss
+
+block variables	
+block channel
+	link!= get_term_link($podcast)
+	language!= get_option( "rss_language" )
+	copyright!= "&copy;" . date( "Y" )
+	webmaster!= get_userdata(1)->user_email . " (" . get_userdata(1)->user_nicename . ")"
+	managingeditor!= get_userdata(1)->user_email . " (" . get_userdata(1)->user_nicename . ")"
+	image
+		url!= get_field("logo", $podcast)
+		title!= $podcast->name
+		link!= get_term_link($podcast)
+	- if ( get_field("is_itunes", $podcast) ):
+		itunes:owner
+			itunes:name Game Foss
+			itunes:email admin@gamefoss.com
+		itunes:category(text!=echo('get_field("itunes", $podcast)["category"]'))
+			itunes:category(text!=echo('get_field("itunes", $podcast)["subcategory"]'))
+		itunes:keywords!= get_field("itunes", $podcast)["keywords"]
+		itunes:explicit no
+		itunes:image(href!=echo('get_field("logo", $podcast)'))
+		itunes:author!= get_field("itunes", $podcast)["author"]
+		itunes:summary!= $podcast->description
+		itunes:subtitle!= get_field("itunes", $podcast)["description"]
+	- endif
+	atom:link(href!=echo('home_url() . "feed/podcasts/{$podcast->slug}" ') rel='self' type='application/rss+xml')
+	pubdate Sun 01 Jan 2012 00:00:00 EST
+	title!= $podcast->name
+	description!= $podcast->description
+	lastbuilddate!= date( "r" )
+	:php
+		$_posts = get_posts( array(
+			'post_type'			=> "podcast",
+			'numberposts'		=> -1,
+			'tax_query'			=> array(
+				array(
+					'taxonomy'	=> 'podcasts',
+					'field'			=> 'id',
+					'terms'			=> $podcast->term_id
+				)
+			)
+		) );
+	- foreach ( $_posts as $post ):
+		item
+			- setup_postdata( $post )
+			- wp_reset_postdata()
+			title!= get_the_title()
+			description!= get_the_excerpt()
+			- if ( get_field("is_itunes", $podcast) ):
+				itunes:summary!= get_the_excerpt()
+				itunes:subtitle!= get_field( "itunes" )["description"]
+				itunes:duration!= get_field( "itunes" )["description"]
+			- endif
+			enclosure(url!=echo('get_field( "mp3" )["url"]') type='audio/mpeg' length!=echo('get_field( "mp3" )["filesize"]'))
+			guid!= get_field( "mp3" )["url"]
+			pubdate!= get_the_date( "r" )
+	- endforeach
