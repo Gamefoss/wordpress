@@ -12,6 +12,7 @@
 	});
 
 	// CUSTOM FEEDS
+	// PODCAST
 	// Custom feed for each house podcast
 	add_action('init', function () {
 		foreach ( get_terms( "podcasts", array( 'hide_empty' => false) ) as $_podcast ) {

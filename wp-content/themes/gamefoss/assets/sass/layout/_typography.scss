@@ -87,6 +87,7 @@ h1, h2, h3 {
 .title-3 {
 	font-weight: bold;
 }
+
 .title-1 {
 	@include fluid-type(20, 36);
 }

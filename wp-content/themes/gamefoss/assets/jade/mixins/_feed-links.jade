@@ -1,6 +1,7 @@
 mixin feed-links
 	li.feed-links
-		h3!= $_podcast->name
+		h3
+			a(href!=echo('get_term_link($_podcast)') title!=echo('$_podcast->name'))!= $_podcast->name
 		nav
 			- if ( get_field( "signup_services", $_podcast ) ):
 				- foreach( get_field( "signup_services", $_podcast ) as $_service ):

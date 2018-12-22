@@ -1,0 +1,14 @@
+.feed-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $gutter/2;
+  h3 {
+    text-transform: uppercase;
+  }
+  .icon {
+    width: 24px;
+    background: $c-podcast;
+    margin: 0 $gutter/2;
+  }
+}
