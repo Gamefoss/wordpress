@@ -7,3 +7,4 @@
 !functions/**/*.php
 !theme/**/*.php
 !custom_posts/**/*.php
+!rss/**/*.php
