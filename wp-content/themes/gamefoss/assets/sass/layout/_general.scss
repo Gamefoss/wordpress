@@ -6,20 +6,6 @@ body {
   background: $c-bg;
 }
 
-.feed-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  h3 {
-    text-transform: uppercase;
-  }
-  .icon {
-    width: 24px;
-    background: $c-podcast;
-    margin: 0 $gutter/2;
-  }
-}
-
 /* ==== ==== ==== BACKGROUND ==== ==== ==== */
 @each $name, $color in $colors {
   .bg--#{$name} {

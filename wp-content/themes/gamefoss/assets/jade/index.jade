@@ -28,16 +28,19 @@ head
 		- get_template_part( 'layout/analytics/facebook', 'facebook' )
 		- get_template_part( 'layout/analytics/mautic', 'mautic' )
 
-body("<?php body_class(); ?>")
+body("<?php body_class(); ?>" style="overflow:hidden")
 	
 	block header
 		- get_header()
 	
 	block wrapper
-		div#wrapper
+		- include( locate_template( 'layout/loader.php' ) )
+		#wrapper
 			main
 				block main
 					h1 hello world, finally!
+	
 	block footer
 		- get_footer()
+
 	block scripts
