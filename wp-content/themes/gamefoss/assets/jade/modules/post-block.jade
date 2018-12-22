@@ -17,7 +17,7 @@ append styles
 	$_cat = reset($_cat);
 
 article.post-block(class!=echo('"post-block--{$options[\'variation\']}" . " " . implode( " ", $options["class"] )'))
-	a(href="#")
+	a(href!=echo('get_the_permalink()') title!=echo('get_the_title()'))
 	.img(style!=background('get_featured_image()', true))
 	.content
 		- if ( $options['category'] ):
@@ -33,7 +33,7 @@ article.post-block(class!=echo('"post-block--{$options[\'variation\']}" . " " . 
 						$_author = (object) array(
 							'avatar'		=> get_avatar_url( get_the_author_meta( 'ID' ) ),
 							'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
-							'href'				=> get_author_posts_url( get_the_author_meta( 'ID' ) )
+							'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
 						);
 						break;
 				}
