@@ -5,7 +5,7 @@
 	#archive-banner {
 		@include aspect-ratio(16,9);
 		background: $c-black;
-		max-height: 60vh;
+		max-height: 40vh;
 		position: relative;
 		overflow: hidden;
 		.archive-banner-carousel,
@@ -19,7 +19,7 @@
 				background: center no-repeat;
 				background-size: cover;
 				height: 100vh;
-				max-height: 60vh;
+				max-height: 40vh;
 				@include filter( blur( 10px ) );
 			}
 		}
