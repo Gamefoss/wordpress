@@ -21,22 +21,19 @@ block main
 				$_mosaic = get_field( "mosaic" ); // highlighted posts, picked in homepage page
 				
 				$_exclude_ids = array(); // get theses id's
-				foreach ( $_mosaic as $post ) {
-					array_push( $_exclude_ids, $post->ID );
-				}
 				
-				//- Get the rest of posts (a mosaic must have 6 items)				
-				$_mosaic = array_merge( $_mosaic, get_posts( array(
+				if ( is_array( $_mosaic ) ) foreach ( $_mosaic as $post ) array_push( $_exclude_ids, $post->ID );
+				
+				//- Get the rest of posts (a mosaic must have 6 items)
+				$_mosaic = array_merge( ( is_array( $_mosaic ) )? $_mosaic : array(), get_posts( array(
 					'post_type'				=> array('ludokratia', 'post', 'podcast'),
-					'numberposts'			=> 6 - sizeof( $_mosaic ),
+					'numberposts'			=> 6 - ( ( is_array( $_mosaic ) ) ? sizeof( $_mosaic ) : 0 ),
 					'exclude'					=> $_exclude_ids
 				)));
 				
 				//- re-fetch the excluded ids, for others homepage lists
 				$_exclude_ids = array(); // get theses id's
-				foreach ( $_mosaic as $post ) {
-					array_push( $_exclude_ids, $post->ID );
-				}
+				if ( is_array( $_mosaic ) ) foreach ( $_mosaic as $post ) array_push( $_exclude_ids, $post->ID );
 			
 			- foreach ( $_mosaic as $i => $post ):
 				- setup_postdata( $post )
@@ -49,7 +46,7 @@ block main
 				- wp_reset_postdata()
 			- endforeach
 		#ludokratia
-			+compound-header("Ludokratia").ludokratia
+			+compound-header("Ludokratia", echo('get_post_type_archive_link( "ludokratia" )') ).ludokratia
 				:php
 					$_categories = get_terms("ludokratia_categories", array(
 						'orderby'			=> "count",
@@ -77,7 +74,7 @@ block main
 					.cf
 			.cf
 		#entertainment
-			+compound-header("Entretenimento").entertainment
+			+compound-header(echo('__("[:pb]Entretenimento[:en]Entertainment[:]")'), echo('get_post_type_archive_link( "post" )')).entertainment
 				:php
 					$_categories = get_categories(array(
 						'orderby'			=> "count",
@@ -115,7 +112,7 @@ block main
 			.cf
 		#podcasts
 			.col-xs-12.col-md-8
-				+compound-header( "Podcasts" ).podcast
+				+compound-header( "Podcasts", echo('get_post_type_archive_link( "podcast" )') ).podcast
 					a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
 				.col-xs-12
 					.row
@@ -132,7 +129,7 @@ block main
 				.hidden-xs.hidden-sm
 					- ad( 'banner' )
 			.col-xs-12.col-sm-8.col-md-4
-				+compound-header( "Feeds" ).podcast
+				+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast
 				ul
 					- foreach( get_terms( "podcasts" ) as $_podcast ):
 						+feed-links
