@@ -15,17 +15,17 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows:  repeat(4, 1fr);
     grid-template-areas:
+      'mi-5 mi-5 mi-5 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6 mi-6 mi-6 mi-6'
       'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-2 mi-2 mi-2 mi-2 mi-2'
       'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-3 mi-3 mi-3 mi-3 mi-3'
-      'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4'
-      'mi-5 mi-5 mi-5 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6 mi-6 mi-6 mi-6';
+      'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4';
   }
   @include bp($s-md) {
     grid-template-rows:  repeat(3, 1fr);
     grid-template-areas:
+      'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6'
       'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-2 mi-2 mi-2 mi-2'
-      'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-3 mi-3 mi-3 mi-3'
-      'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-5 mi-5 mi-5 mi-6 mi-6 mi-6';
+      'mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-1 mi-3 mi-3 mi-3 mi-3';
   }
   .mosaic-item {
     .img:before {
