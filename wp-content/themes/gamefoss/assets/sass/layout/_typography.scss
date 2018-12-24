@@ -142,6 +142,16 @@ a {
 	}
 }
 
+@each $name, $color in $colors {
+	.c--#{$name} {
+		color: $color
+	}
+}
+
 strong {
 	font-weight: bold;
+}
+
+a:hover {
+	@include opacity(0.8);
 }

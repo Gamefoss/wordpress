@@ -1,0 +1,15 @@
+@import "../../partials/partials";
+
+#archive {
+	.archive-categories,
+	.archive-posts {
+		margin: $gutter*2 auto;
+	}
+	.archive-categories {
+		display: flex;
+		justify-content: center;
+		@include bp($s-sm) {
+			justify-content: space-between;
+		}
+	}
+}

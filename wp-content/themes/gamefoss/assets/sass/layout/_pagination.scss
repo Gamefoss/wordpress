@@ -1,0 +1,19 @@
+.pagination {
+	text-align: center;
+	margin: $gutter auto;
+	span, a {
+		padding: $gutter/2 $gutter;
+		height: 30px;
+		line-height: 30px;
+		margin: 0 $gutter/2;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	span {
+		color: $c-menu;
+	}
+	a {
+		background: $c-menu;
+		color: $c-white;
+	}
+}

@@ -1,0 +1,19 @@
+extends archive-ludokratia
+
+prepend ludokratia-banner-title
+	h2.title-2
+		a(href!=echo('get_post_type_archive_link( get_post_type() )'))
+			:php
+				switch( get_post_type() ) {
+					case "post": 
+						echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+						break;
+					case "podcast":
+						echo "Podcasts";
+						break;
+					default:
+						echo get_post_type();
+						break;
+					
+				}
+	br

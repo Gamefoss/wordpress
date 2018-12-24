@@ -1,0 +1,82 @@
+extends index
+
+append styles
+	- wp_enqueue_style( 'archive-css', get_template_directory_uri() . "/library/css/pages/archive/archive.css", false );	
+
+append scripts
+	- wp_enqueue_script( 'archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
+
+block main
+	#archive
+		block banner
+		block categories
+			:php
+				//- get taxonomy from post type
+				switch(get_post_type()) {
+					case "ludokratia":
+						$_taxonomy = "ludokratia_categories";
+						break;
+					case "podcast":
+						$_taxonomy = "podcasts";
+						break;
+					default:
+						$_taxonomy = "category";
+						break;
+				}
+			.wrap
+				.row
+					.archive-categories
+						:php
+							//- query categories by it's taxonomy
+							$_categories = get_terms( $_taxonomy, array(
+								'orderby'			=> "count",
+								'order'				=> "DESC",
+								'number'			=> 10 // máximo 10
+							) )
+						
+						- foreach ( $_categories as $i => $_category ):
+							:php
+								//- get badge color
+								$_class = array("badge--" . get_post_type());
+								
+								//- define how many category to display
+								if ( $i > 3 ) array_push($_class, "hidden-sm"); // só 6 links no tablet
+								if ( $i > 5 ) array_push($_class, "hidden-md"); // só 8 links no desktop pequeno
+								if ( $i > 7 ) array_push($_class, "hidden-lg"); // só 9 links no desktop maior
+								if ( $i > 8 ) array_push($_class, "hidden-xl"); // só 10 links no desktop wide
+								
+								$_class = implode($_class, " ");
+							a.badge(href!=echo('get_term_link($_category)') class!=echo('$_class')).hidden-xs!= $_category->name
+						- endforeach
+						.select.badge(class!=echo('"badge--" . get_post_type()'))
+							.select-label!= __("[:pb]Categorias[:en]Categories[:]")
+							select
+								- foreach ( get_terms( $_taxonomy ) as $_category ):
+									option(value!=echo('get_term_link($_category)'))!= $_category->name
+								- endforeach
+								option(selected hidden)!= __("[:pb]Todas[:en]All[:]")
+		block posts
+			.archive-posts.wrap
+				.row
+					- if( have_posts() ): while( have_posts() ): the_post()
+						.col-xs-12.col-sm-6.col-md-3
+							- post_block()
+					- endwhile;endif
+				.cf
+				.pagination
+					:php
+						echo paginate_links(
+							array(
+								'prev_text' => __("[:pb]Anterior[:en]Previous[:]"),
+								'next_text'	=> __("[:pb]Próximo[:en]Next[:]")
+							)
+						);
+			.cf
+			.ad-container
+				.visible-xs
+					.row
+						- ad( 'mobile-leaderboard' )
+				.visible-sm
+					- ad( 'leaderboard' )
+				.visible-md.visible-lg.visible-xl
+					- ad( 'large-leaderboard' )

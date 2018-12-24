@@ -104,14 +104,11 @@ function bones_scripts_and_styles() {
 
 
 		// adding general scripts
-
-		wp_register_script( 'utils-js', get_stylesheet_directory_uri() . '/library/js/libs/utils.min.js', array('jquery'), '', true );
 		wp_register_script( 'scripts-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array('jquery'), '', true );
 		wp_register_script( 'layout-js', get_stylesheet_directory_uri() . '/library/js/layout/layout.min.js', array('jquery'), '', true );
 
 		wp_enqueue_style( 'bones-stylesheet' );
 
-		wp_enqueue_script( 'utils-js' );
 		wp_enqueue_script( 'scripts-js' );
 		wp_enqueue_script( 'layout-js' );
 
