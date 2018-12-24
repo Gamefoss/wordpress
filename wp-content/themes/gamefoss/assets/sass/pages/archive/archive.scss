@@ -1,10 +1,42 @@
 @import "../../partials/partials";
 
 #archive {
+
+	#archive-banner {
+		@include aspect-ratio(16,9);
+		background: $c-black;
+		max-height: 60vh;
+		position: relative;
+		overflow: hidden;
+		.archive-banner-carousel,
+		.archive-banner-container {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.archive-banner-carousel {
+			.item {
+				background: center no-repeat;
+				background-size: cover;
+				height: 100vh;
+				max-height: 60vh;
+				@include filter( blur( 10px ) );
+			}
+		}
+		.archive-banner-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba($c-black, 0.85);
+			z-index: 1;
+		}
+	}
+
 	.archive-categories,
 	.archive-posts {
 		margin: $gutter*2 auto;
 	}
+
 	.archive-categories {
 		display: flex;
 		justify-content: center;

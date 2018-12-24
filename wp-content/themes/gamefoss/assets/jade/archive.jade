@@ -1,14 +1,29 @@
 extends index
 
 append styles
+	- wp_enqueue_style( 'animate-css', get_template_directory_uri() . "/library/css/third/animate.css", false );
+	- wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
 	- wp_enqueue_style( 'archive-css', get_template_directory_uri() . "/library/css/pages/archive/archive.css", false );	
 
 append scripts
+	- wp_enqueue_script( 'owl-carousel-js', get_template_directory_uri() . '/library/js/libs/owl.carousel.min.js', array ( 'jquery' ), 1.0, true);
 	- wp_enqueue_script( 'archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
 
 block main
 	#archive
 		block banner
+			#archive-banner
+				.archive-banner-carousel.owl-carousel
+					- if( have_posts() ): while( have_posts() ): the_post()
+						.item(style!=background( 'get_featured_image()', true ))
+					- endwhile;endif
+				.archive-banner-container.c--white.t--center.tt--uppercase
+					.archive-banner-title
+						block archive-banner-title
+							h1.title-1
+								:php
+									if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+									else echo get_queried_object()->name
 		block categories
 			:php
 				//- get taxonomy from post type
