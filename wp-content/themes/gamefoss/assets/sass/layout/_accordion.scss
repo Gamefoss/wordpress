@@ -27,9 +27,6 @@
 		&.open:after {
 			@include transform(rotate(180deg));
 		}
-		> * {
-			cursor: default;
-		}
 	}
 	li:not(.no-accordion) {
 		position: relative;
