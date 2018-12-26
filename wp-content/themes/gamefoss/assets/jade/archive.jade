@@ -23,6 +23,7 @@ block main
 							h1.title-1
 								:php
 									if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+									else if ( get_queried_object()->name == "podcast" ) echo "podcasts";
 									else echo get_queried_object()->name
 		block categories
 			:php
@@ -72,7 +73,7 @@ block main
 								option(selected hidden)!= __("[:pb]Todas[:en]All[:]")
 		block posts
 			.archive-posts.wrap
-				.row
+				.post-block--container.row
 					- if( have_posts() ): while( have_posts() ): the_post()
 						.col-xs-12.col-sm-6.col-md-3
 							- post_block()

@@ -99,6 +99,7 @@
 			}
 		}
 	}
+
 	&.post-block--horizontal:not(.post-block--highlight) {
 		@include bp($s-sm) {
 			grid-template-rows: auto;
@@ -110,6 +111,7 @@
 	}
 
 	&.post-block--square {
+		grid-template-rows: auto auto;
 		.img {
 			@include aspect-ratio(1,1);
 		}

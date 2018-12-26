@@ -45,7 +45,7 @@ block main
 						) );
 				- wp_reset_postdata()
 			- endforeach
-		#ludokratia
+		section#ludokratia
 			+compound-header("Ludokratia", echo('get_post_type_archive_link( "ludokratia" )') ).ludokratia
 				:php
 					$_categories = get_terms("ludokratia_categories", array(
@@ -58,7 +58,7 @@ block main
 				- endforeach
 				a(href!=echo('get_post_type_archive_link( "ludokratia" )')).badge.badge--ludokratia.badge--more ...
 			.col-xs-12
-				.row
+				.post-block--container.row
 					:php
 						$_posts = get_posts( array(
 							'post_type'		=> "ludokratia",
@@ -73,7 +73,7 @@ block main
 					- endforeach					
 					.cf
 			.cf
-		#entertainment
+		section#entertainment
 			+compound-header(echo('__("[:pb]Entretenimento[:en]Entertainment[:]")'), echo('get_post_type_archive_link( "post" )')).entertainment
 				:php
 					$_categories = get_categories(array(
@@ -110,15 +110,16 @@ block main
 			.col-md-12.hidden-xs.hidden-sm
 				- ad( 'large-leaderboard' )
 			.cf
-		#podcasts
-			.col-xs-12.col-md-8
-				+compound-header( "Podcasts", echo('get_post_type_archive_link( "podcast" )') ).podcast
-					a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
-				.col-xs-12
-					.row
-						:php
+		section#podcasts
+			.row
+				.col-xs-12.col-sm-7.col-md-8
+					.col-xs-12
+						+compound-header( "Podcasts", echo('get_post_type_archive_link( "podcast" )') ).podcast
+							a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
+					.cf
+					.post-block--container
 						- foreach( get_terms( "podcasts" ) as $_podcast ):
-							.col-xs-12.col-sm-3
+							.col-xs-12.col-sm-4.col-md-3
 								article.post-block.post-block--square.t--center
 									a(href!=echo('get_term_link($_podcast)'))
 									.img(style!=background('get_field("logo", $_podcast)', true))
@@ -126,16 +127,19 @@ block main
 										a(href!=echo('get_term_link($_podcast)'))
 											h2.title-2!= $_podcast->name
 						- endforeach
-				.hidden-xs.hidden-sm
-					- ad( 'banner' )
-			.col-xs-12.col-sm-8.col-md-4
-				+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast
-				ul
-					- foreach( get_terms( "podcasts" ) as $_podcast ):
-						+feed-links
-					- endforeach
-			.visible-sm.col-sm-4
-				- ad( 'skyscraprer' )
-			.visible-xs
-				- ad( 'square2' )
+						.cf
+				aside.col-xs-12.col-sm-5.col-md-4
+					.col-xs-12
+						+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast
+					.cf
+					ul.col-xs-12
+						- foreach( get_terms( "podcasts" ) as $_podcast ):
+							+feed-links
+						- endforeach
+					.cf
+				.cf
+				.visible-xs
+					- ad( 'square' )
+				.hidden-xs
+					- ad( 'leaderboard' )
 			.cf

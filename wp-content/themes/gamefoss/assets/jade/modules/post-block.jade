@@ -1,6 +1,8 @@
 append styles
 	- wp_enqueue_style( 'post-block-css', get_template_directory_uri() . "/library/css/modules/post-block.css", false )
-	
+
+append scripts
+	- wp_enqueue_script( 'post-block-js', get_template_directory_uri() . '/library/js/modules/post-block.min.js', array ( 'jquery' ), 1.0, true);
 :php
 	switch( get_post_type() ) {
 		case "ludokratia":
