@@ -39,7 +39,6 @@ function ludokratia() {
 		'label'                 => __( 'Ludokratia', 'text_domain' ),
 		'description'           => __( 'Ludokratia', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'categorias' ),
 		'menu_icon'							=> get_template_directory_uri() . "/library/images/icons/ludokratia-menu-logo.svg",
 		'hierarchical'          => false,
@@ -55,7 +54,7 @@ function ludokratia() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail', 'author')
+		'supports'							=> array('title', 'editor', 'thumbnail', 'author', 'excerpt')
 	);
 	register_post_type( 'ludokratia', $args );
 }

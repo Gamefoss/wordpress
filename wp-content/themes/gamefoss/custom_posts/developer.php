@@ -39,7 +39,6 @@ function developer() {
 		'label'                 => __( 'Developer', 'text_domain' ),
 		'description'           => __( 'Developer', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'categorias' ),
 		'menu_icon'							=> 'dashicons-store',
 		'hierarchical'          => false,
@@ -55,7 +54,7 @@ function developer() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail')
+		'supports'							=> array('title', 'editor', 'thumbnail', 'excerpt')
 	);
 	register_post_type( 'developer', $args );
 }

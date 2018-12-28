@@ -39,7 +39,6 @@ function podcast() {
 		'label'                 => __( 'Episódio', 'text_domain' ),
 		'description'           => __( 'Episódio de Podcast', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'podcasts' ),
 		'menu_icon'							=> 'dashicons-microphone',
 		'hierarchical'          => false,
@@ -55,7 +54,7 @@ function podcast() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail')
+		'supports'							=> array('title', 'editor', 'thumbnail', 'excerpt')
 	);
 	register_post_type( 'podcast', $args );
 }

@@ -39,7 +39,6 @@ function game() {
 		'label'                 => __( 'Game', 'text_domain' ),
 		'description'           => __( 'Game', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'categorias' ),
 		'menu_icon'							=> 'dashicons-heart',
 		'hierarchical'          => false,
@@ -55,7 +54,7 @@ function game() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail')
+		'supports'							=> array('title', 'editor', 'thumbnail', 'excerpt')
 	);
 	register_post_type( 'game', $args );
 }
