@@ -1,20 +1,22 @@
 extends archive
 
+append styles
+	- wp_enqueue_style( 'archive-podcast-css', get_template_directory_uri() . "/library/css/pages/archive/archive-podcast.css", false );	
+
 block categories
-	.gutter
-	.gutter
 	.wrap
 		.col-xs-12.col-sm-10.col-md-8.col-sm-offset-1.col-md-offset-2
-			.post-block--container.row
-				- foreach( get_terms( "podcasts" ) as $_podcast ):
-					.col-xs-12.col-sm-3
-						article.post-block.post-block--square.t--center
-							a(href!=echo('get_term_link($_podcast)'))
-							.img(style!=background('get_field("logo", $_podcast)', true))
-							.content
+			#podcast-categories.post-block--container.row.t--center
+				block podcast-categories
+					- foreach( get_terms( "podcasts" ) as $_podcast ):
+						.podcast--container.col-xs-12.col-sm-3
+							article.post-block.post-block--square.t--center
 								a(href!=echo('get_term_link($_podcast)'))
-									h2.title-2!= $_podcast->name
-				- endforeach
+								.img(style!=background('get_field("logo", $_podcast)', true))
+								.content
+									a(href!=echo('get_term_link($_podcast)'))
+										h2.title-2!= $_podcast->name
+					- endforeach
 				.cf
 block posts
 	.wrap

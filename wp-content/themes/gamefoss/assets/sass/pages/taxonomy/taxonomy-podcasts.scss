@@ -1,0 +1,9 @@
+@import "../../partials/partials";
+
+#archive {
+	#podcast-image {
+		max-width: 160px;
+		margin: -$gutter*4 auto 0;
+		z-index: 1;
+	}
+}

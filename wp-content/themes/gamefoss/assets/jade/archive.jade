@@ -14,9 +14,10 @@ block main
 		block banner
 			#archive-banner
 				.archive-banner-carousel.owl-carousel
-					- if( have_posts() ): while( have_posts() ): the_post()
-						.item(style!=background( 'get_featured_image()', true ))
-					- endwhile;endif
+					block banner-carousel
+						- if( have_posts() ): while( have_posts() ): the_post()
+							.item(style!=background( 'get_featured_image()', true ))
+						- endwhile;endif
 				.archive-banner-container.c--white.t--center.tt--uppercase
 					.archive-banner-title
 						block archive-banner-title

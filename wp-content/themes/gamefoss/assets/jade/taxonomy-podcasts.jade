@@ -1,0 +1,22 @@
+extends taxonomy
+
+append styles
+	- wp_enqueue_style( 'taxonomy-podcasts-css', get_template_directory_uri() . "/library/css/pages/taxonomy/taxonomy-podcasts.css", false );	
+
+block banner-carousel
+	.item(style!=background('get_field("banner", get_queried_object())["url"]', true))
+
+block categories
+	.wrap
+		.podcast--container.col-xs-10.col-xs-offset-1
+			article#podcast-image.post-block.post-block--square.t--center
+				a(href!=echo('get_term_link(get_queried_object())') title!=echo('get_queried_object()->name'))
+				.img(style!=background('get_field("logo", get_queried_object())', true))
+		.cf
+	
+prepend posts
+	.wrap
+		.row
+			.col-xs-12
+				+compound-header( echo('__("[:pb]Episódios[:en]Episodes[:]")'), echo('get_post_type_archive_link( "podcast" )') ).podcast
+			.cf
