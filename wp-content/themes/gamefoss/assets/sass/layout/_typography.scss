@@ -76,6 +76,7 @@ html, body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: $f-roboto;
+	line-height: normal;
 }
 
 h1, h2, h3 {
@@ -109,6 +110,7 @@ a {
 	font-family: $f-open;
 	font-weight: lighter;
 	font-size: rem(16);
+	line-height: normal;
 }
 
 .tag {
@@ -117,6 +119,15 @@ a {
 	font-size: rem(14);
 	&:before {
 		content: "#";
+	}
+}
+
+@each $name, $font in (
+	('roboto', $f-roboto)
+	('open', $f-open)
+) {
+	.f--#{$name} {
+		font-family: $font;
 	}
 }
 
@@ -154,4 +165,8 @@ strong {
 
 a:hover {
 	@include opacity(0.8);
+}
+
+em {
+	font-style: italic;
 }

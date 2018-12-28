@@ -7,29 +7,17 @@ append styles
 
 append scripts
 	- wp_enqueue_script( 'owl-carousel-js', get_template_directory_uri() . '/library/js/libs/owl.carousel.min.js', array ( 'jquery' ), 1.0, true);
+	- wp_enqueue_script( 'banner-js', get_template_directory_uri() . '/library/js/blocks/banner.min.js', array ( 'jquery' ), 1.0, true);
 	- wp_enqueue_script( 'archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
 
 block main
 	#archive
 		block banner
-			#archive-banner
-				.archive-banner-carousel.owl-carousel
-					block banner-carousel
-						- if( have_posts() ): while( have_posts() ): the_post()
-							.item(style!=background( 'get_featured_image()', true ))
-						- endwhile;endif
-				.archive-banner-container.c--white.t--center.tt--uppercase
-					.archive-banner-title
-						block archive-banner-title
-							h1.title-1
-								:php
-									if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
-									else if ( get_queried_object()->name == "podcast" ) echo "podcasts";
-									else echo get_queried_object()->name
+			+banner
 		block categories
 			:php
 				//- get taxonomy from post type
-				switch(get_post_type()) {
+				switch( get_post_type() ) {
 					case "ludokratia":
 						$_taxonomy = "ludokratia_categories";
 						break;
@@ -63,7 +51,7 @@ block main
 								if ( $i > 8 ) array_push($_class, "hidden-xl"); // só 10 links no desktop wide
 								
 								$_class = implode($_class, " ");
-							a.badge(href!=echo('get_term_link($_category)') class!=echo('$_class')).hidden-xs!= $_category->name
+							a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('$_class')).hidden-xs!= $_category->name
 						- endforeach
 						.select.badge(class!=echo('"badge--" . get_post_type()'))
 							.select-label!= __("[:pb]Categorias[:en]Categories[:]")

@@ -17,3 +17,18 @@ body {
   display: block;
   height: $gutter;
 }
+
+.author {
+  display: inline-flex;
+  align-items: center;
+  a {
+    display: inline-flex;
+    align-items: center;
+  }
+  img {
+    width: $gutter*2;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+}

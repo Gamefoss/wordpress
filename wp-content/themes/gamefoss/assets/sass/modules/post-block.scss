@@ -55,21 +55,6 @@
 		margin: $gutter auto;
 	}
 
-	.author {
-		display: inline-flex;
-		align-items: center;
-		a {
-			display: inline-flex;
-			align-items: center;
-		}
-		img {
-			width: $gutter*2;
-			height: auto;
-			border-radius: 50%;
-			margin-right: 6px;
-		}
-	}
-
 	// VARIATIONS
 	&.post-block--highlight {
 		color: $c-white;
