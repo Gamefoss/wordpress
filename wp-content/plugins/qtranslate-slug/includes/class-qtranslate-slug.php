@@ -996,13 +996,8 @@ class QtranslateSlug {
             if (count($query) == 1) {
               $function = 'get_post_type_archive_link';
               $id = $query['post_type'];
-            } else {
-              if ($query['post_type'] == "podcast") {
-                $page_slug = "podcasts/" . $query['paged'];
-              } else {
-                $page_slug = ( isset($query['name']) && !empty($query['name']) ) ? $query['name'] : $query[$query['post_type']];
-
-              }
+            } else {              
+              $page_slug = ( isset($query['name']) && !empty($query['name']) ) ? $query['name'] : $query[$query['post_type']];
 	            $page = $this->get_page_by_path($page_slug, OBJECT, $query['post_type']);
 	            if (!$page) return $query;
 	            $id = $page->ID;
