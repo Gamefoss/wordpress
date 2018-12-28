@@ -5,13 +5,15 @@ mixin banner
 				- if( have_posts() ): while( have_posts() ): the_post()
 					.item(style!=background( 'get_featured_image()', true ))
 				- endwhile;endif
-		.banner-container.c--white.t--center.tt--uppercase
-			.banner-title
+		.banner-container.c--white.t--center
+			.banner-title.wrap
 				block banner-title
 					block
-					h1.title-1
-						:php
-							if ( is_single() ) echo get_the_title();
-							else if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
-							else if ( get_queried_object()->name == "podcast" ) echo "podcasts";
-							else echo get_queried_object()->name
+					- if ( !is_single() ):
+						h1.title-1.tt--uppercase
+							:php
+								if ( is_single() ) echo get_the_title();
+								if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+								else if ( get_queried_object()->name == "podcast" ) echo "podcasts";
+								else echo get_queried_object()->name
+					- endif

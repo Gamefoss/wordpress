@@ -1,7 +1,7 @@
 extends archive
 
 prepend banner-title
-	h2.title-2
+	h2.title-2.tt--uppercase
 		a(href!=echo('get_post_type_archive_link( get_post_type() )'))
 			:php
 				switch( get_post_type() ) {

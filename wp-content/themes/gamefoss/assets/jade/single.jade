@@ -12,7 +12,7 @@ block main
 	article#single
 		block banner
 			+banner
-				h3.title-3
+				h3.title-3.tt--uppercase
 					a(href!=echo('get_post_type_archive_link( get_post_type() )'))
 						:php
 							switch( get_post_type() ) {
@@ -26,7 +26,8 @@ block main
 									echo get_post_type();
 									break;					
 							}
-					| &nbsp;/&nbsp;
+				.gutter
+				h2.title-2.tt--uppercase
 					:php
 						//- get taxonomy from post type
 						switch( get_post_type() ) {
@@ -46,43 +47,29 @@ block main
 						
 						//- only one term
 						$_category = reset( $_category );					
-					a(href!=echo('get_term_link($_category)') title!=echo('$_category->name'))!= $_category->name					
-				br
-		
-		.wrap
-			.col-xs-12.col-sm-10.col-sm-offset-1
+					a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('"badge--" . get_post_type()'))!= $_category->name
 				.gutter
-				.row
-					.author--container.col-xs-12.col-sm-6
-						block author
-							:php
-								$_author = (object) array(
-								'avatar'		=> get_avatar_url( get_the_author_meta( 'ID' ) ),
-								'name'			=> get_the_author_meta( 'display_name' ),
-								'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
-								'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
-								);
-							a(href!=echo('$_author->href') title!=echo('$_author->nickname')).author
-								img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
-								!= "<strong>{$_author->name}</strong>&nbsp;|&nbsp;{$_author->nickname}"
-					.date--container.col-xs-12.col-sm-6
-						block date
-							strong.date!= get_the_date('d/m/Y')
-					.cf
 				.gutter
-			.cf
-			.col-xs-12.col-sm-8.col-sm-offset-2			
+				h1.title-1!= get_the_title()
+				.gutter
 				block excerpt
-					.gutter
-					.gutter
-					.gutter
-					.gutter
 					.excerpt.f--open.t--center
 						em!= get_the_excerpt()
 				.gutter
-					
 				.gutter
-			
+				.info.wrap
+					block author
+						:php
+							$_author = (object) array(
+							'avatar'		=> get_avatar_url( get_the_author_meta( 'ID' ) ),
+							'name'			=> get_the_author_meta( 'display_name' ),
+							'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
+							'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
+							);
+						a(href!=echo('$_author->href') title!=echo('$_author->nickname')).author
+							img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
+							!= "<strong>{$_author->name}</strong>&nbsp;&nbsp;|&nbsp;&nbsp;{$_author->nickname}&nbsp;&nbsp;|&nbsp;&nbsp;" . get_the_date('d/m/Y')
+		.wrap
 			.col-xs-12.col-sm-10.col-sm-offset-1
 				.single-content.text
 					- the_content()
