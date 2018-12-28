@@ -13,7 +13,9 @@ block main
 		.wrap
 			.row
 				.col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2
-					.text!= nl2br($post->post_content)
+					- wp_reset_postdata()
+					.text
+						- the_content()
 			.cf
 			.row 
 				.col-xs-12.col-sm-4
@@ -33,6 +35,21 @@ block main
 			+compound-header( "Equipe" )
 			.row 
 				.col-xs-12.col-sm-4
+					.person 
+						.ball
+						h1.title-1.t--left.tt--uppercase.c--white.titulo lorem ipsum				
+					- include( locate_template( 'modules/socials.php' ) )
+					.text lorem ipsum eu amo o mozinho coala luci coala
 				.col-xs-12.col-sm-4
+					.person
+						.ball
+						h1.title-1.t--left.tt--uppercase.c--white.titulo lorem ipsum
+					- include( locate_template( 'modules/socials.php' ) )
+					.text lorem ipsum eu amo o mozinho coala luci coala
 				.col-xs-12.col-sm-4
+					.person
+						.ball
+						h1.title-1.t--left.tt--uppercase.c--white.titulo  lorem ipsum  
+					- include( locate_template( 'modules/socials.php' ) )
+					.text lorem ipsum eu amo o mozinho coala luci coala
 			.cf
