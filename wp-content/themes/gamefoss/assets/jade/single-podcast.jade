@@ -1,1 +1,19 @@
 extends single
+
+append styles
+	- wp_enqueue_style( 'single-podcasts-css', get_template_directory_uri() . "/library/css/pages/single/single-podcasts.css", false );
+
+block banner-post-category
+	:php
+		$_podcast = get_the_terms(the_post(), "podcasts");
+		$_podcast = reset($_podcast);
+	article.post-block.post-block--square.t--center
+		a(href!=echo('get_term_link($_podcast)'))
+		.img(style!=background('get_field("logo", $_podcast)', true))
+		.content
+			a(href!=echo('get_term_link($_podcast)'))
+				h2.title-2!= $_podcast->name
+
+block author
+	.author
+		time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')

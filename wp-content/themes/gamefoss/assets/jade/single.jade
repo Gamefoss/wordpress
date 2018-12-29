@@ -55,7 +55,7 @@ block main
 				h1.title-1!= get_the_title()
 				.gutter
 				block excerpt
-					.excerpt.f--open.t--center
+					.excerpt.f--open.t--center.hidden-xs
 						em!= get_the_excerpt()
 				.gutter
 				.gutter
@@ -83,13 +83,13 @@ block main
 				.single-content.text(class!=echo('get_post_type()'))
 					block content
 						- the_content()
-				.visible-xs
-					- ad('square')
-				.visible-sm
-					- ad('leaderboard')
-				.hidden-xs.hidden-sm
-					- ad('large-leaderboard')
 			.cf
+		.visible-xs
+			- ad('square')
+		.visible-sm
+			- ad('leaderboard')
+		.hidden-xs.hidden-sm
+			- ad('large-leaderboard')
 		block comments
 			.wrap
 				.col-xs-12
