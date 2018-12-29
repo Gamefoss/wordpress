@@ -24,28 +24,27 @@ block main
 						.text.t--left.txt!= $area["text"]
 				- endforeach 
 				.cf
-		.help
-			h2.title-2.tt--uppercase.t--center Nos ajude a continuar
-			a(href="#").btn.btn--black apoie
+		- if ( get_field("help") ):
+			.help
+				h2.title-2.tt--uppercase.t--center!= __("[:pb]Nos ajude a continuar[:en]Support us[:]")
+				nav.btn--container
+					- foreach ( get_field("help") as $_link ):
+						- $_link = $_link["link"]
+						a(href!=echo('$_link["url"]') target!=echo('$_link["target"]')).btn.btn--black!= __($_link["title"])
+					- endforeach
+		- endif
 		.wrap
-			+compound-header( "Equipe" )
-			.row 
-				.col-xs-12.col-sm-4
-					.person 
-						.ball
-						h1.title-1.t--left.tt--uppercase.c--white.titulo lorem ipsum				
-					- include( locate_template( 'modules/socials.php' ) )
-					.text lorem ipsum eu amo o mozinho coala luci coala
-				.col-xs-12.col-sm-4
-					.person
-						.ball
-						h1.title-1.t--left.tt--uppercase.c--white.titulo lorem ipsum
-					- include( locate_template( 'modules/socials.php' ) )
-					.text lorem ipsum eu amo o mozinho coala luci coala
-				.col-xs-12.col-sm-4
-					.person
-						.ball
-						h1.title-1.t--left.tt--uppercase.c--white.titulo  lorem ipsum  
-					- include( locate_template( 'modules/socials.php' ) )
-					.text lorem ipsum eu amo o mozinho coala luci coala
+			.col-xs-12
+				+compound-header( "Equipe" )
+			.cf
+			- foreach ( get_users() as $_user ):
+				- if ( !get_field( 'team', "user_{$_user->ID}") ) continue;
+					.col-xs-12.col-sm-4
+						.person(style!=background('get_field( "banner", "user_{$_user->ID}" )', true))
+							.ball(style!=background('get_avatar_url($_user->ID)', true))
+							h1.title-1.t--left.tt--uppercase.c--white.name!= get_the_author_meta('display_name', $_user->ID)
+						- $_socials = get_field('socials', "user_{$_user->ID}")
+						- include( locate_template( 'layout/socials.php' ) )
+						.text!= get_the_author_meta('description', $_user->ID)
+			- endforeach
 			.cf
