@@ -66,13 +66,61 @@ block main
 							'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
 							'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
 							);
-						a(href!=echo('$_author->href') title!=echo('$_author->nickname')).author
-							img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
-							!= "<strong>{$_author->name}</strong>&nbsp;&nbsp;|&nbsp;&nbsp;{$_author->nickname}&nbsp;&nbsp;|&nbsp;&nbsp;" . get_the_date('d/m/Y')
+						.author
+							a(href!=echo('$_author->href') title!=echo('$_author->nickname'))
+								img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
+								!= "<strong>{$_author->name}</strong>&nbsp;|&nbsp;{$_author->nickname}"
+							| &nbsp;&nbsp;|&nbsp;&nbsp;
+							time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')
 		.wrap
 			.col-xs-12.col-sm-10.col-sm-offset-1
+				.gutter
+				.gutter
 				.single-content.text
 					- the_content()
+				.visible-xs
+					- ad('square')
+				.visible-sm
+					- ad('leaderboard')
+				.hidden-xs.hidden-sm
+					- ad('large-leaderboard')
+			.cf
+		.wrap
+			.col-xs-12
+				+compound-header(echo('__("[:pb]Comentários[:en]Comments[:]")'))
+				.comments
+					.fb-comments(data-href!=echo('get_the_permalink()') data-numposts='12' data-width="100%" )
+			.cf
+		.wrap
+			.col-xs-12
+				+compound-header(echo('__("[:pb]Relacionados[:en]Related[:]")'))
+			.post-block--container
+				:php
+					
+					//- get related posts field
+					$_related = get_field( 'related_posts' );
+					
+					$_related_ids = array(get_the_ID()); // get theses id's, plus the actual post id
+					
+					//- add to ignore list
+					if ( is_array( $_related ) ) foreach ( $_related as $post ) array_push( $_related_ids, $post->ID );
+					
+					wp_reset_postdata(); //- reset postdata, since we dit foreach $post
+					
+					//- re-fetch related, considering chosen ones plus by post type
+					$_related = array_merge( is_array( $_related )? $_related : array(), get_posts( array(
+						'post_type' 	=> get_post_type(),
+						'numberposts'	=> 4 - ( ( is_array( $_related )? sizeof( $_related ) : 0 ) ),
+						'exclude'			=> $_related_ids
+					) ) );
+				
+				- foreach ( $_related as $post ):
+					.col-xs-12.col-sm-3
+						- setup_postdata( $post )
+						- post_block()
+						- wp_reset_postdata()
+				- endforeach
+				.cf
 			.cf
 		
 		block content

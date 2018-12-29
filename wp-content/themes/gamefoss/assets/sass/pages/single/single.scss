@@ -32,10 +32,11 @@
 			margin: $gutter auto;
 			&:first-child::first-letter {
 				font-size: 4em;
+				line-height: 1em;
 				font-weight: bold;
 				display: inline-block;
 				float: left;
-				// margin-top: -.5em;
+				text-transform: uppercase;
 			}
 		}
 
@@ -49,5 +50,9 @@
 			width: 100%;
 			text-align: center;
 		}
+	}
+
+	.comments {
+		background-color: $c-white;
 	}
 }
