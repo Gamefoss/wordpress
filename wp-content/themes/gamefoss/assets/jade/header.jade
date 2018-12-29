@@ -25,7 +25,9 @@ header#header
 		.hidden-xs.hidden-sm
 			- include( locate_template( 'layout/socials.php' ) )
 		form(name="search").search-header
-			.input-search.transition.width
-				input(type="text" name="s" placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")'))
-			button.btn.btn--transparent.transition.background-color
-				.icon.icon-search
+			.overlay
+			.form--inner
+				.input-search.transition.width
+					input(type="text" name="s" placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")'))
+				button.btn.btn--transparent.transition.background-color
+					.icon.icon-search

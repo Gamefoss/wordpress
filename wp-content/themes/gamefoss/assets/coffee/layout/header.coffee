@@ -22,6 +22,10 @@
           $search.removeClass "opened"
           .prev().children(".socials").removeClass "hide"
 
+    $('.overlay', $search).on 'click', (e) ->
+      $search.removeClass "opened"
+      .prev().children(".socials").removeClass "hide"
+
   mobile = ( $header ) ->
     # VARIABLAS
     $btn_open = $('.btn-menu-mobile', $header)
