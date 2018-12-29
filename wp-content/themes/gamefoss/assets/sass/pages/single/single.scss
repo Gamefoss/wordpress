@@ -31,12 +31,20 @@
 		p {
 			margin: $gutter auto;
 			&:first-child::first-letter {
-				font-size: 4em;
-				line-height: 1em;
+				// font-size: 3em;
+				font-size: 5em;
+				line-height: 1.05;
+				margin: 0 .1em -.2em 0;
 				font-weight: bold;
-				display: inline-block;
+				display: block;
 				float: left;
 				text-transform: uppercase;
+			}
+		}
+
+		@each $name, $color in $colors {
+			&.#{$name} p:first-child::first-letter {
+				color: $color;
 			}
 		}
 

@@ -3,7 +3,7 @@
 //- google_analytics
 
 //- script(async src="https://www.googletagmanager.com/gtag/js?id=UA-117664776-1")
-- if ( get_field('google_analytics') ):
+- if ( get_field('google_analytics', 'option') ):
 	script(async src="https://www.googletagmanager.com/gtag/js")
 	script(type="text/javascript").
 		window.dataLayer = window.dataLayer || [];

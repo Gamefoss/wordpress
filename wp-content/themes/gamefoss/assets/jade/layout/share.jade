@@ -1,0 +1,10 @@
+append styles
+  - wp_enqueue_style( 'socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", false );
+  - wp_enqueue_style( 'share-css', get_template_directory_uri() . "/library/css/modules/share.css", false );
+append scripts
+  //- wp_enqueue_script( 'share-js', get_template_directory_uri() . '/library/js/modules/share.min.js', array ( 'jquery' ), 1.0, true);  
+nav.socials.share(class!=echo('get_post_type()'))
+  span!= __("[:pb]Compartilhe:[:en]Share:[:]")
+  | &nbsp;&nbsp;
+  a.social.icon.icon-facebook(href!=echo('"https://www.facebook.com/sharer/sharer.php?text=" . urlencode( get_the_title() ) . "&u=" . urlencode( get_the_permalink() ) ') target="_blank")
+  a.social.icon.icon-twitter(href!=echo('"https://twitter.com/intent/tweet?counturl=" . urlencode( get_the_permalink() ) . "&text=" . urlencode( get_the_title() ) . "&url=" . urlencode( get_the_permalink() ) ."&via=game_foss"') target="_blank")

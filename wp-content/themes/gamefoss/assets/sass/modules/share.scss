@@ -1,0 +1,8 @@
+@import "../partials/partials"; // Sass partials
+
+.share {
+	justify-content: flex-start;
+	.social {
+		background: $c-menu;
+	}
+}

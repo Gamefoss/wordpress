@@ -12,42 +12,44 @@ block main
 	article#single
 		block banner
 			+banner
-				h3.title-3.tt--uppercase
-					a(href!=echo('get_post_type_archive_link( get_post_type() )'))
+				block banner-post-type
+					h3.title-3.tt--uppercase
+						a(href!=echo('get_post_type_archive_link( get_post_type() )'))
+							:php
+								switch( get_post_type() ) {
+									case "post": 
+										echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+										break;
+									case "podcast":
+										echo "Podcasts";
+										break;
+									default:
+										echo get_post_type();
+										break;					
+								}
+				.gutter
+				block banner-post-category
+					h2.title-2.tt--uppercase
 						:php
+							//- get taxonomy from post type
 							switch( get_post_type() ) {
-								case "post": 
-									echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+								case "ludokratia":
+									$_taxonomy = "ludokratia_categories";
 									break;
 								case "podcast":
-									echo "Podcasts";
+									$_taxonomy = "podcasts";
 									break;
 								default:
-									echo get_post_type();
-									break;					
+									$_taxonomy = "category";
+									break;
 							}
-				.gutter
-				h2.title-2.tt--uppercase
-					:php
-						//- get taxonomy from post type
-						switch( get_post_type() ) {
-							case "ludokratia":
-								$_taxonomy = "ludokratia_categories";
-								break;
-							case "podcast":
-								$_taxonomy = "podcasts";
-								break;
-							default:
-								$_taxonomy = "category";
-								break;
-						}
-						
-						//- get category from post and taxonomy
-						$_category = get_the_terms(the_post(), $_taxonomy);
-						
-						//- only one term
-						$_category = reset( $_category );					
-					a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('"badge--" . get_post_type()'))!= $_category->name
+							
+							//- get category from post and taxonomy
+							$_category = get_the_terms(the_post(), $_taxonomy);
+							
+							//- only one term
+							$_category = reset( $_category );					
+						a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('"badge--" . get_post_type()'))!= $_category->name
 				.gutter
 				.gutter
 				h1.title-1!= get_the_title()
@@ -76,7 +78,9 @@ block main
 			.col-xs-12.col-sm-10.col-sm-offset-1
 				.gutter
 				.gutter
-				.single-content.text
+				block share
+					- include( locate_template( 'layout/share.php' ) )
+				.single-content.text(class!=echo('get_post_type()'))
 					block content
 						- the_content()
 				.visible-xs
@@ -93,40 +97,39 @@ block main
 					.comments
 						.fb-comments(data-href!=echo('get_the_permalink()') data-numposts='12' data-width="100%" )
 				.cf
-			.gutter
-			.gutter
 		block related
-			:php
-				
-				//- get related posts field
-				$_related = get_field( 'related_posts' );
-				
-				$_related_ids = array(get_the_ID()); // get theses id's, plus the actual post id
-				
-				//- add to ignore list
-				if ( is_array( $_related ) ) foreach ( $_related as $post ) array_push( $_related_ids, $post->ID );
-				
-				wp_reset_postdata(); //- reset postdata, since we dit foreach $post
-				
-				//- get post tags
-				$_terms = array();
-				//- only id's
-				if (get_post_type() != "post") foreach( wp_get_post_terms( get_the_ID(), get_post_type() . "_tags" ) as $_term ) array_push($_terms, $_term->term_id);
-				else foreach( wp_get_post_tags(get_the_ID()) as $_term ) array_push($_terms, $_term->term_id);
-				
-				//- re-fetch related, considering chosen ones plus by post type and tags
-				$_related = array_merge( is_array( $_related )? $_related : array(), get_posts( array(
-					'post_type' 	=> get_post_type(),
-					'tax_query'		=> sizeof( $_terms )? array(
-						array(
-							'taxonomy'	=> get_post_type() . "_tags",
-							'field'			=> "term_id",
-							'terms'			=> $_terms
-						)
-					) : false,
-					'numberposts'	=> 4 - ( ( is_array( $_related )? sizeof( $_related ) : 0 ) ),
-					'exclude'			=> $_related_ids
-				) ) );
+			block related-query
+				:php
+					
+					//- get related posts field
+					$_related = get_field( 'related_posts' );
+					
+					$_related_ids = array(get_the_ID()); // get theses id's, plus the actual post id
+					
+					//- add to ignore list
+					if ( is_array( $_related ) ) foreach ( $_related as $post ) array_push( $_related_ids, $post->ID );
+					
+					wp_reset_postdata(); //- reset postdata, since we dit foreach $post
+					
+					//- get post tags
+					$_terms = array();
+					//- only id's
+					if (get_post_type() != "post") foreach( wp_get_post_terms( get_the_ID(), get_post_type() . "_tags" ) as $_term ) array_push($_terms, $_term->term_id);
+					else foreach( wp_get_post_tags(get_the_ID()) as $_term ) array_push($_terms, $_term->term_id);
+					
+					//- re-fetch related, considering chosen ones plus by post type and tags
+					$_related = array_merge( is_array( $_related )? $_related : array(), get_posts( array(
+						'post_type' 	=> get_post_type(),
+						'tax_query'		=> sizeof( $_terms )? array(
+							array(
+								'taxonomy'	=> get_post_type() . "_tags",
+								'field'			=> "term_id",
+								'terms'			=> $_terms
+							)
+						) : false,
+						'numberposts'	=> 4 - ( ( is_array( $_related )? sizeof( $_related ) : 0 ) ),
+						'exclude'			=> $_related_ids
+					) ) );
 			- if ( sizeof( $_related ) ):
 				.wrap
 					.col-xs-12
