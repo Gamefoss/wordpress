@@ -57,4 +57,26 @@ function df_disable_comments_admin_bar() {
 	}
 }
 add_action('init', 'df_disable_comments_admin_bar');
+
+// ACF OPTIONS PAGE
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page(
+		array(
+			'page_title'  => "Social",
+			'icon_url'    => "dashicons-share"
+		)
+	);
+	acf_add_options_page(
+		array(
+			'page_title'  => "Analytics",
+			'icon_url'    => "dashicons-analytics"
+		)
+	);
+	acf_add_options_page(
+		array(
+			'page_title'  => "Footer",
+			'icon_url'    => "dashicons-menu"
+		)
+	);
+}
 ?>

@@ -1,21 +1,5 @@
 <?php
 
-// ACF OPTIONS PAGE
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(
-		array(
-			'page_title'  => "Social",
-			'icon_url'    => "dashicons-share"
-		)
-	);
-	acf_add_options_page(
-		array(
-			'page_title'  => "Analytics",
-			'icon_url'    => "dashicons-analytics"
-		)
-	);
-}
-
 // CURL
 function _curl( $url ) {
 	// VARIABLES
