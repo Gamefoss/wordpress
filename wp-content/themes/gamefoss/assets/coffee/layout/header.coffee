@@ -18,6 +18,7 @@
         if !$search.hasClass("opened")
           $search.addClass "opened"
           .prev().children(".socials").addClass "hide"
+          $('input', $search).focus()
         else
           $search.removeClass "opened"
           .prev().children(".socials").removeClass "hide"
