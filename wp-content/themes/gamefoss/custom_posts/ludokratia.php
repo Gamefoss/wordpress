@@ -60,27 +60,51 @@ function ludokratia() {
 }
 add_action( 'init', 'ludokratia' );
 
-function create_ludokratia_taxonomies() {
-		$labels = array(
-				'name'              => _x( 'Categorias (Ludokratia)', 'taxonomy general name' ),
-				'singular_name'     => _x( 'Categoria (Ludokratia)', 'taxonomy singular name' ),
-				'search_items'      => __( 'Buscar Categorias' ),
-				'all_items'         => __( 'Todas as categorias' ),
-				'edit_item'         => __( 'Editar Categoria' ),
-				'update_item'       => __( 'Atualizar Categoria' ),
-				'add_new_item'      => __( 'Adicionar Categoria' ),
-				'new_item_name'     => __( 'Novo Nome de Categoria' ),
-				'menu_name'         => __( 'Categorias' ),
-		);
+function create_ludokratia_category() {
+	$labels = array(
+			'name'              => _x( 'Categorias (Ludokratia)', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Categoria (Ludokratia)', 'taxonomy singular name' ),
+			'search_items'      => __( 'Buscar Categorias' ),
+			'all_items'         => __( 'Todas as categorias' ),
+			'edit_item'         => __( 'Editar Categoria' ),
+			'update_item'       => __( 'Atualizar Categoria' ),
+			'add_new_item'      => __( 'Adicionar Categoria' ),
+			'new_item_name'     => __( 'Novo Nome de Categoria' ),
+			'menu_name'         => __( 'Categorias' ),
+	);
 
-		$args = array(
-				'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
-				'labels'            => $labels,
-				'show_ui'           => true,
-				'rewrite'           => array( 'slug' => 'categorias' )
-		);
+	$args = array(
+			'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'rewrite'           => array( 'slug' => 'categorias' )
+	);
 
-		register_taxonomy( 'ludokratia_categories', array( 'ludokratia' ), $args );
+	register_taxonomy( 'ludokratia_categories', array( 'ludokratia' ), $args );
 }
-add_action( 'init', 'create_ludokratia_taxonomies' );
+add_action( 'init', 'create_ludokratia_category' );
+
+function create_ludokratia_tags() {
+	$labels = array(
+			'name'              => _x( 'Tags (Ludokratia)', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Tags (Ludokratia)', 'taxonomy singular name' ),
+			'search_items'      => __( 'Buscar Tags' ),
+			'all_items'         => __( 'Todas as Tags' ),
+			'edit_item'         => __( 'Editar Tag' ),
+			'update_item'       => __( 'Atualizar Tag' ),
+			'add_new_item'      => __( 'Adicionar Tag' ),
+			'new_item_name'     => __( 'Novo Nome de Tag' ),
+			'menu_name'         => __( 'Tags' ),
+	);
+
+	$args = array(
+			'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'rewrite'           => array( 'slug' => 'tags' )
+	);
+
+	register_taxonomy( 'ludokratia_tags', array( 'ludokratia' ), $args );
+}
+add_action( 'init', 'create_ludokratia_tags' );
 ?>

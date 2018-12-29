@@ -60,7 +60,7 @@ function podcast() {
 }
 add_action( 'init', 'podcast' );
 
-function create_podcast_taxonomies() {
+function create_podcast_podcasts() {
 		$labels = array(
 				'name'              => _x( 'Podcasts', 'taxonomy general name' ),
 				'singular_name'     => _x( 'Podcast', 'taxonomy singular name' ),
@@ -82,6 +82,29 @@ function create_podcast_taxonomies() {
 
 		register_taxonomy( 'podcasts', array( 'podcast' ), $args );
 }
-add_action( 'init', 'create_podcast_taxonomies' );
+add_action( 'init', 'create_podcast_podcasts' );
 
+function create_podcast_tags() {
+	$labels = array(
+			'name'              => _x( 'Tags (Podcast)', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Tags (Podcast)', 'taxonomy singular name' ),
+			'search_items'      => __( 'Buscar Tags' ),
+			'all_items'         => __( 'Todas as Tags' ),
+			'edit_item'         => __( 'Editar Tag' ),
+			'update_item'       => __( 'Atualizar Tag' ),
+			'add_new_item'      => __( 'Adicionar Tag' ),
+			'new_item_name'     => __( 'Novo Nome de Tag' ),
+			'menu_name'         => __( 'Tags' ),
+	);
+
+	$args = array(
+			'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'rewrite'           => array( 'slug' => 'tags' )
+	);
+
+	register_taxonomy( 'podcast_tags', array( 'podcast' ), $args );
+}
+add_action( 'init', 'create_podcast_tags' );
 ?>

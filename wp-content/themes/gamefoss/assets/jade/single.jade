@@ -77,7 +77,8 @@ block main
 				.gutter
 				.gutter
 				.single-content.text
-					- the_content()
+					block content
+						- the_content()
 				.visible-xs
 					- ad('square')
 				.visible-sm
@@ -85,42 +86,60 @@ block main
 				.hidden-xs.hidden-sm
 					- ad('large-leaderboard')
 			.cf
-		.wrap
-			.col-xs-12
-				+compound-header(echo('__("[:pb]Comentários[:en]Comments[:]")'))
-				.comments
-					.fb-comments(data-href!=echo('get_the_permalink()') data-numposts='12' data-width="100%" )
-			.cf
-		.wrap
-			.col-xs-12
-				+compound-header(echo('__("[:pb]Relacionados[:en]Related[:]")'))
-			.post-block--container
-				:php
-					
-					//- get related posts field
-					$_related = get_field( 'related_posts' );
-					
-					$_related_ids = array(get_the_ID()); // get theses id's, plus the actual post id
-					
-					//- add to ignore list
-					if ( is_array( $_related ) ) foreach ( $_related as $post ) array_push( $_related_ids, $post->ID );
-					
-					wp_reset_postdata(); //- reset postdata, since we dit foreach $post
-					
-					//- re-fetch related, considering chosen ones plus by post type
-					$_related = array_merge( is_array( $_related )? $_related : array(), get_posts( array(
-						'post_type' 	=> get_post_type(),
-						'numberposts'	=> 4 - ( ( is_array( $_related )? sizeof( $_related ) : 0 ) ),
-						'exclude'			=> $_related_ids
-					) ) );
-				
-				- foreach ( $_related as $post ):
-					.col-xs-12.col-sm-3
-						- setup_postdata( $post )
-						- post_block()
-						- wp_reset_postdata()
-				- endforeach
+		block comments
+			.wrap
+				.col-xs-12
+					+compound-header(echo('__("[:pb]Comentários[:en]Comments[:]")'))
+					.comments
+						.fb-comments(data-href!=echo('get_the_permalink()') data-numposts='12' data-width="100%" )
 				.cf
-			.cf
-		
-		block content
+			.gutter
+			.gutter
+		block related
+			:php
+				
+				//- get related posts field
+				$_related = get_field( 'related_posts' );
+				
+				$_related_ids = array(get_the_ID()); // get theses id's, plus the actual post id
+				
+				//- add to ignore list
+				if ( is_array( $_related ) ) foreach ( $_related as $post ) array_push( $_related_ids, $post->ID );
+				
+				wp_reset_postdata(); //- reset postdata, since we dit foreach $post
+				
+				//- get post tags
+				$_terms = array();
+				//- only id's
+				if (get_post_type() != "post") foreach( wp_get_post_terms( get_the_ID(), get_post_type() . "_tags" ) as $_term ) array_push($_terms, $_term->term_id);
+				else foreach( wp_get_post_tags(get_the_ID()) as $_term ) array_push($_terms, $_term->term_id);
+				
+				//- re-fetch related, considering chosen ones plus by post type and tags
+				$_related = array_merge( is_array( $_related )? $_related : array(), get_posts( array(
+					'post_type' 	=> get_post_type(),
+					'tax_query'		=> sizeof( $_terms )? array(
+						array(
+							'taxonomy'	=> get_post_type() . "_tags",
+							'field'			=> "term_id",
+							'terms'			=> $_terms
+						)
+					) : false,
+					'numberposts'	=> 4 - ( ( is_array( $_related )? sizeof( $_related ) : 0 ) ),
+					'exclude'			=> $_related_ids
+				) ) );
+			- if ( sizeof( $_related ) ):
+				.wrap
+					.col-xs-12
+						+compound-header(echo('__("[:pb]Relacionados[:en]Related[:]")'))
+					.post-block--container
+						- foreach ( $_related as $post ):
+							.col-xs-12.col-sm-3
+								- setup_postdata( $post )
+								- post_block()
+								- wp_reset_postdata()
+						- endforeach
+						.cf
+					.cf
+			- endif
+			.gutter
+			.gutter
