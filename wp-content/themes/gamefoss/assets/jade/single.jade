@@ -2,11 +2,7 @@ extends index
 
 append styles
 	- wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
-	- wp_enqueue_style( 'single-css', get_template_directory_uri() . "/library/css/pages/single/single.css", false );	
-
-append scripts
-	- wp_enqueue_script( 'owl-carousel-js', get_template_directory_uri() . '/library/js/libs/owl.carousel.min.js', array ( 'jquery' ), 1.0, true);
-	- wp_enqueue_script( 'banner-js', get_template_directory_uri() . '/library/js/blocks/banner.min.js', array ( 'jquery' ), 1.0, true);
+	- wp_enqueue_style( 'single-css', get_template_directory_uri() . "/library/css/pages/single/single.css", false );
 
 block main
 	article#single
