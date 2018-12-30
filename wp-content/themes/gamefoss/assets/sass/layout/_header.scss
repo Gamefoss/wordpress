@@ -141,12 +141,12 @@ header#header {
       position: fixed;
       width: 100%;
       height: 100%;
-      background: rgba($c-white, 0.85);
+      // background: rgba($c-white, 0.85);
       left: 0;
       top: 0;
       z-index: -10;
-      @include opacity(0);
-      @include transition(opacity $transition-default, transform $transition-default);
+      // @include opacity(0);
+      @include transition(transform $transition-default);
       @include transform(translate3d(100%,0,0));
       cursor: pointer;
     }
@@ -159,7 +159,7 @@ header#header {
     }
     &.opened {
       .overlay {
-        @include opacity(1);
+        // @include opacity(1);
         @include transform(translate3d(0,0,0));
       }
       .input-search {
