@@ -111,6 +111,15 @@ a {
 	font-weight: lighter;
 	font-size: rem(16);
 	line-height: normal;
+	h1, h2, h3, h4, h5, h6, p {
+		margin: $gutter auto;
+	}
+
+	@for $i from 1 through 3 {
+		h#{$i} {
+			@extend .title-#{$i};
+		}
+	}
 }
 
 .tag {
