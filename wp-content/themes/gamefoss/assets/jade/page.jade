@@ -4,14 +4,16 @@ block main
 	#page
 		block banner
 			+banner
-				h1.title-1.tt--uppercase!= get_the_title()
-		block content
-			.wrap
-				.col-xs-12.col-sm-10.col-sm-offset-1
-					.gutter
-					.gutter
-					.content.text
+				block banner-title
+					h1.title-1.tt--uppercase!= get_the_title()
+		block content-wrap
+		.wrap
+			.col-xs-12.col-sm-10.col-sm-offset-1
+				.gutter
+				.gutter
+				.content.text
+					block content
 						- the_content()
-					.gutter
-					.gutter
-				.cf
+				.gutter
+				.gutter
+			.cf
