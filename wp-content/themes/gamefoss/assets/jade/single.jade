@@ -80,8 +80,8 @@ block main
 				.gutter
 				block share
 					- include( locate_template( 'layout/share.php' ) )
-				.single-content.text(class!=echo('get_post_type()'))
-					block content
+				block content
+					.single-content.text(class!=echo('get_post_type()'))
 						- the_content()
 			.cf
 		.visible-xs

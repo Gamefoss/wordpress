@@ -1,5 +1,10 @@
 <?php
 
+// html content converter
+function htmlize ( $txt ) {
+	return preg_replace('/((http|https):\/\/[a-z0-9\.\/]+)/i', "<a href=\"$1\" target=\"_blank\">$1</a>", $txt);
+}
+
 // CURL
 function _curl( $url ) {
 	// VARIABLES
@@ -76,7 +81,7 @@ function gf_update_podcasts_feeds_func () {
 			if ( $_shouldadd ) {
 				wp_insert_post( array(
 					'post_author'		=> 1,
-					'post_content'	=> $episode->description,
+					'post_content'	=> htmlize( $episode->description ),
 					'post_title'		=> $episode->title,
 					'post_status'		=> "publish",
 					'post_type'			=> "podcast",
@@ -102,7 +107,7 @@ function gf_update_podcasts_feeds_func () {
 				wp_update_post(array(
 					'ID'					=> $_post->ID,
 					'post_title'	=> $episode->title,
-					'post_content'	=> $episode->description,
+					'post_content'	=> htmlize( $episode->description ),
 					'post_date'			=> $episode->date,
 					'tax_input'			=> array(
 						'podcasts'	=> $podcast->term_id

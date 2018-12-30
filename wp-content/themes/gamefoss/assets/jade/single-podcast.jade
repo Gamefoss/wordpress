@@ -17,3 +17,14 @@ block banner-post-category
 block author
 	.author
 		time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')
+
+
+prepend content
+	:php
+		if ( get_field("external", "term_{$_podcast->term_id}") ) $_audio = get_post_meta(get_the_ID(), "mp3", true);
+		else $_audio = get_field("mp3")["url"]
+			
+	audio(controls)
+		source(src!=echo('$_audio') type="audio/mpeg")
+		| Your browser does not support the audio tag.
+	
