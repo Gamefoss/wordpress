@@ -1,0 +1,12 @@
+@import "../partials/partials"; // Sass partials
+
+#search {
+	.search-bar {
+		.input {
+			height: 30px;
+			button {
+				height: 100%;
+			}
+		}
+	}
+}

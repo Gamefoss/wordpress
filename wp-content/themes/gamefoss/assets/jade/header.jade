@@ -24,10 +24,10 @@ header#header
 				- include( locate_template( 'layout/socials.php' ) )
 		.hidden-xs.hidden-sm
 			- include( locate_template( 'layout/socials.php' ) )
-		form(name="search").search-header
+		form(name="search" action!=echo('home_url()')).search-header
 			.overlay
 			.form--inner
 				.input-search.transition.width
-					input(type="text" name="s" placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")'))
+					input(type="text" name="s" placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")') required minlength="3")
 				button.btn.btn--transparent.transition.background-color
 					.icon.icon-search

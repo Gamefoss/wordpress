@@ -9,6 +9,25 @@ form {
     height: 100%;
     padding: 0 12px;
   }
+
+  input[type=radio] {
+    border: 1px solid $c-black;
+    width: 24px;
+    height: 24px;
+    &+label {
+      text-transform: uppercase;
+      margin-left: $gutter/2;
+    }
+  }
+  legend {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .input {
+    display: flex;
+    align-items: center;
+    margin: $gutter/2 auto;
+  }
 }
 
 .select {

@@ -1,0 +1,71 @@
+extends index
+
+append styles
+	- wp_enqueue_style( 'search-css', get_template_directory_uri() . "/library/css/pages/search.css", false );
+
+block main
+	#search
+		block banner
+			+banner
+				h1.title-1.tt--uppercase!= __("[:pb]Busca[:en]Search[:]")
+				.gutter
+				.gutter
+				p.title-3!= __("[:pb]Resultados para[:en]Results for[:]") . ":"
+				.gutter
+				p!= "\"" . get_search_query() . "\""		
+		
+		block content
+			.wrap
+				.col-xs-12
+					.gutter
+					.gutter
+					.gutter
+					.gutter
+					form(name="search" action="" method="GET").search-bar
+						.input
+							input(type="text" name="s" value!=echo('get_search_query()') placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")') required minlength="3")
+							button.btn.btn--black!= __("[:pb]Buscar[:en]Search[:]")
+							//- .icon.icon-search
+				.cf
+				aside.filters.col-xs-12.col-sm-3.col-md-4
+					+compound-header(echo('__("[:pb]Filtros[:en]Filters[:]")'))
+					form(name="filters" action="" method="GET")
+						input(type="hidden" name="s" value!=echo('get_search_query()'))
+						fieldset
+							legend!= __("[:pb]Área[:en]Area[:]")
+							:php
+								$_types = array( "post" );
+								foreach ( get_post_types(array(
+									'public' => true,
+									'_builtin'=> false
+								)) as $_type ) if ( intval( wp_count_posts( $_type )->publish ) ) array_push( $_types, $_type );
+							
+							- foreach ( $_types as $_type ):
+								.input
+									input(id!=echo('"type-{$_type}"') type="radio" name="post_type" value!=echo('$_type') "<?php echo (get_query_var('post_type') == $_type)? 'checked' : false ?>")
+									label(for!=echo('"type-{$_type}"'))
+										:php
+											switch ( $_type ) {
+												case "post":
+													echo __("[:pb]Entretenimento[:en]Entertainment[:]");
+													break;
+												case "podcast":
+													echo "Podcasts";
+													break;
+												default:
+													echo get_post_type_object($_type)->name;
+													break;
+											}
+							- endforeach
+							button.btn.btn--black.pull-right(type="submit")!= __("[:pb]Enviar[:en]Submit[:]")
+				article.resultes.col-xs-12.col-sm-9.col-md-8
+					.col-xs-12
+						+compound-header(echo('__("[:pb]Resultados[:en]Results[:]")'))
+					.cf
+					.post-block--container
+						- if( have_posts() ): while( have_posts() ): the_post()
+							.col-xs-12.col-sm-6.col-md-4
+								- post_block()
+						- endwhile;endif
+						.cf
+				.cf

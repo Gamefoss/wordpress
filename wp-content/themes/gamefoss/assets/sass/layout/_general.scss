@@ -32,3 +32,9 @@ body {
     margin-right: 6px;
   }
 }
+
+a, button {
+  &:hover {
+    @include opacity(0.8);
+  }
+}
