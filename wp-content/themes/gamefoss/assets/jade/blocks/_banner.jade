@@ -16,7 +16,7 @@ mixin banner
 			.banner-title.wrap
 				block banner-title
 					block
-					- if ( !is_single() ):
+					- if ( !is_single() && !is_search() ):
 						h1.title-1.tt--uppercase
 							:php
 								if ( is_single() ) echo get_the_title();

@@ -67,9 +67,10 @@ block main
 							.col-xs-12.col-sm-6.col-md-4
 								- post_block()
 						- endwhile
+						+pagination
 						- else:
 							p.t--center!= __("[:pb]Nenhum resultado[:en]No Results[:]")
-						- endif;
+						- endif
 						.cf
 				.cf
 				.gutter
