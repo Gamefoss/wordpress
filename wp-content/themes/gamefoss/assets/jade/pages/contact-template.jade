@@ -8,6 +8,16 @@ block template-name
 
 append content	
 	#contact.wrap
+		.gutter
+		.gutter
+		.gutter
+		.gutter
 		.col-xs-12.col-sm-10.col-sm-offset-1
-			h2 pipipi popopo
+			.t--center
+				h3.title-3!= __("[:pb]Nos siga nas redes sociais:[:en]Follow us[:]")
+				- include( locate_template( 'layout/socials.php' ) )
 		.cf
+		.gutter
+		.gutter
+		.gutter
+		.gutter
