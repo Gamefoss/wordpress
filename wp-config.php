@@ -113,8 +113,8 @@ switch (WP_ENV) {
 		define('WP_DEBUG', false);
 		break;
 	case "production":
-		define('WP_SITEURL', WP_PROTOCOL . $_SERVER['SERVER_NAME']);
-		define('WP_HOME',    WP_PROTOCOL . $_SERVER['SERVER_NAME']);
+		define('WP_SITEURL', "https://" . $_SERVER['SERVER_NAME']);
+		define('WP_HOME',    "https://" . $_SERVER['SERVER_NAME']);
 		define('WP_DEBUG', false);
 		// Force SSL for administrator and sign in pages
 		define('FORCE_SSL_ADMIN', true);
