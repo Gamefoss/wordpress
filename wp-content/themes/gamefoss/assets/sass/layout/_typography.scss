@@ -120,6 +120,13 @@ a {
 			@extend .title-#{$i};
 		}
 	}
+
+	a {
+		text-decoration: underline;
+	}
+	ul, li {
+		list-style: disc;
+	}
 }
 
 .tag {
