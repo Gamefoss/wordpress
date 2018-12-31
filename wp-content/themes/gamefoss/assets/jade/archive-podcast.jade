@@ -31,14 +31,7 @@ block posts
 							- post_block()
 					- endwhile;endif
 					.cf
-				.pagination
-					:php
-						echo paginate_links(
-							array(
-								'prev_text' => __("[:pb]Anterior[:en]Previous[:]"),
-								'next_text'	=> __("[:pb]Próximo[:en]Next[:]")
-							)
-						);
+				+pagination
 			aside.col-xs-12.col-sm-5.col-md-4
 				.col-xs-12
 					+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast

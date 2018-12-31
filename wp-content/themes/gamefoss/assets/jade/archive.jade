@@ -64,14 +64,7 @@ block main
 							- post_block()
 					- endwhile;endif
 				.cf
-				.pagination
-					:php
-						echo paginate_links(
-							array(
-								'prev_text' => __("[:pb]Anterior[:en]Previous[:]"),
-								'next_text'	=> __("[:pb]Próximo[:en]Next[:]")
-							)
-						);
+				+pagination
 			.cf
 			.ad-container
 				.visible-xs
