@@ -1,0 +1,17 @@
+extends ../page
+
+block template-name
+	- // Template Name: Newsletter
+	
+	append styles
+		- wp_enqueue_style( 'newsletter-css', get_template_directory_uri() . "/library/css/pages/newsletter.css", false );
+
+append content
+	#newsletter.wrap
+		.gutter
+		.gutter
+		.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+			script(type="text/javascript" src="//gamefoss.com/mautic/form/generate.js?id=2")
+		.cf
+		.gutter
+		.gutter

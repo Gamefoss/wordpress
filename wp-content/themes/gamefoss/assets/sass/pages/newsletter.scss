@@ -1,0 +1,23 @@
+@import "../partials/partials"; // Sass partials
+
+#newsletter {
+	.mauticform-row {
+		// display: flex;
+		// align-items: center;
+		// height: 30px;
+		margin: $gutter auto;
+		// justify-content: flex-end;
+		label {
+			width: 120px;
+			font-weight: bold;
+		}
+		input {
+			height: 30px;
+		}
+		button {
+			background-color: $c-black;
+			color: $c-white;
+			float: right;
+		}
+	}
+}
