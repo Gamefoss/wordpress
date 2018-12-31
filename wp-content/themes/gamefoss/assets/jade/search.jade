@@ -66,6 +66,10 @@ block main
 						- if( have_posts() ): while( have_posts() ): the_post()
 							.col-xs-12.col-sm-6.col-md-4
 								- post_block()
-						- endwhile;endif
+						- endwhile
+						- else:
+							p.t--center!= __("[:pb]Nenhum resultado[:en]No Results[:]")
+						- endif;
 						.cf
 				.cf
+				.gutter
