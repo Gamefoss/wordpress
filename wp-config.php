@@ -110,7 +110,7 @@ switch (WP_ENV) {
 	case "development":
 		define('WP_SITEURL', WP_PROTOCOL . $_SERVER['SERVER_NAME'] ."/gamefoss");
 		define('WP_HOME',    WP_PROTOCOL . $_SERVER['SERVER_NAME'] . "/gamefoss");
-		define('WP_DEBUG', false);
+		define('WP_DEBUG', true);
 		break;
 	case "production":
 		define('WP_SITEURL', "https://" . $_SERVER['SERVER_NAME']);

@@ -12,19 +12,6 @@
 			max-width: 600px;
 		}
 	}
-	.author--container,
-	.date--container {
-		text-align: center;
-	}
-
-	@include bp($s-sm) {
-		.author--container {
-			text-align: left;
-		}
-		.date--container {
-			text-align: right;
-		}
-	}
 
 	.single-content {
 		p {

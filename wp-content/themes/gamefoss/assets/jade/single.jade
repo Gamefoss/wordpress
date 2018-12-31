@@ -64,7 +64,7 @@ block main
 							'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
 							'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
 							);
-						.author
+						.author-link
 							a(href!=echo('$_author->href') title!=echo('$_author->nickname'))
 								img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
 								!= "<strong>{$_author->name}</strong>&nbsp;|&nbsp;{$_author->nickname}"

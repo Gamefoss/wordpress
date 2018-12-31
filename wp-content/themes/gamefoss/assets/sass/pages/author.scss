@@ -1,0 +1,14 @@
+@import "../partials/partials"; // Sass partials
+
+#author {
+	.banner, .banner-carousel .item {
+		height: calc(100vh - 42px);
+		max-height: none;
+	}
+	img {
+		border-radius: 50%;
+	}
+	.socials {
+		justify-content: center;
+	}
+}

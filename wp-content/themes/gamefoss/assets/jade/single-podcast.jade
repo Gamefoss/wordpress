@@ -15,7 +15,7 @@ block banner-post-category
 				h2.title-2!= $_podcast->name
 
 block author
-	.author
+	.author-link
 		time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')
 
 

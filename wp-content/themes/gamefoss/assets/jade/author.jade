@@ -1,0 +1,36 @@
+extends index
+
+append styles
+	- wp_enqueue_style( 'author-css', get_template_directory_uri() . "/library/css/pages/author.css", false );
+	
+append variables
+	- $_author = get_user_by("ID", get_the_author_meta('ID') );
+block main
+	#author
+		block banner
+			+banner
+				h1.title-1.tt--uppercase!= get_the_author_meta( 'display_name' )
+				.gutter
+				img(src!=echo('get_avatar_url($_author->ID)') width="120")
+				.gutter
+				.gutter
+					:php
+						$_socials = get_field('socials', "user_{$_author->ID}" );
+						if ($_socials) include( locate_template( 'layout/socials.php' ) );
+				.gutter
+				.gutter
+				p.text.col-xs-12.col-sm-8.col-sm-offset-2
+					!= get_the_author_meta('description', $_author->ID)
+		block content
+		.gutter
+		.gutter
+		.wrap
+			.row
+				- if( have_posts() ): while( have_posts() ): the_post()
+					.col-xs-12.col-sm-6.col-md-4
+						- post_block()
+				- endwhile;endif
+				.cf
+				+pagination
+			.cf
+		.gutter

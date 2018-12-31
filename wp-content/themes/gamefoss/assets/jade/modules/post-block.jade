@@ -40,7 +40,7 @@ article.post-block(class!=echo('"post-block--{$options[\'variation\']}" . " " . 
 						break;
 				}
 			- if ( isset( $_author ) ):
-				a(href!=echo('$_author->href') title!=echo('$_author->nickname')).author
+				a(href!=echo('$_author->href') title!=echo('$_author->nickname')).author-link
 					img(src!=echo('$_author->avatar') alt!=echo('$_author->nickname'))
 					!= $_author->nickname
 			- endif
