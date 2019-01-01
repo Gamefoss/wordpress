@@ -5,6 +5,6 @@ nav.socials
     $_socials = ( isset($_socials) )? $_socials : get_field('socials');
     if (!$_socials) $_socials = get_field('socials', 'options');
   - foreach ( $_socials as $social ): $social = (object) $social
-    a.icon.social(class!=echo('"icon-{$social->network}"') href!=echo('$social->url') target="_blank")
+    a.icon.social(class!=echo('"icon-{$social->network}"') href!=echo('$social->url') target="_blank" data-analytics!=echo('"social|visit|{$social->network}"'))
   - endforeach
   - $_socials = NULL
