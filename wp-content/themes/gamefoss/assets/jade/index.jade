@@ -25,8 +25,15 @@ head
 
 	block analytics
 		- get_template_part( 'layout/analytics/google-analytics', 'google-analytics' )
+		- get_template_part( 'layout/analytics/google-tag-manager', 'google-tag-manager' )
 		- get_template_part( 'layout/analytics/facebook', 'facebook' )
 		- get_template_part( 'layout/analytics/mautic', 'mautic' )
+	
+	block json-ld
+		- get_template_part( 'layout/layout/google/json-ld', 'json-ld' )
+	
+	block adsense
+		- get_template_part( 'layout/layout/google/adsense', 'adsens' )
 
 body("<?php body_class(); ?>" style="overflow:hidden")
 	

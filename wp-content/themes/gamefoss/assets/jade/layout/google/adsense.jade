@@ -1,0 +1,8 @@
+- if ( get_field('google-adsense', 'options') ):
+	script(async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+	script.
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "<?php echo get_field('google-adsense', 'options') ?>",
+			enable_page_level_ads: true
+		});
+- endif

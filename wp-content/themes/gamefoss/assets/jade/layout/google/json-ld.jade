@@ -1,0 +1,11 @@
+script(type="application/ld+json").
+	{
+		"@context": "<?php echo home_url() ?>",
+		"@type": "WebSite",
+		"url": "<?php echo home_url() ?>",
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": "<?php echo home_url() ?>?q={search_term_string}" ,
+			"query-input": "required name=search_term_string"
+		}
+	}

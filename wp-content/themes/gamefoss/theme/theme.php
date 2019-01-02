@@ -84,5 +84,11 @@ if( function_exists('acf_add_options_page') ) {
 			'icon_url'    => "dashicons-warning"
 		)
 	);
+	acf_add_options_page(
+		array(
+			'page_title'  => "AdSense",
+			'icon_url'    => "dashicons-cart"
+		)
+	);
 }
 ?>
