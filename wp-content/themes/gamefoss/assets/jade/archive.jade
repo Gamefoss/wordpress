@@ -6,14 +6,17 @@ append styles
 append scripts
 	- wp_enqueue_script( 'archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
 
+append variables
+	:php
+		$_post_type = get_post_type();
+
 block main
 	#archive
 		block banner
 			+banner
 		block categories
 			:php
-				//- get taxonomy from post type
-				switch( get_post_type() ) {
+				switch( $_post_type ) {
 					case "ludokratia":
 						$_taxonomy = "ludokratia_categories";
 						break;
@@ -38,7 +41,7 @@ block main
 						- foreach ( $_categories as $i => $_category ):
 							:php
 								//- get badge color
-								$_class = array("badge--" . get_post_type());
+								$_class = array("badge--{$_post_type}");
 								
 								//- define how many category to display
 								if ( $i > 3 ) array_push($_class, "hidden-sm"); // só 6 links no tablet
@@ -49,7 +52,7 @@ block main
 								$_class = implode($_class, " ");
 							a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('$_class')).hidden-xs!= $_category->name
 						- endforeach
-						.select.badge(class!=echo('"badge--" . get_post_type()'))
+						.select.badge(class!=echo('"badge--{$_post_type}"'))
 							.select-label!= __("[:pb]Categorias[:en]Categories[:]")
 							select
 								- foreach ( get_terms( $_taxonomy ) as $_category ):
@@ -62,7 +65,19 @@ block main
 					- if( have_posts() ): while( have_posts() ): the_post()
 						.col-xs-12.col-sm-6.col-md-3
 							- post_block()
-					- endwhile;endif
+					- endwhile;else:
+						.col-xs-12
+							.col-xs-12
+								.gutter
+								.gutter
+								.gutter
+								.gutter
+								.t--center.text!= __("[:pb]Não há posts para esta categoria[:en]There is no posts for this category[:]")
+								.gutter
+								.gutter
+								.gutter
+								.gutter
+					- endif
 				.cf
 				+pagination
 			.cf

@@ -2,10 +2,9 @@ extends index
 
 append styles
 	- wp_enqueue_style( 'author-css', get_template_directory_uri() . "/library/css/pages/author.css", false );
-	
-append variables
-	- $_author = get_user_by("ID", get_the_author_meta('ID') );
+
 block main
+	- $_author = get_user_by("slug", get_query_var('author_name') );
 	#author
 		block banner
 			+banner
@@ -29,7 +28,18 @@ block main
 				- if( have_posts() ): while( have_posts() ): the_post()
 					.col-xs-12.col-sm-6.col-md-4
 						- post_block()
-				- endwhile;endif
+				- endwhile;else:
+				.col-xs-12
+					.gutter
+					.gutter
+					.gutter
+					.gutter
+					.t--center.text!= __("[:pb]Não há posts deste autor[:en]There is no posts from this author[:]")
+					.gutter
+					.gutter
+					.gutter
+					.gutter
+				- endif;
 				.cf
 				+pagination
 			.cf

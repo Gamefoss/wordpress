@@ -5,7 +5,7 @@
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
-		<?php foreach ( get_field('google_analytics') as $ga ): ?>
+		<?php foreach ( get_field('google_analytics', 'option') as $ga ): ?>
 			gtag('config', '<?php echo $ga["id"] ?>');
 		<?php endforeach ?>
 - endif

@@ -16,21 +16,29 @@
 	.single-content {
 		p {
 			margin: $gutter auto;
-			&:first-child::first-letter {
-				// font-size: 3em;
-				font-size: 5em;
-				line-height: 1.05;
-				margin: 0 .1em -.2em 0;
-				font-weight: bold;
-				display: block;
-				float: left;
-				text-transform: uppercase;
-			}
+		}
+		> p:first-child::first-letter {
+			font-size: 5em;
+			line-height: 1.05;
+			margin: 0 .1em -.2em 0;
+			font-weight: bold;
+			display: block;
+			float: left;
+			text-transform: uppercase;
 		}
 
 		@each $name, $color in $colors {
-			&.#{$name} p:first-child::first-letter {
-				color: $color;
+			&.#{$name} {
+				> p:first-child::first-letter,
+				blockquote {
+					color: $color;
+				}
+				blockquote p:before {
+					background-color: $color;
+				}
+				hr {
+					border-color: $color;
+				}
 			}
 		}
 
@@ -39,6 +47,54 @@
 			margin: $gutter*2 auto;
 			max-width: 80%;
 			height: auto;
+		}
+
+		iframe {
+			@include aspect-ratio(16,9);
+			@include bp($s-sm) {
+				min-height: 260px;
+			}
+			@include bp($s-md) {
+				min-height: 360px;
+			}
+			@include bp($s-lg) {
+				min-height: 400px;
+			}
+		}
+
+		blockquote {
+			font-size: 1.5em;
+			margin: $gutter*4 auto;
+			p {
+				position: relative;
+				text-align: right;
+				padding: 0 $gutter*4;
+				&:before {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 24px;
+					height: 24px;
+					@include svg-mask(image-url("single/quote.svg"));
+					background-color: $c-black;
+				}
+			}
+		}
+
+		hr {
+			border-color: $c-black;
+		}
+
+		ul, ol {
+			clear: both;
+			padding: 0 $gutter*2;
+		}
+		ul {
+			list-style: disc;
+		}
+		ol {
+			list-style: decimal;
 		}
 
 		.wp-caption {

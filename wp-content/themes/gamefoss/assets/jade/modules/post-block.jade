@@ -22,6 +22,27 @@ article.post-block(class!=echo('"post-block--{$options[\'variation\']}" . " " . 
 	a(href!=echo('get_the_permalink()') title!=echo('get_the_title()'))
 	.img(style!=background('get_featured_image()', true))
 	.content
+		- if( is_author() ):
+			:php
+				$_type = (object) array(
+					'href'	=> get_post_type_archive_link(get_post_type()) ,
+					'title'	=> (function() {
+						switch( get_post_type() ) {
+							case "post":
+								return __("[:pb]Entretenimento[:en]Entertainment[:]");
+								break;
+							case "podcast":
+								return "podcasts";
+								break;
+							default:
+								return get_post_type_object(get_post_type())->name;
+								break;
+						}
+					})()				
+				);
+			a(href!=echo('$_type->href') title!=echo('$_type->title') class!=echo('"badge--" . get_post_type() ')).category.badge!= $_type->title
+			| &nbsp;
+		- endif
 		- if ( $options['category'] ):
 			a(href!=echo('get_term_link($_cat->term_id, $_taxonomy)') title!=echo('$_cat->name') class!=echo('"badge--" . get_post_type() ')).category.badge!= $_cat->name
 		- endif

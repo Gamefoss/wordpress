@@ -6,5 +6,6 @@ append scripts
 nav.socials.share(class!=echo('get_post_type()'))
   span!= __("[:pb]Compartilhe:[:en]Share:[:]")
   | &nbsp;&nbsp;
-  a.social.icon.icon-facebook(href!=echo('"https://www.facebook.com/sharer/sharer.php?text=" . urlencode( get_the_title() ) . "&u=" . urlencode( get_the_permalink() ) ') target="_blank" data-analytics!=echo('"social|share|facebook|" . get_the_ID()'))
-  a.social.icon.icon-twitter(href!=echo('"https://twitter.com/intent/tweet?counturl=" . urlencode( get_the_permalink() ) . "&text=" . urlencode( get_the_title() ) . "&url=" . urlencode( get_the_permalink() ) ."&via=game_foss"') target="_blank" data-analytics!=echo('"social|share|facebook|twitter" . get_the_ID()'))
+  - $url = function_exists( "wpbitly_shortlink" )? strip_tags( wpbitly_shortlink() ) : get_the_permalink();
+  a.social.icon.icon-facebook(href!=echo('"https://www.facebook.com/sharer/sharer.php?text=" . urlencode( get_the_title() ) . "&u=" . urlencode( $url ) ') target="_blank" data-analytics!=echo('"social|share|facebook|" . get_the_ID()'))
+  a.social.icon.icon-twitter(href!=echo('"https://twitter.com/intent/tweet?counturl=" . urlencode( $url ) . "&text=" . urlencode( get_the_title() ) . "&url=" . urlencode( $url ) ."&via=game_foss"') target="_blank" data-analytics!=echo('"social|share|facebook|twitter" . get_the_ID()'))
