@@ -1,0 +1,68 @@
+mixin stars
+	:php
+		$_stars = array("empty", "empty", "empty", "empty", "empty");
+		for ( $i = 0; $i <= $_score; $i+= 0.5 ) {
+			switch ( $i ) {
+				case 0.5:
+					$_stars[0] = "half";
+					break;
+				case 1:
+					$_stars[0] = "full";
+					break;
+				case 1.5:
+					$_stars[1] = "half";
+					break;
+				case 2:
+					$_stars[1] = "full";
+					break;
+				case 2.5:
+					$_stars[2] = "half";
+					break;
+				case 3:
+					$_stars[2] = "full";
+					break;
+				case 3.5:
+					$_stars[3] = "half";
+					break;
+				case 4:
+					$_stars[3] = "full";
+					break;
+				case 4.5:
+					$_stars[4] = "half";
+					break;
+				case 5:
+					$_stars[4] = "full";
+					break;
+			}
+		}
+		$_score = NULL;
+	- foreach ( $_stars as $_star ):
+		span.star.icon(class!=echo('"icon-star-{$_star}"'))
+	- endforeach
+	
+
+append styles
+	- wp_enqueue_style( 'review-css', get_template_directory_uri() . "/library/css/layout/review.css", false );
+.gutter
+.gutter
+section#review(class!=echo('get_post_type()'))
+	.image(style!=background('get_featured_image()', true))
+	.review--content
+		ul.categories.col-xs-12.col-sm-8
+			- foreach ( get_field( 'review' ) as $_review ):
+			li.category
+				span.title-3!= $_review['item']
+				.score
+					- $_score = $_review['score'];
+					+stars
+			- endforeach
+		.general-score.t--center.col-xs-12.col-sm-4
+			:php
+				$_scores = array();
+				foreach ( get_field( 'review' ) as $_review ) array_push( $_scores, $_review['score'] );
+				$_score = array_sum( $_scores ) / count( $_scores );
+				$_score = round( $_score * 2 ) / 2
+			span.title-3.t--center.tt--uppercase!= __("[:pb]Nota[:en]Score[:]")
+			h3.title-1!= $_score
+			+stars
+		.cf

@@ -23,6 +23,9 @@
   ('instagram', 'socials/instagram')
   ('youtube', 'socials/youtube')
   ('twitch', 'socials/twitch')
+  ('star-empty', 'stars/star-empty')
+  ('star-half', 'stars/star-half')
+  ('star-full', 'stars/star-full')
   ) {
     &.icon-#{$name} {
       @include svg-mask(image-url('icons/#{$file}.svg'));
