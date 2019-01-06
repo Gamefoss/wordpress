@@ -4,6 +4,14 @@ append styles
 	- wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
 	- wp_enqueue_style( 'single-css', get_template_directory_uri() . "/library/css/pages/single/single.css", false );
 
+append scripts
+- if ( get_field('google-adsense', 'options')):
+	script.
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "<?php echo get_field('google-adsense', 'options') ?>",
+			enable_page_level_ads: true
+		});
+- endif
 block main
 	article#single
 		block banner

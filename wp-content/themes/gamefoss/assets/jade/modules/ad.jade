@@ -1,13 +1,18 @@
 append styles
 	- wp_enqueue_style( 'ad-css', get_template_directory_uri() . "/library/css/modules/ad.css", false );
+append scripts
+	- wp_enqueue_script( 'ad-js', get_template_directory_uri() . '/library/js/modules/ad.min.js', array ( 'jquery' ), 1.0, true);
   
-.ad(class!=echo('"ad-{$size}"'))
+.ad(class!=echo('"ad-{$_ad->size}"'))
 	//- google ad
-	- if ( get_field('google-adsense', 'options') && !$custom ):
+	- if ( get_field('google-adsense', 'options') && !$_ad->custom ):
 		script(async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
 		// <?php echo $_ad->size ?>
 		ins(class="adsbygoogle" style!=echo('"display:block;width:{$_ad->width};height:{$_ad->height}"') data-ad-client!=echo('get_field("google-adsense", "options")') data-ad-slot!=echo('$_ad->slot')) 
 		script.
 			(adsbygoogle = window.adsbygoogle || []).push({});
+		span!= __("[:pb]Publicidade[:en]Advertisement[:]")
+	- else:
+		.ad-inner(data-name!=echo('$_ad->name'))!= $_ad->code
+		span!= __("[:pb]Publicidade Especial[:en]Special Advertisement[:]")
 	- endif
-	span!= __("[:pb]Publicidade[:en]Advertisement[:]")

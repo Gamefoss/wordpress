@@ -86,7 +86,7 @@ if( function_exists('acf_add_options_page') ) {
 	);
 	acf_add_options_page(
 		array(
-			'page_title'  => "AdSense",
+			'page_title'  => "Anúncios",
 			'icon_url'    => "dashicons-cart"
 		)
 	);
