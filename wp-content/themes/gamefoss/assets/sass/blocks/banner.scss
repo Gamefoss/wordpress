@@ -16,6 +16,7 @@
 		.item {
 			background: center no-repeat;
 			background-size: cover;
+			background-attachment: fixed;
 			height: 100vh;
 			max-height: 40vh;
 			@include filter( blur( 10px ) );

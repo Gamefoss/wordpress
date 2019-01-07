@@ -1,7 +1,10 @@
 - wp_footer()
 
 footer#footer
-
+	- if( is_single() ):
+		button(title!=echo('__("[:pb]Voltar ao topo[:en]Back to top[:]")')).btn-up.btn.btn--transparent.transition.transform
+			.icon.icon-chevron
+	- endif
 	.wrap
 		.row
 			.col-xs-12.col-md-2.col-lg-3

@@ -26,6 +26,7 @@
   ('star-empty', 'stars/star-empty')
   ('star-half', 'stars/star-half')
   ('star-full', 'stars/star-full')
+  ('chevron', 'chevron')
   ) {
     &.icon-#{$name} {
       @include svg-mask(image-url('icons/#{$file}.svg'));

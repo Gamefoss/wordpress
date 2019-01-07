@@ -5,6 +5,9 @@
 body {
   background: $c-bg;
 }
+#wrapper {
+  margin-top: 42px;
+}
 
 /* ==== ==== ==== BACKGROUND ==== ==== ==== */
 @each $name, $color in $colors {

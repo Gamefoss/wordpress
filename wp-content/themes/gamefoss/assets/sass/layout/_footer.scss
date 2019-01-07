@@ -2,6 +2,22 @@ footer#footer {
   background-color: $c-menu;
   padding-top: 24px;
   padding-bottom: 12px;
+  position: relative;
+  .btn.btn-up {
+    position: fixed;
+    right: $gutter;
+    bottom: $gutter*2;
+    @include transform(translate3d(0,72px,0));
+    z-index: 9;
+    .icon {
+      width: 24px;
+      height: 24px;
+      background: $c-black;
+    }
+    &.show {
+      @include transform(translate3d(0,0px,0));
+    }
+  }
 
   .logo {
     margin: 0 auto;
