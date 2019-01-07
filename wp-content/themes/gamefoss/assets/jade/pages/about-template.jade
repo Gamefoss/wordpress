@@ -40,8 +40,8 @@ block main
 			- foreach ( get_users() as $_user ):
 				- if ( !get_field( 'team', "user_{$_user->ID}") ) continue;
 					.col-xs-12.col-sm-4
-						.person(style!=background('get_field( "banner", "user_{$_user->ID}" )', true))
-							.ball(style!=background('get_avatar_url($_user->ID)', true))
+						a.person(href!=echo('get_author_posts_url($_user->ID)') style!=background('get_field( "banner", "user_{$_user->ID}" )', true))
+							img.ball(src!=echo('get_avatar_url($_user->ID)') alt!=echo('get_the_author_meta("display_name", $_user->ID)'))
 							h1.title-1.t--left.tt--uppercase.c--white.name!= get_the_author_meta('display_name', $_user->ID)
 						- $_socials = get_field('socials', "user_{$_user->ID}")
 						- include( locate_template( 'layout/socials.php' ) )

@@ -25,22 +25,23 @@
 	}
 	.person {
 		width: 100%;
-		height: 200px;
+		height: 160px;
+		margin-top: $gutter;
 		margin-bottom: $gutter;
 		background: center no-repeat;
 		background-size: cover;
 		position: relative;
-		overflow: hidden;
+		// overflow: hidden;
 
-		@include bp($s-sm) {
-			height: 160px;
-		}
-		@include bp($s-md) {
-			height: 200px;
-		}
-		@include bp($s-lg) {
-			height: 260px;
-		}
+		// @include bp($s-sm) {
+		// 	height: 160px;
+		// }
+		// @include bp($s-md) {
+		// 	height: 200px;
+		// }
+		// @include bp($s-lg) {
+		// 	height: 260px;
+		// }
 		&:after {
 			content: "";
 			position: absolute;
@@ -51,15 +52,16 @@
 			@include background-image( linear-gradient( 180deg, rgba($c-black, 0) 0%, $c-black 100%) );
 		}
 		.ball {
-			width: 65%;
+			width: auto;
+			height: 120px;
 			border-radius: 50%;
 			border: solid 2px black;
-			background: center no-repeat;
-			background-size: cover;
 			margin: 0 auto;
-			margin-top: 5%;
 			display: block;
 			@include aspect-ratio(1,1);
+			z-index: 1;
+			position: relative;
+			top: -$gutter;
 		}
 		.name {
 			position: absolute;
