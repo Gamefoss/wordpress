@@ -58,6 +58,12 @@ function df_disable_comments_admin_bar() {
 }
 add_action('init', 'df_disable_comments_admin_bar');
 
+// remove wp header top css
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
 // ACF OPTIONS PAGE
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(
