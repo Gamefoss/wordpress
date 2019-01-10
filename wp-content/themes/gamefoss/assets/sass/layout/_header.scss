@@ -56,7 +56,7 @@ header#header {
 				top: $gutter/2;
 				left: $gutter/2;
 				z-index: 1;
-				@include transform(translate3d(100%,0,0));
+				@include transform(translate3d(-100%,0,0));
 				.icon {
 					background: $c-black;
 				}
@@ -170,6 +170,26 @@ header#header {
 			button .icon {
 				background-color: $c-black;
 			}
+		}
+	}
+
+	@include bp(false, $s-md) {
+		.logo {
+			position: fixed;
+			left: 50%;
+			margin-left: -60px;
+			@include transition(left $transition-default, margin-left $transition-default);
+		}
+
+		&.menu-mobile-open .logo {
+			// position: fixed;
+			// left: 50%;
+			// margin-left: -60px;
+			z-index: 11;
+		}
+		&.menu-mobile-opened .logo {
+			left: 0%;
+			margin-left: 60px;
 		}
 	}
 }

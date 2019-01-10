@@ -37,13 +37,17 @@
     $mobile_menu
     .on 'menu:open', ->
       $mobile_menu.addClass "show"
+      $header.addClass "menu-mobile-open"
       setTimeout ->
         $mobile_menu.addClass "opened"
+        $header.addClass "menu-mobile-opened"
       , 300
     .on 'menu:close', ->
       $mobile_menu.removeClass "opened"
+      $header.removeClass "menu-mobile-opened"
       setTimeout ->
         $mobile_menu.removeClass "show"
+        $header.removeClass "menu-mobile-open"
       , 300
 
     # LISTENERS
