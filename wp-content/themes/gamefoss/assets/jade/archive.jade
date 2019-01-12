@@ -4,7 +4,7 @@ append styles
 	- wp_enqueue_style( 'archive-css', get_template_directory_uri() . "/library/css/pages/archive/archive.css", false );	
 
 append scripts
-	- wp_enqueue_script( 'archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
+	- wp_enqueue_script( 'defer-archive-js', get_template_directory_uri() . '/library/js/pages/archive/archive.min.js', array ( 'jquery' ), 1.0, true);
 
 append variables
 	:php

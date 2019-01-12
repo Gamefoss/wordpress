@@ -9,20 +9,6 @@
 		padding: $gutter*4 $gutter/2;
 	}
 
-	.help {
-		background-color: #999999;
-		width: 100%;
-		padding: $gutter*2 0;
-		.btn--container {
-			text-align: center;
-		}
-		.btn {
-			width: 180px;
-			display: inline-block;
-			margin: $gutter*2 $gutter/2;
-			margin-bottom: 0;
-		}
-	}
 	.person {
 		display: block;
 		width: 100%;

@@ -1,0 +1,12 @@
+mixin support
+	append styles
+		- wp_enqueue_style( 'block-support-css', get_template_directory_uri() . "/library/css/blocks/support.css", false );
+	- if ( get_field("support", get_page_by_path("apoie")->ID) ):
+		.support
+			h2.title-2.tt--uppercase.t--center!= __("[:pb]Nos ajude a continuar[:en]Support us[:]")
+			nav.btn--container
+				- foreach ( get_field("support", get_page_by_path("apoie")->ID) as $_link ):
+					- $_link = $_link["link"]
+					a(href!=echo('$_link["url"]') target!=echo('$_link["target"]')).btn.btn--black!= __($_link["title"])
+				- endforeach
+	- endif

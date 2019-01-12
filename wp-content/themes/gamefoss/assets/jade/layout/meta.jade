@@ -1,5 +1,20 @@
 meta(charset!=echo(" bloginfo( 'charset' ) "))
 meta(name="theme-color" content="#ed1c24")
-meta(name='viewport', content='width=device-width, initial-scale=1.0')
-link(rel='profile', href='http://gmpg.org/xfn/11')
-link(rel='pingback', href!="<?php bloginfo( 'pingback_url' ); ?>")
+meta(name='viewport' content='width=device-width initial-scale=1.0')
+link(rel='profile' href='http://gmpg.org/xfn/11')
+link(rel='pingback' href!="<?php bloginfo( 'pingback_url' ); ?>")
+link(rel="preload" href!=echo('get_stylesheet_directory_uri() . "/library/css/style.css"') as="style")
+	
+:php
+	$_preconns = array(
+		"https://googleads4.g.doubleclick.net",
+		"https://fonts.googleapis.com",
+		"https://www.google.com",
+		"https://s0.2mdn.net",
+		"https://googleads.g.doubleclick.net",
+		"https://fonts.gstatic.com"
+	);
+- foreach ( $_preconns as $_preconn ):
+	link(rel="preconnect" href!=echo('$_preconn'))
+- endforeach
+	

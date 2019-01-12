@@ -104,17 +104,17 @@ function bones_scripts_and_styles() {
 
 
 		// adding general scripts
-		wp_register_script( 'scripts-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array('jquery'), '', true );
-		wp_register_script( 'layout-js', get_stylesheet_directory_uri() . '/library/js/layout/layout.min.js', array('jquery'), '', true );
-		wp_register_script( 'analytics-js', get_stylesheet_directory_uri() . '/library/js/modules/analytics.min.js', array('jquery'), '', true );
+		wp_register_script( 'defer-scripts-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array('jquery'), '', true );
+		wp_register_script( 'defer-layout-js', get_stylesheet_directory_uri() . '/library/js/layout/layout.min.js', array('jquery'), '', true );
+		wp_register_script( 'async-analytics-js', get_stylesheet_directory_uri() . '/library/js/modules/analytics.min.js', array('jquery'), '', true );
 
 		wp_enqueue_style( 'bones-stylesheet' );
 
-		wp_enqueue_script( 'scripts-js' );
-		wp_enqueue_script( 'layout-js' );
-		wp_enqueue_script( 'analytics-js' );
+		wp_enqueue_script( 'defer-scripts-js' );
+		wp_enqueue_script( 'defer-layout-js' );
+		wp_enqueue_script( 'async-analytics-js' );
 
-		wp_localize_script( 'scripts-js', 'ajax', array(
+		wp_localize_script( 'defer-scripts-js', 'ajax', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' )
 		));
 

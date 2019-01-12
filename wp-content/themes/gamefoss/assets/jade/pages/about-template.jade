@@ -24,15 +24,7 @@ block main
 						.text.t--left.txt!= $area["text"]
 				- endforeach 
 				.cf
-		- if ( get_field("help") ):
-			.help
-				h2.title-2.tt--uppercase.t--center!= __("[:pb]Nos ajude a continuar[:en]Support us[:]")
-				nav.btn--container
-					- foreach ( get_field("help") as $_link ):
-						- $_link = $_link["link"]
-						a(href!=echo('$_link["url"]') target!=echo('$_link["target"]')).btn.btn--black!= __($_link["title"])
-					- endforeach
-		- endif
+		+support
 		.wrap
 			.col-xs-12
 				+compound-header( "Equipe" )
