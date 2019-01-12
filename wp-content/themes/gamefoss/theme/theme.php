@@ -64,6 +64,12 @@ function remove_admin_login_header() {
 	remove_action('wp_head', '_admin_bar_bump_cb');
 }
 
+// remove guntemberg styles
+add_action( 'wp_print_styles', function () {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'qts_front_styles' );
+}, 100 );
+
 // ACF OPTIONS PAGE
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(

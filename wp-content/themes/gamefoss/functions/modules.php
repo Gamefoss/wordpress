@@ -3,10 +3,11 @@
 function ad( $size = "auto" ) {
 
 	// verify custom ads condition
-	// get the custom ads
-	$_custom_ads = array();
-	// if any
-	if ( get_field('custom_ads', 'option') ) {
+	global $_custom_ads;
+	$_custom_ads = ($_custom_ads)? $_custom_ads : array(); // get the custom ads
+
+	// if none, run once per page view to fetch them
+	if ( !sizeof($_custom_ads) && get_field('custom_ads', 'option') ) {
 		// get only valid ads
 		if ( have_rows('custom_ads', 'option') ) {
 			while ( have_rows('custom_ads', 'option') ) {
@@ -32,29 +33,46 @@ function ad( $size = "auto" ) {
 					if ( date('d/m/Y') > get_sub_field( 'max_date' ) ) continue;
 				}
 
-				// verify the ad size
-				if ( get_sub_field( 'size' ) != $size ) continue;
-
 				// after all verifications, add to custom ad list
 				array_push( $_custom_ads, (object) array(
 					'name'	=> get_sub_field( 'name' ),
-					'code'	=> get_sub_field( 'code' )
+					'code'	=> get_sub_field( 'code' ),
+					'size'	=> get_sub_field( 'size' )
 				) );
 			}
 		}
 	}
 
+	$_ad = false; // by default, there is no ad
+
 	// if there is valid custom ads, they will appear only 50% of the time
-	if ( sizeof( $_custom_ads )  && rand( 0,1 ) ) {
-		$_custom_ad = $_custom_ads[ array_rand( $_custom_ads ) ];
-		$_ad = (object) array(
-			'name'		=> $_custom_ad->name,
-			'size'		=> $size,
-			'custom'	=> true,
-			'code'		=> $_custom_ad->code
-		);
-	} else {
-		// else, google ads
+	if ( sizeof( $_custom_ads ) && rand( 0, 1 ) ) {
+
+		// filter by valid custom ad sizes
+		$_valid_custom_ads = array();
+		foreach( $_custom_ads as $_custom_ad ) if ( $_custom_ad->size == $size ) array_push( $_valid_custom_ads, $_custom_ad );
+
+		// if any custom ad fits
+		if ( sizeof($_valid_custom_ads) ) {
+			// get one randomly
+			$_custom_ad = $_valid_custom_ads[ array_rand( $_valid_custom_ads ) ];
+
+			// configure ad
+			$_ad = (object) array(
+				'name'		=> $_custom_ad->name,
+				'size'		=> $size,
+				'custom'	=> true,
+				'code'		=> $_custom_ad->code
+			);
+		} else {
+			// fallback to google ad
+			$_ad = false;
+		}
+	}
+
+	// if not custom ad and google ad configured
+	if ( !$_ad && get_field('google-adsense', 'options') ) {
+
 		$_ad = (object) array(
 			'custom'	=> false,
 			'size'		=> $size,
@@ -97,6 +115,7 @@ function ad( $size = "auto" ) {
 				break;
 		}
 	}
+
 	include(locate_template('modules/ad.php'));
 }
 

@@ -3,7 +3,5 @@
 @import "../blocks/mosaic"; // home mosaic stykes
 
 #home {
-	.ad-container {
-		padding-top: 1px;
-	}
+	padding-top: $gutter*2;
 }

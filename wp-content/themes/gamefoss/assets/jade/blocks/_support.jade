@@ -1,7 +1,7 @@
 mixin support
-	append styles
-		- wp_enqueue_style( 'block-support-css', get_template_directory_uri() . "/library/css/blocks/support.css", false );
 	- if ( get_field("support", get_page_by_path("apoie")->ID) ):
+		//- append styles
+		- wp_enqueue_style( 'block-support-css', get_template_directory_uri() . "/library/css/blocks/support.css", false );
 		.support
 			h2.title-2.tt--uppercase.t--center!= __("[:pb]Nos ajude a continuar[:en]Support us[:]")
 			nav.btn--container

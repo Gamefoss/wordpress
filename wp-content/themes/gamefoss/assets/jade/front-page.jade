@@ -7,13 +7,16 @@ block main
 	- gf_update_podcasts_feeds_func();
 	#home.wrap
 		.ad-container
-			.visible-xs
-				.row
-					- ad( 'mobile-banner' )
-			.visible-sm
-				- ad( 'leaderboard' )
+			- if ( wp_is_mobile() ):
+				.visible-xs
+					.row
+						- ad( 'mobile-banner' )
+				.visible-sm
+					- ad( 'leaderboard' )
+		- else:
 			.visible-md.visible-lg.visible-xl
 				- ad( 'large-leaderboard' )
+		- endif
 		.live-container
 			- include( locate_template( 'layout/live.php' ) )
 		.mosaic
@@ -100,12 +103,15 @@ block main
 					.col-xs-12.t--center
 						a.btn.btn--entertainment(href!=echo('get_post_type_archive_link( "post" )'))!= __("[:pb]Ver Mais[:en]See more[:]")
 			.col-xs-12.col-md-4
-				.visible-xs
-					- ad( 'square' )
-				.visible-sm
-					- ad( 'leaderboard' )
-				.hidden-xs.hidden-sm
-					- ad( 'half-page' )
+				- if ( wp_is_mobile() ):
+					.visible-xs
+						- ad( 'square' )
+						.visible-sm
+							- ad( 'leaderboard' )
+				- else:
+					.hidden-xs.hidden-sm
+						- ad( 'half-page' )
+				- endif
 			.cf
 		section#podcasts
 			.row
@@ -135,8 +141,11 @@ block main
 						- endforeach
 					.cf
 				.cf
-				.visible-xs
-					- ad( 'square' )
-				.hidden-xs
-					- ad( 'leaderboard' )
+				- if ( wp_is_mobile() ):
+					.visible-xs
+						- ad( 'square' )
+				- else:
+					.hidden-xs
+						- ad( 'leaderboard' )
+				- endif
 			.cf

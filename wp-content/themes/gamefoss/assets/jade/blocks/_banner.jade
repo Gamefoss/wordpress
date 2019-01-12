@@ -1,11 +1,11 @@
 mixin banner
-	append styles
-		- wp_enqueue_style( 'animate-css', get_template_directory_uri() . "/library/css/third/animate.css", false );
-		- wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
-		- wp_enqueue_style( 'banner-css', get_template_directory_uri() . "/library/css/blocks/banner.css", false );
-	append scripts
-		- wp_enqueue_script( 'defer-owl-carousel-js', get_template_directory_uri() . '/library/js/libs/owl.carousel.min.js', array ( 'jquery' ), 1.0, true);
-		- wp_enqueue_script( 'defer-banner-js', get_template_directory_uri() . '/library/js/blocks/banner.min.js', array ( 'jquery' ), 1.0, true);
+	//- append styles
+	- wp_enqueue_style( 'animate-css', get_template_directory_uri() . "/library/css/third/animate.css", false );
+	- wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
+	- wp_enqueue_style( 'banner-css', get_template_directory_uri() . "/library/css/blocks/banner.css", false );
+	//- append scripts
+	- wp_enqueue_script( 'defer-owl-carousel-js', get_template_directory_uri() . '/library/js/libs/owl.carousel.min.js', array ( 'jquery' ), 1.0, true);
+	- wp_enqueue_script( 'defer-banner-js', get_template_directory_uri() . '/library/js/blocks/banner.min.js', array ( 'jquery' ), 1.0, true);
 	.banner
 		.banner-carousel.owl-carousel
 			block banner-carousel
