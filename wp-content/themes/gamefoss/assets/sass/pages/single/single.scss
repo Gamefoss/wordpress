@@ -42,8 +42,16 @@
 			}
 		}
 
+		iframe {
+			display: block;
+			margin: 24px auto;
+			max-width: 80%;
+			width: 100%;
+			height: auto;
+		}
+
 		@include bp(false, $s-sm) {
-			img, iframe, .wp-caption {
+			img, .wp-caption {
 				display: block;
 				margin: 24px auto;
 				max-width: 80%;
@@ -52,12 +60,12 @@
 			}
 		}
 		@include bp($s-sm) {
-			img, iframe, .wp-caption {
+			img, .wp-caption {
 				max-width: 100%;
 				margin: $gutter*2 auto;
 				height: auto;
 			}
-			
+
 			.alignleft,
 			.alignright,
 			.aligncenter,
@@ -72,11 +80,11 @@
 			.alignleft {
 				float: left;
 			}
-			
+
 			.alignright {
 				float: right;
 			}
-			
+
 			.aligncenter,
 			.alignnone {
 			}
