@@ -1,3 +1,6 @@
+/*************************
+FONT FACES
+**************************/
 @include font-face(
 	"Roboto",
 	font-files(
@@ -70,6 +73,9 @@
 	normal
 );
 
+/******************************
+FONT GENERAL
+******************************/
 html, body {
 	font-size: 16px;
 	text-rendering: optimizeLegibility;
@@ -83,6 +89,68 @@ h1, h2, h3 {
 	font-weight: bold;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/******************************
+FONT TACHYONS
+******************************/
+// font family
+@each $name, $font in (
+	('roboto', $f-roboto)
+	('open', $f-open)
+) {
+	.f--#{$name} {
+		font-family: $font;
+	}
+}
+
+// text transform
+@each $transform in (
+	uppercase,
+	lowercase,
+	capitalize
+) {
+	.tt--#{$transform} {
+		text-transform: $transform;
+	}
+}
+
+// align
+@each $pos in (left, center, right, justify) {
+	.t--#{$pos} {
+		text-align: $pos;
+	}
+}
+
+// font weight
+@each $weight in (lighter, normal, bold) {
+	.f--#{$weight} {
+		font-weight: $weight;
+	}
+}
+
+// color
+@each $name, $color in $colors {
+	.c--#{$name} {
+		color: $color
+	}
+}
+
+
+/******************************
+FONT STYLES
+******************************/
 .title-1,
 .title-2,
 .title-3 {
@@ -99,11 +167,6 @@ h1, h2, h3 {
 
 .title-3 {
 	@include fluid-type(16, 18);
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
 }
 
 .text {
@@ -124,58 +187,4 @@ a {
 	a {
 		text-decoration: underline;
 	}
-}
-
-.tag {
-	font-family: $f-roboto;
-	font-weight: lighter;
-	font-size: rem(14);
-	&:before {
-		content: "#";
-	}
-}
-
-@each $name, $font in (
-	('roboto', $f-roboto)
-	('open', $f-open)
-) {
-	.f--#{$name} {
-		font-family: $font;
-	}
-}
-
-@each $transform in (
-	uppercase,
-	lowercase,
-	capitalize
-) {
-	.tt--#{$transform} {
-		text-transform: $transform;
-	}
-}
-
-@each $pos in (left, center, right, justify) {
-	.t--#{$pos} {
-		text-align: $pos;
-	}
-}
-
-@each $weight in (lighter, normal, bold) {
-	.f--#{$weight} {
-		font-weight: $weight;
-	}
-}
-
-@each $name, $color in $colors {
-	.c--#{$name} {
-		color: $color
-	}
-}
-
-strong {
-	font-weight: bold;
-}
-
-em {
-	font-style: italic;
 }
