@@ -9,7 +9,7 @@ sidebars, comments, etc.
 */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
-require_once( 'theme/bones.php' );
+// require_once( 'theme/bones.php' );
 
 // LOAD THEME CORE
 require_once('theme/theme.php');
