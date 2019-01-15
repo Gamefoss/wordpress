@@ -4,7 +4,7 @@ block template-name
 	- // Template Name: Sobre
 
 append styles
-	- wp_enqueue_style( 'about-css', get_template_directory_uri() . "/library/css/pages/about.css", false );
+	- wp_enqueue_style( 'about-css', get_template_directory_uri() . "/library/css/pages/about.css", array(), null );
 
 block main
 	#about

@@ -27,12 +27,12 @@ add_action( 'after_setup_theme', function() {
 	add_action( 'wp_enqueue_scripts', function () {
 		if (!is_admin()) {
 			// Add base css
-			wp_enqueue_style( 'style-css', get_stylesheet_directory_uri() . "/library/css/style.css", false );
+			wp_enqueue_style( 'style-css', get_stylesheet_directory_uri() . "/library/css/style.css", array(), null );
 			
 			// Add base js
-			wp_enqueue_script( 'defer-script-js', get_template_directory_uri() . "/library/js/scripts.min.js", array( 'jquery' ) );
-			wp_enqueue_script( 'defer-layout-js', get_stylesheet_directory_uri() . "/library/js/layout/layout.min.js", array( 'jquery' ) );
-			wp_enqueue_script( 'async-analytics-js', get_stylesheet_directory_uri() . "/library/js/modules/analytics.min.js", array( 'jquery' ) );
+			wp_enqueue_script( 'defer-script-js', get_template_directory_uri() . "/library/js/scripts.min.js", array( 'jquery' ), null );
+			wp_enqueue_script( 'defer-layout-js', get_stylesheet_directory_uri() . "/library/js/layout/layout.min.js", array( 'jquery' ), null );
+			wp_enqueue_script( 'async-analytics-js', get_stylesheet_directory_uri() . "/library/js/modules/analytics.min.js", array( 'jquery' ), null );
 
 			// add ajaxurl for REST API
 			wp_localize_script( 'defer-scripts-js', 'ajax', array(

@@ -1,8 +1,8 @@
 extends index
 
 append styles
-	- wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . "/library/css/third/owl.carousel.css", false );
-	- wp_enqueue_style( 'single-css', get_template_directory_uri() . "/library/css/pages/single/single.css", false );
+	- wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . "/library/css/third/owl.carousel.css", array(), null );
+	- wp_enqueue_style( 'single-css', get_template_directory_uri() . "/library/css/pages/single/single.css", array(), null );
 
 append scripts
 - if ( get_field('google-adsense', 'options')):

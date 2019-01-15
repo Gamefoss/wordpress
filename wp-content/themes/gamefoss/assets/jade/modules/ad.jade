@@ -1,7 +1,7 @@
 
 - if ( $_ad ):
 	//- append styles
-	- wp_enqueue_style( 'ad-css', get_template_directory_uri() . "/library/css/modules/ad.css", false );
+	- wp_enqueue_style( 'ad-css', get_template_directory_uri() . "/library/css/modules/ad.css", array(), null );
 	//- append scripts
 	- wp_enqueue_script( 'async-ad-js', get_template_directory_uri() . '/library/js/modules/ad.min.js', array ( 'jquery' ), 1.0, true);
 	.ad(class!=echo('"ad-{$_ad->size}"'))

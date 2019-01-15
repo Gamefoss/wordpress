@@ -1,7 +1,7 @@
 extends single
 
 append styles
-	- wp_enqueue_style( 'single-podcasts-css', get_template_directory_uri() . "/library/css/pages/single/single-podcasts.css", false );
+	- wp_enqueue_style( 'single-podcasts-css', get_template_directory_uri() . "/library/css/pages/single/single-podcasts.css", array(), null );
 
 block banner-post-category
 	:php

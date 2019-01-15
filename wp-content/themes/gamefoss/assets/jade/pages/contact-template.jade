@@ -5,7 +5,7 @@ block template-name
 	- // Template Name: Contato
 
 append styles
-	- wp_enqueue_style( 'contact-css', get_template_directory_uri() . "/library/css/pages/contact.css", false );
+	- wp_enqueue_style( 'contact-css', get_template_directory_uri() . "/library/css/pages/contact.css", array(), null );
 
 append content	
 	#contact.wrap

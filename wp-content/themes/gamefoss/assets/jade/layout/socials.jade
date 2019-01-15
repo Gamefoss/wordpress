@@ -1,5 +1,5 @@
 append styles
-  - wp_enqueue_style( 'socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", false );
+  - wp_enqueue_style( 'socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", array(), null );
 nav.socials
   :php
     $_socials = ( isset($_socials) )? $_socials : get_field('socials');

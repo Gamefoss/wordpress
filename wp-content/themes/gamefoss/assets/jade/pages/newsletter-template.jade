@@ -4,7 +4,7 @@ block template-name
 	- // Template Name: Newsletter
 	
 	append styles
-		- wp_enqueue_style( 'newsletter-css', get_template_directory_uri() . "/library/css/pages/newsletter.css", false );
+		- wp_enqueue_style( 'newsletter-css', get_template_directory_uri() . "/library/css/pages/newsletter.css", array(), null );
 
 append content
 	#newsletter.wrap
