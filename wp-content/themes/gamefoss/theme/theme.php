@@ -21,6 +21,22 @@ if ( function_exists( 'add_theme_support' ) ) {
 	);
 }
 
+// REWRITE RULES FOR PAGINATION
+add_filter('init', function () {
+	
+	add_rewrite_rule(
+		'entretenimento/page/([0-9]+)?$',
+		'index.php?post_type=post&paged=$matches[1]',
+		'top'
+	);
+	add_rewrite_rule(
+		'entretainment/page/([0-9]+)?$',
+		'index.php?post_type=post&paged=$matches[1]',
+		'top'
+	);
+	
+}, 999 );
+
 // STYLES & SCRIPTS
 add_action( 'after_setup_theme', function() {
 	// Enqueue base styles and scripts
