@@ -35,7 +35,8 @@ block main
 							$_categories = get_terms( $_taxonomy, array(
 								'orderby'			=> "count",
 								'order'				=> "DESC",
-								'number'			=> 10 // máximo 10
+								'number'			=> 10, // máximo 10
+								'hide_empty'	=> false
 							) )
 						
 						- foreach ( $_categories as $i => $_category ):

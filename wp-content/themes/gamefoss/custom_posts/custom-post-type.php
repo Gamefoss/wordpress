@@ -15,18 +15,15 @@ URL: http://themble.com/bones/
 */
 
 // Flush rewrite rules for custom post types
-add_action( 'after_switch_theme', 'bones_flush_rewrite_rules' );
-
-// Flush your rewrite rules
-function bones_flush_rewrite_rules() {
+add_action( 'after_switch_theme', function() {
 	flush_rewrite_rules();
-}
+} );
 
 /*
  * Replace Taxonomy slug with Post Type slug in url
  * Version: 1.1
  */
-function taxonomy_slug_rewrite($wp_rewrite) {
+add_filter('generate_rewrite_rules', function ($wp_rewrite) {
     $rules = array();
     // get all custom taxonomies
     $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
@@ -65,8 +62,7 @@ function taxonomy_slug_rewrite($wp_rewrite) {
 
     // merge with global rules
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
-}
-add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');
+} );
 
 /*******************************
 	CUSTOM POST TYPES

@@ -10,7 +10,7 @@ block main
 			+banner
 				h1.title-1.tt--uppercase!= get_the_author_meta( 'display_name' )
 				.gutter
-				img(src!=echo('get_avatar_url($_author->ID)') width="120")
+				img(src!=echo('get_avatar_url($_author->ID, array("size"=>"120"))') width="120")
 				.gutter
 				.gutter
 					:php

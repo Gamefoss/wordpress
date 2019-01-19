@@ -144,7 +144,4 @@ function get_featured_image($id = false, $size = 'large') {
 	return $img;
 }
 
-require_once( "feeds.php" );
-
-
 ?>

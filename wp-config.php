@@ -121,7 +121,10 @@ switch (WP_ENV) {
 		break;
 }
 
-define('CONCATENATE_SCRIPTS', false);
+// define('CONCATENATE_SCRIPTS', false);
+
+// desabilitar o cron padrão do WP
+define('DISABLE_WP_CRON', true);
 
 /* Isto é tudo, pode parar de editar! :) */
 

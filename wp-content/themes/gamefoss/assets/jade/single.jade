@@ -67,7 +67,9 @@ block main
 					block author
 						:php
 							$_author = (object) array(
-							'avatar'		=> get_avatar_url( get_the_author_meta( 'ID' ) ),
+							'avatar'		=> get_avatar_url( get_the_author_meta( 'ID' ), array(
+								'size'		=> 24
+							) ),
 							'name'			=> get_the_author_meta( 'display_name' ),
 							'nickname'	=> "@" . get_the_author_meta( 'nickname' ),
 							'href'			=> get_author_posts_url( get_the_author_meta( 'ID' ) )
