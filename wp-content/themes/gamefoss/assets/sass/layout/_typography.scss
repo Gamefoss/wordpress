@@ -1,77 +1,83 @@
 /*************************
 FONT FACES
 **************************/
-@include font-face(
-	"Roboto",
-	font-files(
+@font-face {
+	font-family: "Roboto";
+	font-display: auto;
+	src: local("Roboto"), font-files(
 		"Roboto/Roboto-Regular.woff",
 		"Roboto/Roboto-Regular.ttf",
 		"Roboto/Roboto-Regular.otf",
 		"Roboto/Roboto-Regular.svg"),
-	"Roboto/Roboto-Regular.eot",
-	normal,
-	none
-);
+		font-url("Roboto/Roboto-Regular.eot");
+	font-weight: normal;
+	font-style: normal;
+}
 
-@include font-face(
-	"Roboto",
-	font-files(
+@font-face {
+	font-family: "Roboto";
+	font-display: auto;
+	src: local("Roboto"), font-files(
 		"Roboto/Roboto-Bold.woff",
 		"Roboto/Roboto-Bold.ttf",
 		"Roboto/Roboto-Bold.otf",
 		"Roboto/Roboto-Bold.svg"),
-	"Roboto/Roboto-Bold.eot",
-	bold,
-	normal
-);
+		font-url("Roboto/Roboto-Bold.eot");
+	font-weight: bold;
+	font-style: normal;
+}
 
-@include font-face(
-	"Roboto",
-	font-files(
+@font-face {
+	font-family: "Roboto";
+	font-display: auto;
+	src: local("Roboto"), font-files(
 		"Roboto/Roboto-Light.woff",
 		"Roboto/Roboto-Light.ttf",
 		"Roboto/Roboto-Light.otf",
 		"Roboto/Roboto-Light.svg"),
-	"Roboto/Roboto-Light.eot",
-	lighter,
-	normal
-);
+		font-url("Roboto/Roboto-Light.eot");
+	font-weight: lighter;
+	font-style: normal;
+}
 
-@include font-face(
-	"Open Sans",
-	font-files(
-		"Open-sans/OpenSans-Regular.woff",
-		"Open-sans/OpenSans-Regular.ttf",
-		"Open-sans/OpenSans-Regular.otf",
-		"Open-sans/OpenSans-Regular.svg"),
-	"Open-sans/OpenSans-Regular.eot",
-	normal,
-	normal
-);
+@font-face {
+	font-family: "Open Sans";
+	font-display: auto;
+	src: local("Open Sans"), font-files(
+		"Roboto/OpenSans-Regular.woff",
+		"Roboto/OpenSans-Regular.ttf",
+		"Roboto/OpenSans-Regular.otf",
+		"Roboto/OpenSans-Regular.svg"),
+		font-url("Roboto/OpenSans-Regular.eot");
+	font-weight: normal;
+	font-style: normal;
+}
 
-@include font-face(
-	"Open Sans",
-	font-files(
-		"Open-sans/OpenSans-Light.woff",
-		"Open-sans/OpenSans-Light.ttf",
-		"Open-sans/OpenSans-Light.otf",
-		"Open-sans/OpenSans-Light.svg"),
-	"Open-sans/OpenSans-Light.eot",
-	lighter,
-	normal
-);
+@font-face {
+	font-family: "Open Sans";
+	font-display: auto;
+	src: local("Open Sans"), font-files(
+		"Roboto/OpenSans-Light.woff",
+		"Roboto/OpenSans-Light.ttf",
+		"Roboto/OpenSans-Light.otf",
+		"Roboto/OpenSans-Light.svg"),
+		font-url("Roboto/OpenSans-Light.eot");
+	font-weight: lighter;
+	font-style: normal;
+}
 
-@include font-face(
-	"Open Sans",
-	font-files(
-		"Open-sans/OpenSans-Bold.woff",
-		"Open-sans/OpenSans-Bold.ttf",
-		"Open-sans/OpenSans-Bold.otf",
-		"Open-sans/OpenSans-Bold.svg"),
-	"Open-sans/OpenSans-Bold.eot",
-	bold,
-	normal
-);
+@font-face {
+	font-family: "Open Sans";
+	font-display: auto;
+	src: local("Open Sans"), font-files(
+		"Roboto/OpenSans-Bold.woff",
+		"Roboto/OpenSans-Bold.ttf",
+		"Roboto/OpenSans-Bold.otf",
+		"Roboto/OpenSans-Bold.svg"),
+		font-url("Roboto/OpenSans-Bold.eot");
+	font-weight: bold;
+	font-style: normal;
+}
 
 /******************************
 FONT GENERAL
