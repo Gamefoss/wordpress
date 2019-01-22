@@ -1,6 +1,6 @@
 append styles
-  - wp_enqueue_style( 'socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", array(), null );
-  - wp_enqueue_style( 'share-css', get_template_directory_uri() . "/library/css/modules/share.css", array(), null );
+  - wp_enqueue_style( 'inline-socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", array(), null );
+  - wp_enqueue_style( 'inline-share-css', get_template_directory_uri() . "/library/css/modules/share.css", array(), null );
 
 nav.socials.share(class!=echo('get_post_type()'))
   span!= __("[:pb]Compartilhe:[:en]Share:[:]")

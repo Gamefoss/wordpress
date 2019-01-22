@@ -12,7 +12,8 @@ link(rel="preload" href!=echo('get_stylesheet_directory_uri() . "/library/css/st
 		"https://www.google.com",
 		"https://s0.2mdn.net",
 		"https://googleads.g.doubleclick.net",
-		"https://fonts.gstatic.com"
+		"https://fonts.gstatic.com",
+		"https://www.googletagmanager.com"
 	);
 - foreach ( $_preconns as $_preconn ):
 	link(rel="preconnect" href!=echo('$_preconn'))
