@@ -61,8 +61,8 @@ function game() {
 add_action( 'init', 'game', 0 );
 function create_game_taxonomies() {
 		$labels = array(
-				'name'              => _x( 'Categorias', 'taxonomy general name' ),
-				'singular_name'     => _x( 'Categoria', 'taxonomy singular name' ),
+				'name'              => _x( 'Categorias (Game)', 'taxonomy general name' ),
+				'singular_name'     => _x( 'Categoria (Game)', 'taxonomy singular name' ),
 				'search_items'      => __( 'Buscar Categorias' ),
 				'all_items'         => __( 'Todas as categorias' ),
 				'edit_item'         => __( 'Editar Categoria' ),
