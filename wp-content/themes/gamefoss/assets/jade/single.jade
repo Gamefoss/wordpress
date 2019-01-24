@@ -85,12 +85,12 @@ block main
 				.gutter
 				.gutter
 				block share
-					- include( locate_template( 'layout/share.php' ) )
+					- include( locate_template( 'modules/share.php' ) )
 				block content
 					.single-content.text(class!=echo('get_post_type()'))
 						- the_content()
 					.cf
-					- if ( get_field( "review" ) ) include( locate_template( 'layout/review.php' ) )
+					- if ( get_field( "review" ) ) include( locate_template( 'modules/review.php' ) )
 			.cf
 		.visible-xs
 			- ad('square')

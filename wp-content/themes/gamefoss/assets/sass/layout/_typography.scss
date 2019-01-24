@@ -57,11 +57,11 @@ FONT FACES
 	font-family: "Open Sans";
 	font-display: auto;
 	src: local("Open Sans"), font-files(
-		"Roboto/OpenSans-Light.woff",
-		"Roboto/OpenSans-Light.ttf",
-		"Roboto/OpenSans-Light.otf",
-		"Roboto/OpenSans-Light.svg"),
-		font-url("Roboto/OpenSans-Light.eot");
+		"Open-sans/OpenSans-Light.woff",
+		"Open-sans/OpenSans-Light.ttf",
+		"Open-sans/OpenSans-Light.otf",
+		"Open-sans/OpenSans-Light.svg"),
+		font-url("Open-sans/OpenSans-Light.eot");
 	font-weight: lighter;
 	font-style: normal;
 }
@@ -70,11 +70,11 @@ FONT FACES
 	font-family: "Open Sans";
 	font-display: auto;
 	src: local("Open Sans"), font-files(
-		"Roboto/OpenSans-Bold.woff",
-		"Roboto/OpenSans-Bold.ttf",
-		"Roboto/OpenSans-Bold.otf",
-		"Roboto/OpenSans-Bold.svg"),
-		font-url("Roboto/OpenSans-Bold.eot");
+		"Open-sans/OpenSans-Bold.woff",
+		"Open-sans/OpenSans-Bold.ttf",
+		"Open-sans/OpenSans-Bold.otf",
+		"Open-sans/OpenSans-Bold.svg"),
+		font-url("Open-sans/OpenSans-Bold.eot");
 	font-weight: bold;
 	font-style: normal;
 }
