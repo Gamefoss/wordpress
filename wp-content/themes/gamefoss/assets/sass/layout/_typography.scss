@@ -44,11 +44,11 @@ FONT FACES
 	font-family: "Open Sans";
 	font-display: auto;
 	src: local("Open Sans"), font-files(
-		"Roboto/OpenSans-Regular.woff",
-		"Roboto/OpenSans-Regular.ttf",
-		"Roboto/OpenSans-Regular.otf",
-		"Roboto/OpenSans-Regular.svg"),
-		font-url("Roboto/OpenSans-Regular.eot");
+		"Open-sans/OpenSans-Regular.woff",
+		"Open-sans/OpenSans-Regular.ttf",
+		"Open-sans/OpenSans-Regular.otf",
+		"Open-sans/OpenSans-Regular.svg"),
+		font-url("Open-sans/OpenSans-Regular.eot");
 	font-weight: normal;
 	font-style: normal;
 }
