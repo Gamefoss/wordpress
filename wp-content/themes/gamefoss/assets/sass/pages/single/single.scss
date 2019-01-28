@@ -105,7 +105,7 @@
 
 		blockquote {
 			font-size: 1.1em;
-			margin: $gutter*4 auto;
+			// margin: $gutter*4 auto;
 			p {
 				position: relative;
 				text-align: right;
@@ -121,10 +121,28 @@
 					background-color: $c-black;
 				}
 			}
+
+			@include bp($s-sm) {
+				&.align--left,
+				&.align--center,
+				&.align--right {
+					max-width: 45%;
+				}
+				&.align--left {
+					float: left;
+				}
+				&.align--right {
+					float: right;
+				}
+				&.align--center {
+					float: none;
+				}
+			}
 		}
 
 		hr {
 			border-color: $c-black;
+			clear: both;
 		}
 
 		ul, ol {

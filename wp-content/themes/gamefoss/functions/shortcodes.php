@@ -13,6 +13,7 @@
 		return ob_get_clean();
 	} );
 
+	// CLEAR
 	add_shortcode( 'clear', function() {
 		ob_start();
 		?>
