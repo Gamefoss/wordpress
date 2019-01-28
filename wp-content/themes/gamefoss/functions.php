@@ -36,5 +36,10 @@ FEEDS
 ************************************/
 require_once( "functions/feeds.php" );
 
+/************************************
+SHORTCODES
+************************************/
+require_once( 'functions/shortcodes.php' );
+
 /* DON'T DELETE THIS CLOSING TAG */
 ?>
