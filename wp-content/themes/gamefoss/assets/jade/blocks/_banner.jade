@@ -9,6 +9,9 @@ mixin banner
 	.banner
 		.banner-carousel.owl-carousel
 			block banner-carousel
+				- if ( is_author() && get_field("banner", "user_" . get_queried_object()->ID ) ):
+					.item(style!=background( 'get_field("banner", "user_" . get_queried_object()->ID )', true ))
+				- endif
 				- if( have_posts() ): while( have_posts() ): the_post()
 					.item(style!=background( 'get_featured_image()', true ))
 				- endwhile;endif
