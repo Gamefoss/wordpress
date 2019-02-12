@@ -12,10 +12,17 @@ block categories
 			article#podcast-image.post-block.post-block--square.t--center
 				a(href!=echo('get_term_link(get_queried_object())') title!=echo('get_queried_object()->name'))
 				.img(style!=background('get_field("logo", get_queried_object())', true))
-			.description.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-				.gutter
-				.text.t--center!= __( get_queried_object()->description )
-				.gutter
+			.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+				.description
+					.gutter
+					.text.t--center!= __( get_queried_object()->description )
+					.gutter
+				.social-container.center.podcast
+					.gutter
+					:php
+						$_socials = get_field( 'socials', get_queried_object() );
+						if( $_socials ) include( locate_template( 'modules/socials.php' ) )
+					.gutter
 		.cf
 	
 prepend posts

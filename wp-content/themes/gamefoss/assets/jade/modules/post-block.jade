@@ -21,7 +21,7 @@
 
 article.post-block(class!=echo('"post-block--{$options[\'variation\']}" . " " . implode( " ", $options["class"] )'))
 	a(href!=echo('get_the_permalink()') title!=echo('get_the_title()'))
-	.img(style!=background('get_featured_image(get_the_ID(), "medium")', true))
+	.img(style!=background('get_featured_image(get_the_ID(), $options["image_size"])', true))
 	.content
 		- if( is_author() ):
 			:php

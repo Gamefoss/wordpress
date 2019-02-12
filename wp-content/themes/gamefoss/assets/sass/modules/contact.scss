@@ -1,0 +1,9 @@
+@import "../partials/partials"; // Sass partials
+#contact {
+	.socials {
+		justify-content: center;
+		.social {
+			background-color: $c-black;
+		}
+	}
+}

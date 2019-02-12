@@ -17,7 +17,7 @@ FONT FACES
 @font-face {
 	font-family: "Roboto";
 	font-display: auto;
-	src: local("Roboto"), font-files(
+	src: local("Roboto Bold"), font-files(
 		"Roboto/Roboto-Bold.woff",
 		"Roboto/Roboto-Bold.ttf",
 		"Roboto/Roboto-Bold.otf",
@@ -28,7 +28,7 @@ FONT FACES
 }
 
 @font-face {
-	font-family: "Roboto";
+	font-family: "Roboto Light";
 	font-display: auto;
 	src: local("Roboto"), font-files(
 		"Roboto/Roboto-Light.woff",
@@ -54,7 +54,7 @@ FONT FACES
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: "Open Sans Light";
 	font-display: auto;
 	src: local("Open Sans"), font-files(
 		"Open-sans/OpenSans-Light.woff",
@@ -67,7 +67,7 @@ FONT FACES
 }
 
 @font-face {
-	font-family: "Open Sans";
+	font-family: "Open Sans Bold";
 	font-display: auto;
 	src: local("Open Sans"), font-files(
 		"Open-sans/OpenSans-Bold.woff",

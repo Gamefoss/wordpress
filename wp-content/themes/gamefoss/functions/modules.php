@@ -166,10 +166,11 @@ add_action('wp_ajax_nopriv_ajax_ad_click', 'ajax_ad_click');
 // POST BLOCK HANDLER
 function post_block( $_options = NULL ) {
 	$options = array(
-		'variation' => isset($_options['variation'])? $_options['variation'] : ( get_field( "is_highlight" )? "highlight" :  "vertical"),
-		'author'    => isset($_options['author'])? $_options['author'] : true ,
-		'category'  => isset($_options['category'])? $_options['category'] : true ,
-		'class'    	=> isset($_options['class'])? $_options['class'] : array()
+		'variation' 	=> isset($_options['variation'])? $_options['variation'] : ( get_field( "is_highlight" )? "highlight" :  "vertical"),
+		'author'    	=> isset($_options['author'])? $_options['author'] : true ,
+		'category'  	=> isset($_options['category'])? $_options['category'] : true ,
+		'class'    		=> isset($_options['class'])? $_options['class'] : array(),
+		'image_size'	=> isset($_options['image_size'])? $_options['image_size'] : "medium"
 	);
 	include(locate_template('modules/post-block.php'));
 }

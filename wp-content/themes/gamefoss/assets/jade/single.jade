@@ -59,8 +59,10 @@ block main
 				h1.title-1!= get_the_title()
 				.gutter
 				block excerpt
-					.excerpt.f--open.t--center.hidden-xs
-						em!= get_the_excerpt()
+					- if ( has_excerpt() ):
+						.excerpt.f--open.t--center.hidden-xs
+							em!= get_the_excerpt()
+					- endif
 				.gutter
 				.gutter
 				.info.wrap
@@ -81,7 +83,7 @@ block main
 							| &nbsp;&nbsp;|&nbsp;&nbsp;
 							time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')
 		.wrap
-			.col-xs-12
+			.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 				.gutter
 				.gutter
 				block share

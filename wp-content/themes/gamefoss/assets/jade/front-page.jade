@@ -42,8 +42,9 @@ block main
 				.mosaic-item
 					:php
 						post_block( array(
-							'variation'	=> (($i == 0 | $i == 3)? "highlight" : false),
-							'class'			=> array("post-block--white", ( ( get_post_type() == "ludokratia" )? "post-block--ludokratia" : false ))
+							'variation'		=> (($i == 0 | $i == 3)? "highlight" : false),
+							'class'				=> array("post-block--white", ( ( get_post_type() == "ludokratia" )? "post-block--ludokratia" : false )),
+							'image_size'	=> "full"
 						) );
 				- wp_reset_postdata()
 			- endforeach
@@ -120,6 +121,22 @@ block main
 							a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
 					.cf
 					.post-block--container
+						:php
+							$_posts = get_posts(
+								array(
+									'post_type' 	=> "podcast",
+									'numberposts'	=> 3
+								)
+							);
+						
+						- foreach ( $_posts as $post ):
+							- setup_postdata($post)
+							.col-xs-12.col-sm-4
+								- post_block()
+							- wp_reset_postdata()
+						- endforeach
+					.cf
+					//- .post-block--container
 						- foreach( get_terms( "podcasts" ) as $_podcast ):
 							.col-xs-12.col-sm-4.col-md-3
 								article.post-block.post-block--square.t--center
@@ -135,9 +152,7 @@ block main
 						+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast
 					.cf
 					ul.col-xs-12
-						- foreach( get_terms( "podcasts" ) as $_podcast ):
-							+feed-links
-						- endforeach
+						- foreach( get_terms( "podcasts" ) as $_podcast ) include( locate_template( 'modules/feed-link.php' ) )
 					.cf
 				.cf
 				- if ( wp_is_mobile() ):

@@ -37,9 +37,7 @@ block posts
 					+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" )') ).podcast
 				.cf
 				ul.col-xs-12
-					- foreach( get_terms( "podcasts" ) as $_podcast ):
-						+feed-links
-					- endforeach
+					- foreach( get_terms( "podcasts" ) as $_podcast ) include( locate_template( 'modules/feed-link.php' ) )
 				.cf
 				.visible-xs
 					- ad( 'square' )

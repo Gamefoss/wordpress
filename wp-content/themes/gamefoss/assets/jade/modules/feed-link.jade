@@ -1,0 +1,15 @@
+//- mixin feed-links
+//- append styles
+- wp_enqueue_style( 'inline-feed-links-css', get_template_directory_uri() . "/library/css/modules/feed-link.css", array(), null );
+li.feed-link
+	h3
+		a.img(href!=echo('get_term_link($_podcast)') title!=echo('$_podcast->name') style!=background('get_field("logo", $_podcast)', true))
+		//- img(src!=echo('get_field("logo", $_podcast)') alt!=echo('$_podcast->name') height="24")
+		a(href!=echo('get_term_link($_podcast)') title!=echo('$_podcast->name'))!= $_podcast->name
+	nav
+		- if ( get_field( "signup_services", $_podcast ) ):
+			- foreach( get_field( "signup_services", $_podcast ) as $_service ):
+			a.icon( class!=echo('"icon-" . $_service["service"]["value"]') href!=echo('$_service["url"]') title!=echo('__("[:pb]Assinar no[:en]Signnup in[:]") . " " . $_service["service"]["label"]') target="_blank")
+				- endforeach
+		- endif
+		a.icon.icon-rss(href!=echo('get_field( "rss_feed", $_podcast )') title!=echo('__("[:pb]Feed RSS[:en]RSS Feed[:]")') target="_blank")

@@ -11,3 +11,16 @@
     background: $c-white;
   }
 }
+
+.social-container {
+  &.center {
+    .socials {
+      justify-content: center;
+    }
+  }
+  @each $name, $color in $colors {
+    &.#{$name} .social {
+      background: $color;
+    }
+  }
+}
