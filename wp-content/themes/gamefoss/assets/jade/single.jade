@@ -82,6 +82,20 @@ block main
 								!= "<strong>{$_author->name}</strong>&nbsp;|&nbsp;{$_author->nickname}"
 							| &nbsp;&nbsp;|&nbsp;&nbsp;
 							time(datetime!=echo('get_the_date("Y-m-d")'))!= get_the_date('d/m/Y')
+					block tags
+						:php
+							if ( get_post_type() == "post" ) $tags = get_the_tags( get_the_ID() );
+							else $tags = get_the_terms(get_the_ID(), get_post_type() . "_tags");
+						- if ( is_array( $tags ) ):
+							.cf
+							.gutter
+							- foreach ( $tags as $tag ):
+								:php
+									if ( get_post_type() == "post" ) $_tag_link = get_tag_link($tag);
+									else $_tag_link = get_term_link($tag->term_id, get_post_type() . "_tags");
+								a.badge.badge--tag(href!=echo('$_tag_link') class!=echo('"badge--" . get_post_type()'))!= "#{$tag->name}"
+							- endforeach
+						- endif
 		.wrap
 			.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 				.gutter

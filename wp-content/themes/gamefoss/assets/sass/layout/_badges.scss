@@ -21,4 +21,8 @@
   &.badge--more {
     min-width: 40px
   }
+  &.badge--tag {
+    min-width: 0;
+    margin: $gutter/2;
+  }
 }

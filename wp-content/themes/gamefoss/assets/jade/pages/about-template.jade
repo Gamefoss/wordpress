@@ -6,10 +6,8 @@ block template-name
 append styles
 	- wp_enqueue_style( 'about-css', get_template_directory_uri() . "/library/css/pages/about.css", array(), null );
 
-block main
+block content-wrap
 	#about
-		.title-1.tt--uppercase.t--center.sobre!= get_the_title()
-		
 		.wrap
 			.row
 				.col-xs-10.col-xs-offset-1.col-lg-8.col-lg-offset-2

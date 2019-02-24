@@ -22,6 +22,8 @@ mixin banner
 					- if ( !is_single() && !is_search() ):
 						h1.title-1.tt--uppercase
 							:php
+								if ( is_tag() ) echo "#";
+								else if( isset( get_queried_object()->taxonomy ) && get_queried_object()->taxonomy == get_post_type() . "_tags"  ) echo "#";
 								if ( is_single() ) echo get_the_title();
 								if ( is_home() ) echo __("[:pb]Entretenimento[:en]Entertainment[:]");
 								else if ( get_queried_object()->name == "podcast" ) echo "podcasts";
