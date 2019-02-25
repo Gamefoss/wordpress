@@ -118,7 +118,7 @@ block main
 			.row
 				.col-xs-12.col-sm-7.col-md-8
 					.col-xs-12
-						+compound-header( "Podcasts", echo('get_post_type_archive_link( "podcast" ) . "/gamefoss"') ).podcast
+						+compound-header( "Podcast", echo('get_post_type_archive_link( "podcast" ) . "gamefoss"') ).podcast
 							//- a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
 					.cf
 					.post-block--container
@@ -150,7 +150,7 @@ block main
 						.cf
 				aside.col-xs-12.col-sm-5.col-md-4
 					.col-xs-12
-						+compound-header( "Feeds", echo('get_post_type_archive_link( "podcast" ) . "/gamefoss"') ).podcast
+						+compound-header( "Feed", echo('get_post_type_archive_link( "podcast" ) . "gamefoss"') ).podcast
 					.cf
 					ul.col-xs-12
 						- foreach( get_terms( "podcasts" ) as $_podcast ) include( locate_template( 'modules/feed-link.php' ) )
