@@ -18,6 +18,10 @@
 		font-family: $f-serif;
 		font-size: rem(20);
 
+		h2, h3, h4, h5, h6 {
+			font-family: $f-roboto;
+		}
+
 		b {
 			font-weight: bold;
 		}
@@ -70,7 +74,7 @@
 		@include bp($s-sm) {
 			img, .wp-caption {
 				max-width: 100%;
-				margin: $gutter*2 auto;
+				margin: 0;
 				height: auto;
 			}
 
@@ -79,7 +83,8 @@
 			.aligncenter,
 			.alignnone {
 				display: block;
-				padding: 0 $gutter*2;
+				padding: 0 $gutter;
+				// margin: 0;
 				@include bp(false, $s-md) {
 					max-width: 50%;
 				}
@@ -116,20 +121,20 @@
 		}
 
 		blockquote {
-			font-size: 1.1em;
+			// font-size: 1.1em;
 			// margin: $gutter*4 auto;
 			p {
 				position: relative;
-				text-align: right;
-				padding: 0 $gutter*4;
+				// text-align: right;
+				padding: 0 0 0 $gutter*2;
 				&:before {
 					content: "";
 					position: absolute;
 					left: 0;
 					top: 0;
-					width: 24px;
-					height: 24px;
-					@include svg-mask(image-url("single/quote.svg"));
+					width: 4px;
+					height: 100%;
+					// @include svg-mask(image-url("single/quote.svg"));
 					background-color: $c-black;
 				}
 			}
@@ -194,5 +199,6 @@
 
 	.comments {
 		background-color: $c-white;
+		border: 4px solid $c-black;
 	}
 }
