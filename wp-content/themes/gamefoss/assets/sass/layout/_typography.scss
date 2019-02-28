@@ -79,6 +79,32 @@ FONT FACES
 	font-style: normal;
 }
 
+@font-face {
+	font-family: "Source Serif";
+	font-display: auto;
+	src: local("Source Serif Pro"), font-files(
+		"Source-Serif/SourceSerifPro-Bold.woff",
+		"Source-Serif/SourceSerifPro-Bold.ttf",
+		"Source-Serif/SourceSerifPro-Bold.otf",
+		"Source-Serif/SourceSerifPro-Bold.svg"),
+		font-url("Source-Serif/SourceSerifPro-Bold.eot");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Source Serif";
+	font-display: auto;
+	src: local("Source Serif Pro"), font-files(
+		"Source-Serif/SourceSerifPro-Regular.woff",
+		"Source-Serif/SourceSerifPro-Regular.ttf",
+		"Source-Serif/SourceSerifPro-Regular.otf",
+		"Source-Serif/SourceSerifPro-Regular.svg"),
+		font-url("Source-Serif/SourceSerifPro-Regular.eot");
+	font-weight: normal;
+	font-style: normal;
+}
+
 /******************************
 FONT GENERAL
 ******************************/
