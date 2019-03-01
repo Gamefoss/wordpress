@@ -29,7 +29,7 @@
 		p {
 			margin: $gutter*2 auto;
 		}
-		> p:first-child::first-letter {
+		/*> p:first-child::first-letter {
 			font-size: 5em;
 			line-height: 1.05;
 			margin: 0 .1em -.2em 0;
@@ -37,13 +37,19 @@
 			display: block;
 			float: left;
 			text-transform: uppercase;
-		}
+		}*/
 
-		/*@each $name, $color in $colors {
+		@each $name, $color in $colors {
 			&.#{$name} {
 				> p:first-child::first-letter,
 				blockquote {
 					color: $color;
+				}
+				>p:first-child::first-letter {
+					font-size: 2em;
+					line-height: 1.05;
+					text-transform: uppercase;
+					font-weight: bold;
 				}
 				blockquote p:before {
 					background-color: $color;
@@ -52,7 +58,7 @@
 					border-color: $color;
 				}
 			}
-		}*/
+		}
 
 		iframe {
 			display: block;
