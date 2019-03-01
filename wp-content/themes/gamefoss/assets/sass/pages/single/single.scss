@@ -34,7 +34,7 @@
 			text-transform: uppercase;
 		}
 
-		@each $name, $color in $colors {
+		/*@each $name, $color in $colors {
 			&.#{$name} {
 				> p:first-child::first-letter,
 				blockquote {
@@ -47,7 +47,7 @@
 					border-color: $color;
 				}
 			}
-		}
+		}*/
 
 		iframe {
 			display: block;
@@ -98,6 +98,7 @@
 
 			.aligncenter,
 			.alignnone {
+				margin: 0 auto;
 			}
 		}
 
