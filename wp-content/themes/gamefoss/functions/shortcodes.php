@@ -7,7 +7,7 @@
 		ob_start();
 		?>
 			<blockquote class="quote align--<?php echo $atts['align'] ?>">
-				<span><?php echo $content ?></span>
+				<?php echo $content ?>
 			</blockquote>
 		<?php
 		return ob_get_clean();

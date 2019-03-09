@@ -15,11 +15,19 @@
 	}
 
 	.single-content {
-		font-family: $f-serif;
-		font-size: rem(20);
+		font-size: rem(18);
 
 		h2, h3, h4, h5, h6 {
 			font-family: $f-roboto;
+			margin: $gutter*2 auto $gutter;
+		}
+
+		h2 {
+			@include fluid-type(24,30);
+		}
+
+		h3 {
+			@include fluid-type(22,28);
 		}
 
 		b {
@@ -29,30 +37,32 @@
 		p {
 			margin: $gutter*2 auto;
 		}
-		/*> p:first-child::first-letter {
-			font-size: 5em;
-			line-height: 1.05;
-			margin: 0 .1em -.2em 0;
+
+		> p:first-child::first-letter {
+			font-size: 2em;
+			// line-height: 1.05;
+			// margin: 0 .1em -.2em 0;
 			font-weight: bold;
-			display: block;
-			float: left;
+			// display: block;
+			// float: left;
 			text-transform: uppercase;
-		}*/
+		}
 
 		@each $name, $color in $colors {
 			&.#{$name} {
-				> p:first-child::first-letter,
-				blockquote {
+				> p:first-child::first-letter{
 					color: $color;
 				}
-				>p:first-child::first-letter {
-					font-size: 2em;
-					line-height: 1.05;
-					text-transform: uppercase;
-					font-weight: bold;
-				}
-				blockquote p:before {
-					background-color: $color;
+				// >p:first-child::first-letter {
+				// 	// font-size: 2em;
+				// 	// line-height: 1.05;
+				// 	// text-transform: uppercase;
+				// 	// font-weight: bold;
+				// }
+				blockquote {
+					&:before, &:after {
+						background-color: $color;
+					}
 				}
 				hr {
 					border-color: $color;
@@ -77,6 +87,7 @@
 				height: auto;
 			}
 		}
+
 		@include bp($s-sm) {
 			img, .wp-caption {
 				max-width: 100%;
@@ -102,10 +113,12 @@
 			}
 			.alignleft {
 				float: left;
+				padding-left: 0;
 			}
 
 			.alignright {
 				float: right;
+				padding-right: 0;
 			}
 
 			.aligncenter,
@@ -128,30 +141,41 @@
 		}
 
 		blockquote {
-			// font-size: 1.1em;
-			// margin: $gutter*4 auto;
-			p {
-				position: relative;
-				// text-align: right;
-				padding: 0 0 0 $gutter*2;
-				&:before {
-					content: "";
-					position: absolute;
-					left: 0;
-					top: 0;
-					width: 4px;
-					height: 100%;
-					// @include svg-mask(image-url("single/quote.svg"));
-					background-color: $c-black;
-				}
+			position: relative;
+			padding: $gutter $gutter $gutter $gutter*2;
+			// font-weight: bold;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+
+			&:before {
+				width: 100%;
+				@include opacity(0.1);
+			}
+
+			&:after {
+				width: 4px;
+
+				background-color: $c-black;
 			}
 
 			@include bp($s-sm) {
-				&.align--left,
-				&.align--center,
-				&.align--right {
+				&.quote {
 					max-width: 45%;
+					// font-size: 1.4em;
+					// font-family: $f-roboto;
+					// font-weight: bold;
+					// text-align: left;
+					margin-left: $gutter;
+					margin-bottom: $gutter;
 				}
+
 				&.align--left {
 					float: left;
 				}
@@ -177,6 +201,7 @@
 		ul {
 			list-style: disc;
 		}
+
 		ol {
 			list-style: decimal;
 		}
@@ -196,6 +221,7 @@
 		.google-auto-placed {
 			margin: $gutter*2 auto;
 			display: block;
+			float: left;
 			iframe {
 				max-width: none;
 				width: 100%;
@@ -208,4 +234,5 @@
 		background-color: $c-white;
 		border: 4px solid $c-black;
 	}
+
 }

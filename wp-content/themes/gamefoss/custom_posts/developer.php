@@ -15,7 +15,7 @@ function developer() {
 		'new_item'              => __( 'Novo', 'text_domain' ),
 		'edit_item'             => __( 'Editar', 'text_domain' ),
 		'update_item'           => __( 'Atualizar', 'text_domain' ),
-		'view_item'             => __( 'Vizualizar', 'text_domain' ),
+		'view_item'             => __( 'visualizar', 'text_domain' ),
 		'search_items'          => __( 'Pesquisar', 'text_domain' ),
 		'not_found'             => __( 'Não encontrado', 'text_domain' ),
 		'not_found_in_trash'    => __( 'Não encontrado', 'text_domain' ),
