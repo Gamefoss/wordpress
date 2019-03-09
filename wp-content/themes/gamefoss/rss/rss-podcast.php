@@ -8,7 +8,7 @@
   >
   <channel>
     <link><?php echo get_term_link($podcast); ?></link>
-    <language><?php echo get_option( "rss_language" ); ?></language>
+    <language>pt-br</language>
     <copyright><![CDATA[<?php echo "©" . date( "Y" ) ?>]]>
     </copyright>
     <webmaster><![CDATA[<?php echo get_userdata(1)->user_email . " (" . get_userdata(1)->user_nicename . ")" ?>]]>
