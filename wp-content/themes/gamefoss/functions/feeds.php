@@ -3,13 +3,22 @@
 	// FEEDS
 
 	// Add post thumbnail to default feed
-	add_action('rss2_item', function () {
+	/*add_action('rss2_item', function () {
 		global $post;
 		if(has_post_thumbnail($post->ID)):
 			$thumbnail = get_attachment_link(get_post_thumbnail_id($post->ID));
 			echo("<image>{$thumbnail}</image>");
 		endif;
-	});
+	});*/
+
+	function featuredtoRSS($content) {
+		global $post;
+		if ( has_post_thumbnail( $post->ID ) ) return '' . get_the_post_thumbnail( $post->ID, 'thumbnail', array( 'style' => 'float:left; margin:0 15px 15px 0;' ) ) . '' . $content;
+		return $content;
+	}
+
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
 
 	// CUSTOM FEEDS
 	// PODCAST
