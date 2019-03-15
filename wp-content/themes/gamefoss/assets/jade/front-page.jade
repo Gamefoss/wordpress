@@ -6,17 +6,6 @@ append styles
 
 block main
 	#home.wrap
-		.ad-container
-			- if ( wp_is_mobile() ):
-				.visible-xs
-					.row
-						- ad( 'mobile-banner' )
-				.visible-sm
-					- ad( 'leaderboard' )
-		- else:
-			.visible-md.visible-lg.visible-xl
-				- ad( 'large-leaderboard' )
-		- endif
 		.live-container
 			- include( locate_template( 'modules/live.php' ) )
 		.mosaic
@@ -43,12 +32,24 @@ block main
 				.mosaic-item
 					:php
 						post_block( array(
-							'variation'		=> (($i == 0 | $i == 3)? "highlight" : false),
+							//- 'variation'		=> (($i == 0 | $i == 3)? "highlight" : false),
+							'variation'			=> "highlight",
 							'class'				=> array("post-block--white", ( ( get_post_type() == "ludokratia" )? "post-block--ludokratia" : false )),
-							'image_size'	=> "full"
+							'image_size'		=> "full"
 						) );
 				- wp_reset_postdata()
 			- endforeach
+		.ad-container
+			- if ( wp_is_mobile() ):
+				.visible-xs
+					.row
+						- ad( 'mobile-banner' )
+				.visible-sm
+					- ad( 'leaderboard' )
+			- else:
+				.visible-md.visible-lg.visible-xl
+					- ad( 'large-leaderboard' )
+			- endif		
 		section#ludokratia
 			+compound-header("Ludokratia", echo('get_post_type_archive_link( "ludokratia" )') ).ludokratia
 				:php

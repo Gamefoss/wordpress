@@ -4,6 +4,7 @@
   grid-gap: $gutter $gutter;
   grid-template-columns: auto;
   grid-template-rows:  repeat(6, 1fr);
+  min-height: calc(100vh - 90px - 42px - 24px);
   grid-template-areas:
     'mi-1'
     'mi-2'
@@ -28,6 +29,9 @@
       'mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-4 mi-6 mi-6 mi-6 mi-6';
   }
   .mosaic-item {
+	.post-block {
+		grid-template-rows: 0.45fr 1fr;
+	}
     .img:before {
       display: none;
     }
