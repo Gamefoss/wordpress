@@ -1,13 +1,14 @@
 // GENERAL VARS
 
 // COLORS - http://www.color-blindness.com/color-name-hue/
-$c-white:   #ffffff;
-$c-black:   #000000;
-$c-red:     #ed1c24;
-$c-silver:  #bbbbbb;
-$c-grape:   #3e3d4d;
-$c-tyrian:  #490847;
-$c-falured: #890f33;
+$c-white       : #ffffff;
+$c-black       : #000000;
+$c-red         : #ed1c24;
+$c-silver      : #bbbbbb;
+$c-grape       : #3e3d4d;
+$c-slate-blue  : #6666cc;
+$c-tyrian      : #490847;
+$c-falured     : #890f33;
 
 $colors:  (
   ('white', $c-white)
@@ -23,7 +24,7 @@ $colors:  (
 
 // color usage
 $c-bg:              $c-silver;
-$c-menu:            $c-grape;
+$c-menu:            $c-slate-blue;
 $c-ludokratia:      $c-tyrian;
 $c-entertainment:   $c-red;
 $c-podcast:         $c-falured;
