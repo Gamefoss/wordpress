@@ -8,7 +8,7 @@
 >
 	<channel>
 		<link>
-			<?php echo get_term_link($podcast); ?>
+			<![CDATA[<?php echo get_term_link($podcast); ?>]]>
 		</link>
 		<language>pt-br</language>
 		<copyright>
