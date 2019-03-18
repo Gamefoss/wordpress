@@ -1,5 +1,6 @@
 <?php // Template Name: RSS ?>
 <?php echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" ?>
+
 <rss
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
@@ -7,70 +8,41 @@
 	version="2.0"
 >
 	<channel>
-		<link>
-			<![CDATA[<?php echo get_term_link($podcast); ?>]]>
-		</link>
-		<language>pt-br</language>
-		<copyright>
-			<![CDATA[<?php echo "©" . date( "Y" ) ?>]]>
-		</copyright>
-		<webmaster>
-			<![CDATA[<?php echo get_userdata(1)->user_email . " (" . get_userdata(1)->user_nicename . ")" ?>]]>
-		</webmaster>
-		<managingeditor>
-			<![CDATA[<?php echo get_userdata(1)->user_email . " (" . get_userdata(1)->user_nicename . ")" ?>]]>
-		</managingeditor>
-		<image>
-			<url>
-				<![CDATA[<?php echo get_field("logo", $podcast) ?>]]>
-			</url>
-			<title>
-				<![CDATA[<?php echo $podcast->name ?>]]>
-			</title>
-			<link>
-				<![CDATA[<?php echo get_term_link($podcast) ?>]]>
-			</link>
-		</image>
+		<language>
+			pt-br
+		</language>
+		<title>
+			<?php echo $podcast->name ?>
+		</title>
+		<description>
+			<?php echo $podcast->description ?>
+		</description>
+		<link><?php echo get_term_link($podcast); ?></link>
+
 		<?php if ( get_field("is_itunes", $podcast) ): ?>
+			<itunes:subtitle>
+				<?php echo get_field("itunes", $podcast)["description"] ?>
+			</itunes:subtitle>
+			<itunes:author>
+				<?php echo get_field("itunes", $podcast)["author"] ?>
+			</itunes:author>
+			<itunes:summary>
+				<?php echo $podcast->description ?>
+			</itunes:summary>
 			<itunes:owner>
-				<itunes:name>
-					<![CDATA[Game Foss]]>
-				</itunes:name>
-				<itunes:email>
-					<![CDATA[admin@gamefoss.com]]>
-				</itunes:email>
+			    <itunes:name>Game Foss</itunes:name>
+			    <itunes:email>admin@gamefoss.com</itunes:email>
 			</itunes:owner>
-			<itunes:category text="<?php echo get_field("itunes", $podcast)["category"] ?>">
+			<itunes:explicit>no</itunes:explicit>
+			<itunes:image href="<?php echo get_field("logo", $podcast) ?>" />
+			<itunes:category text="<?php echo htmlentities( get_field("itunes", $podcast)["category"] ) ?>">
 				<itunes:category text="<?php echo get_field("itunes", $podcast)["subcategory"] ?>"></itunes:category>
 			</itunes:category>
 			<itunes:keywords>
-				<![CDATA[<?php echo get_field("itunes", $podcast)["keywords"] ?>]]>
+				<?php echo get_field("itunes", $podcast)["keywords"] ?>
 			</itunes:keywords>
-			<itunes:explicit>no</itunes:explicit>
-			<itunes:image href="<?php echo get_field("logo", $podcast) ?>"></itunes:image>
-			<itunes:author>
-				<![CDATA[<?php echo get_field("itunes", $podcast)["author"] ?>]]>
-			</itunes:author>
-			<itunes:summary>
-				<![CDATA[<?php echo $podcast->description ?>]]>
-			</itunes:summary>
-			<itunes:subtitle>
-				<![CDATA[<?php echo get_field("itunes", $podcast)["description"] ?>]]>
-			</itunes:subtitle>
 		<?php endif ?>
-		<atom:link href="<?php echo home_url() . "feed/podcasts/{$podcast->slug}"  ?>" rel="self" type="application/rss+xml"></atom:link>
-		<pubdate>
-			<![CDATA[<?php echo date("r") ?>]]>
-		</pubdate>
-		<title>
-			<![CDATA[<?php echo $podcast->name ?>]]>
-		</title>
-		<description>
-			<![CDATA[<?php echo $podcast->description ?>]]>
-		</description>
-		<lastbuilddate>
-			<![CDATA[<?php echo date( "r" ) ?>]]>
-		</lastbuilddate>
+
 		<?php foreach ( get_posts( array(
 			'post_type'			=> "podcast",
 			'numberposts'		=> -1,
@@ -82,34 +54,32 @@
 				)
 			)
 		) ) as $post ): ?>
+			<?php setup_postdata( $post ) ?>
 			<item>
-				<?php setup_postdata( $post ) ?>
-				<title>
-					<![CDATA[<?php echo get_the_title() ?>]]>
+			    <title>
+					<?php echo get_the_title() ?>
 				</title>
-				<description>
-					<![CDATA[<?php echo get_the_excerpt() ?>]]>
-				</description>
+			    <itunes:summary>
+			    	<?php echo get_the_excerpt() ?>
+			    </itunes:summary>
+			    <description>
+			    	<?php echo get_the_excerpt() ?>
+			    </description>
+			    <link><?php echo get_the_permalink() ?></link>
+			    <enclosure url="<?php echo get_field( "mp3" )["url"] ?>" type="audio/mpeg" length="<?php echo get_field( "mp3" )["filesize"] ?>"></enclosure>
 				<?php if ( get_field("is_itunes", $podcast) ): ?>
-					<itunes:summary>
-						<![CDATA[<?php echo get_the_content() ?>]]>
-					</itunes:summary>
-					<itunes:subtitle>
-						<![CDATA[<?php echo get_field( "itunes" )["description"] ?>]]>
-					</itunes:subtitle>
-					<itunes:duration>
-						<![CDATA[<?php echo get_field( "itunes" )["duration"] ?>]]>
-					</itunes:duration>
+					<itunes:author>GameFoss</itunes:author>
+				    <itunes:duration>
+				    	<?php echo get_field( "itunes" )["duration"] ?>
+				    </itunes:duration>
+				    <itunes:explicit>no</itunes:explicit>
 				<?php endif ?>
-				<enclosure url="<?php echo get_field( "mp3" )["url"] ?>" type="audio/mpeg" length="<?php echo get_field( "mp3" )["filesize"] ?>"></enclosure>
-				<guid>
-					<![CDATA[<?php echo get_field( "mp3" )["url"] ?>]]>
-				</guid>
 				<pubdate>
 					<![CDATA[<?php echo get_the_date( "r" ) ?>]]>
 				</pubdate>
-				<?php wp_reset_postdata() ?>
 			</item>
+			<?php wp_reset_postdata() ?>
 		<?php endforeach ?>
+
 	</channel>
 </rss>
