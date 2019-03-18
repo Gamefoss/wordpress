@@ -40,11 +40,11 @@
 					<![CDATA[admin@gamefoss.com]]>
 				</itunes:email>
 			</itunes:owner>
-			<itunes:category text="<?php echo htmlentities( get_field("itunes", $podcast)["category"] ) ?>">
-				<itunes:category text="<?php echo htmlentities( get_field("itunes", $podcast)["subcategory"] ) ?>"></itunes:category>
+			<itunes:category text="<?php echo get_field("itunes", $podcast)["category"] ?>">
+				<itunes:category text="<?php echo get_field("itunes", $podcast)["subcategory"] ?>"></itunes:category>
 			</itunes:category>
 			<itunes:keywords>
-				<![CDATA[<?php echo htmlentities( get_field("itunes", $podcast)["keywords"] ) ?>]]>
+				<![CDATA[<?php echo get_field("itunes", $podcast)["keywords"] ?>]]>
 			</itunes:keywords>
 			<itunes:explicit>no</itunes:explicit>
 			<itunes:image href="<?php echo get_field("logo", $podcast) ?>"></itunes:image>
@@ -55,7 +55,7 @@
 				<![CDATA[<?php echo $podcast->description ?>]]>
 			</itunes:summary>
 			<itunes:subtitle>
-				<![CDATA[<?php echo htmlentities( get_field("itunes", $podcast)["description"] ) ?>]]>
+				<![CDATA[<?php echo get_field("itunes", $podcast)["description"] ?>]]>
 			</itunes:subtitle>
 		<?php endif ?>
 		<atom:link href="<?php echo home_url() . "feed/podcasts/{$podcast->slug}"  ?>" rel="self" type="application/rss+xml"></atom:link>
@@ -66,7 +66,7 @@
 			<![CDATA[<?php echo $podcast->name ?>]]>
 		</title>
 		<description>
-			<![CDATA[<?php echo htmlentities( $podcast->description ) ?>]]>
+			<![CDATA[<?php echo $podcast->description ?>]]>
 		</description>
 		<lastbuilddate>
 			<![CDATA[<?php echo date( "r" ) ?>]]>
