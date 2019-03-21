@@ -59,8 +59,14 @@
 			    <title>
 					<?php echo get_the_title() ?>
 				</title>
+				<description>
+					<![CDATA[<?php echo get_the_content() ?>]]>
+				</description>
+				<itunes:subtitle>
+					<![CDATA[<?php echo get_field("itunes", $podcast)["description"] ?>]]>
+				</itunes:subtitle>
 			    <itunes:summary>
-			    	<?php echo get_the_excerpt() ?>
+			    	<![CDATA[<?php echo get_the_content() ?>]]>
 			    </itunes:summary>
 			    <description>
 			    	<?php echo get_the_excerpt() ?>
