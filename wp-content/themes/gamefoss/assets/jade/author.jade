@@ -11,18 +11,15 @@ block main
 				h1.title-1.tt--uppercase!= get_the_author_meta( 'display_name' )
 				.gutter
 				img(src!=echo('get_avatar_url($_author->ID, array("size"=>"120"))') width="120")
-				.gutter
-				.gutter
+				.gutter.gutter--2
 					:php
 						$_socials = get_field('socials', "user_{$_author->ID}" );
 						if ($_socials) include( locate_template( 'modules/socials.php' ) );
-				.gutter
-				.gutter
+				.gutter.gutter--2
 				p.text.col-xs-12.col-sm-8.col-sm-offset-2
 					!= get_the_author_meta('description', $_author->ID)
 		block content
-		.gutter
-		.gutter
+		.gutter.gutter--2
 		.wrap
 			.row
 				- if( have_posts() ): while( have_posts() ): the_post()
@@ -30,15 +27,9 @@ block main
 						- post_block()
 				- endwhile;else:
 				.col-xs-12
-					.gutter
-					.gutter
-					.gutter
-					.gutter
+					.gutter.gutter--2
 					.t--center.text!= __("[:pb]Não há posts deste autor[:en]There is no posts from this author[:]")
-					.gutter
-					.gutter
-					.gutter
-					.gutter
+					.gutter.gutter--2
 				- endif;
 				.cf
 				+pagination

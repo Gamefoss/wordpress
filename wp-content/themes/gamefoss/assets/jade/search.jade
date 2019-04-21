@@ -8,8 +8,7 @@ block main
 		block banner
 			+banner
 				h1.title-1.tt--uppercase!= __("[:pb]Busca[:en]Search[:]")
-				.gutter
-				.gutter
+				.gutter.gutter--2
 				p.title-3!= __("[:pb]Resultados para[:en]Results for[:]") . ":"
 				.gutter
 				p!= "\"" . get_search_query() . "\""		
@@ -17,10 +16,7 @@ block main
 		block content
 			.wrap
 				.col-xs-12
-					.gutter
-					.gutter
-					.gutter
-					.gutter
+					.gutter.gutter--4
 					form(name="search" action="" method="GET").search-bar
 						.input
 							input(type="text" name="s" value!=echo('get_search_query()') placeholder!=echo('__("[:pb]Buscar[:en]Search[:]")') required minlength="3")

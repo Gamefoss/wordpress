@@ -24,6 +24,11 @@ body {
 .gutter {
 	display: block;
 	height: $gutter;
+	@for $i from 1 to 4 {
+		&.gutter--#{$i} {
+			height: $gutter*$i;	
+		}
+	}
 }
 
 .author-link {

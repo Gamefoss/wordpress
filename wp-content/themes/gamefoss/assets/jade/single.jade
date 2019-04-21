@@ -54,8 +54,7 @@ block main
 							//- only one term
 							$_category = reset( $_category );					
 						a.badge(href!=echo('get_term_link($_category)') title!=echo('$_category->name') class!=echo('"badge--" . get_post_type()'))!= $_category->name
-				.gutter
-				.gutter
+				.gutter.gutter--2
 				h1.title-1!= get_the_title()
 				.gutter
 				block excerpt
@@ -63,8 +62,7 @@ block main
 						.excerpt.f--open.t--center.hidden-xs
 							em!= get_the_excerpt()
 					- endif
-				.gutter
-				.gutter
+				.gutter.gutter--2
 				.info.wrap
 					block author
 						:php
@@ -98,8 +96,7 @@ block main
 						- endif
 		.wrap
 			.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-				.gutter
-				.gutter
+				.gutter.gutter--2
 				block share
 					- include( locate_template( 'modules/share.php' ) )
 				block content
@@ -168,5 +165,4 @@ block main
 						.cf
 					.cf
 			- endif
-			.gutter
-			.gutter
+			.gutter.gutter--2
