@@ -134,10 +134,12 @@ block main
 						- foreach ( $_posts as $post ):
 							- setup_postdata($post)
 							.col-xs-12.col-sm-4
-								- post_block()
+								- post_block( array( 'variation' => "white" ) )
 							- wp_reset_postdata()
 						- endforeach
 					.cf
+					.gutter
+					.gutter
 					//- .post-block--container
 						- foreach( get_terms( "podcasts" ) as $_podcast ):
 							.col-xs-12.col-sm-4.col-md-3
