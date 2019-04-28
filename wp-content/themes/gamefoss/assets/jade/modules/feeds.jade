@@ -1,0 +1,12 @@
+append styles
+  - wp_enqueue_style( 'inline-socials-css', get_template_directory_uri() . "/library/css/modules/socials.css", array(), null );
+  - wp_enqueue_style( 'inline-feed-links-css', get_template_directory_uri() . "/library/css/modules/feed-link.css", array(), null );
+.feed-widget-container
+  h3.title.title--3.t--center.tt--uppercase!= __("[:pb]Assine o Feed:[:en]Subscribe:[:]")
+  .gutter
+  nav.socials.share.feed-link(class!=echo('get_post_type()'))
+    - if ( get_field( 'signup_services', get_queried_object() ) ):
+      - foreach ( get_field( 'signup_services', get_queried_object() ) as $_service ):
+        a.icon( class!=echo('"icon-" . $_service["service"]["value"]') href!=echo('$_service["url"]') title!=echo('__("[:pb]Assinar no[:en]Signnup in[:]") . " " . $_service["service"]["label"]') target="_blank")
+      - endforeach
+    - endif

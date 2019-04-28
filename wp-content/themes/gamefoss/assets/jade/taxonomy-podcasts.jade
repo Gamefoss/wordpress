@@ -18,8 +18,9 @@ block categories
 					.text.t--center!= __( get_queried_object()->description )
 					.gutter
 				.social-container.center.podcast
-					.gutter
-					:php
+					.gutter.gutter--2
+					- include( locate_template( 'modules/feeds.php' ) )
+					//- :php
 						$_socials = get_field( 'socials', get_queried_object() );
 						if( $_socials ) include( locate_template( 'modules/socials.php' ) )
 					.gutter
