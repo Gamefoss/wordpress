@@ -10,20 +10,23 @@ $c-slate-blue  : #6666cc;
 $c-tyrian      : #490847;
 $c-falured     : #890f33;
 
+// shades of gray ( ͡° ͜ʖ ͡°)
+$c-light-gray  : #ebebeb;
+
 $colors:  (
-  ('white', $c-white)
-  ('black', $c-black)
-  ('red', $c-red)
-  ('silver', $c-silver)
-  ('grape', $c-grape)
-  ('ludokratia', $c-tyrian)
-  ('entertainment', $c-red)
-  ('post', $c-red)
-  ('podcast', $c-falured)
+	('white', $c-white)
+	('black', $c-black)
+	('red', $c-red)
+	('silver', $c-silver)
+	('grape', $c-grape)
+	('ludokratia', $c-tyrian)
+	('entertainment', $c-red)
+	('post', $c-red)
+	('podcast', $c-falured)
 );
 
 // color usage
-$c-bg:              $c-silver;
+$c-bg:              $c-light-gray;
 $c-menu:            $c-falured;
 $c-ludokratia:      $c-tyrian;
 $c-entertainment:   $c-red;
