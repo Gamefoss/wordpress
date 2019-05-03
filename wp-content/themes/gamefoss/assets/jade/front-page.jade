@@ -49,7 +49,53 @@ block main
 			- else:
 				.visible-md.visible-lg.visible-xl
 					- ad( 'large-leaderboard' )
-			- endif		
+			- endif	
+		section#podcasts
+			.row
+				.col-xs-12
+					.col-xs-12
+						+compound-header( "Podcast", echo('get_post_type_archive_link( "podcast" ) . "gamefoss"') ).podcast
+							- wp_enqueue_style( 'inline-feed-links-css', get_template_directory_uri() . "/library/css/modules/feed-link.css", array(), null );
+							nav.feed-link
+								- $_podcast = get_term_by( "slug", "gamefoss", "podcasts" )
+								strong(class="tt--uppercase") Assine: &nbsp;
+								- if ( get_field( "signup_services", $_podcast ) ):
+									- foreach( get_field( "signup_services", $_podcast ) as $_service ):
+										a.icon( class!=echo('"icon-" . $_service["service"]["value"]') href!=echo('$_service["url"]') title!=echo('__("[:pb]Assinar no[:en]Signnup in[:]") . " " . $_service["service"]["label"]') target="_blank")
+									- endforeach
+								- endif
+								a.icon.icon-rss(href!=echo('get_field( "rss_feed", $_podcast )') title!=echo('__("[:pb]Feed RSS[:en]RSS Feed[:]")') target="_blank")
+					.cf
+					.post-block--container
+						:php
+							$_posts = get_posts(
+								array(
+									'post_type' 	=> "podcast",
+									'numberposts'	=> 4
+								)
+							);
+						
+						- foreach ( $_posts as $post ):
+							- setup_postdata($post)
+							.col-xs-12.col-sm-3
+								- post_block( array( 'variation' => "white" ) )
+							- wp_reset_postdata()
+						- endforeach
+					.cf
+					.col-xs-12.t--center
+						.gutter.gutter--2
+						a.btn.btn--podcast(href!=echo('get_post_type_archive_link( "podcast" ) . "gamefoss"'))!= __("[:pb]Mais episódios[:en]See more episodes[:]")
+						.gutter.gutter--2
+				.cf
+				- if ( wp_is_mobile() ):
+					.visible-xs
+						- ad( 'square' )
+				- else:
+					.hidden-xs
+						- ad( 'leaderboard' )
+				- endif
+			.cf
+	
 		section#ludokratia
 			+compound-header("Ludokratia", echo('get_post_type_archive_link( "ludokratia" )') ).ludokratia
 				:php
@@ -115,54 +161,5 @@ block main
 						- ad( 'half-page' )
 				- endif
 			.cf
-		section#podcasts
-			.row
-				.col-xs-12.col-sm-7.col-md-8
-					.col-xs-12
-						+compound-header( "Podcast", echo('get_post_type_archive_link( "podcast" ) . "gamefoss"') ).podcast
-							//- a(href!=echo('get_post_type_archive_link( "podcast" )')).badge.badge--podcast.hidden-xs Podcasts
-					.cf
-					.post-block--container
-						:php
-							$_posts = get_posts(
-								array(
-									'post_type' 	=> "podcast",
-									'numberposts'	=> 3
-								)
-							);
-						
-						- foreach ( $_posts as $post ):
-							- setup_postdata($post)
-							.col-xs-12.col-sm-4
-								- post_block( array( 'variation' => "white" ) )
-							- wp_reset_postdata()
-						- endforeach
-					.cf
-					.gutter.gutter--2.hidden-xs
-					//- .post-block--container
-						- foreach( get_terms( "podcasts" ) as $_podcast ):
-							.col-xs-12.col-sm-4.col-md-3
-								article.post-block.post-block--square.t--center
-									a(href!=echo('get_term_link($_podcast)'))
-									.img(style!=background('get_field("logo", $_podcast)', true))
-									.content
-										a(href!=echo('get_term_link($_podcast)'))
-											h2.title-2!= $_podcast->name
-						- endforeach
-						.cf
-				aside.col-xs-12.col-sm-5.col-md-4
-					.col-xs-12
-						+compound-header( "Feed", echo('get_post_type_archive_link( "podcast" ) . "gamefoss"') ).podcast
-					.cf
-					ul.col-xs-12
-						- foreach( get_terms( "podcasts" ) as $_podcast ) include( locate_template( 'modules/feed-link.php' ) )
-					.cf
-				.cf
-				- if ( wp_is_mobile() ):
-					.visible-xs
-						- ad( 'square' )
-				- else:
-					.hidden-xs
-						- ad( 'leaderboard' )
-				- endif
-			.cf
+		.gutter.gutter--3
+		
