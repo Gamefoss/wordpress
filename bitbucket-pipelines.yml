@@ -1,9 +1,16 @@
-image: php:7.2
+image: node
 
 pipelines:
   default:
     - step:
+        caches:
+          - node
         script:
           - apt-get update
           - apt-get -qq install git-ftp
-          - git ftp init --user $SFTP_username --passwd $SFTP_password ftp://ftp.gamefoss.com.br/
+          - cd wp-content/themes/gamefoss/src/ 
+          - npm install
+          - npm install -g gulp
+          - gulp build --release
+          - cd ../
+          - git ftp push --user $SFTP_username --passwd $SFTP_password ftp://ftp.gamefoss.com.br/
