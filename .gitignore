@@ -1,4 +1,9 @@
 /wp-content/uploads/
 /wp-content/upgrade/
+/wp-content/languages/
+/wp-content/plugins/
+/wp-admin/
+/wp-includes/
+*.php
 gamefoss.code-workspace
 .vscode
