@@ -16,4 +16,4 @@ pipelines:
           - npm install -g gulp-cli
           - gulp build --release
           - cd ../
-          - git ftp push --all --user $SFTP_username --passwd $SFTP_password ftp://ftp.gamefoss.com.br/
+          - git ftp push --all --user $SFTP_username --passwd $SFTP_password --syncroot wp-content/themes/gamefoss ftp://ftp.gamefoss.com.br/
