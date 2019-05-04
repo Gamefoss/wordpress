@@ -150,4 +150,6 @@ add_action('init', function () {
 	}
 });
 
+// Customizer
+require_once("customizer.php");
 ?>
