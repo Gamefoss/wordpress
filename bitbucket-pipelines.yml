@@ -11,6 +11,7 @@ pipelines:
           - cd wp-content/themes/gamefoss/src/ 
           - npm install
           - npm install -g gulp
+          - npm install -g gulp-cli
           - gulp build --release
           - cd ../
           - git ftp push --user $SFTP_username --passwd $SFTP_password ftp://ftp.gamefoss.com.br/
