@@ -1,0 +1,9 @@
+image: php:7.2
+
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update
+          - apt-get -qq install git-ftp
+          - git ftp init --user $SFTP_username --passwd $SFTP_password ftp://ftp.gamefoss.com.br/
