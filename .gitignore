@@ -5,5 +5,6 @@
 /wp-admin/
 /wp-includes/
 *.php
+!wp-config.php
 gamefoss.code-workspace
 .vscode
