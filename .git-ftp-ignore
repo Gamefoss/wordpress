@@ -1,0 +1,7 @@
+wp-content/themes/gamefoss/src/*
+wp-content/themes/gamefoss/assets/*
+.gitignore
+*/.gitignore
+*/.gitkeep
+.git-ftp-ignore
+.git-ftp-include

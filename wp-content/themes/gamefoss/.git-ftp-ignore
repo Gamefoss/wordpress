@@ -1,7 +1,0 @@
-src/*
-assets/*
-.gitignore
-*/.gitignore
-*/.gitkeep
-.git-ftp-ignore
-.git-ftp-include
