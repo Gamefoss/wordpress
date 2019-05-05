@@ -5,3 +5,4 @@ wp-content/themes/gamefoss/assets/*
 */.gitkeep
 .git-ftp-ignore
 .git-ftp-include
+bitbucket-pipelines.yml
