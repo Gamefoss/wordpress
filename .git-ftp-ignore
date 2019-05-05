@@ -2,7 +2,11 @@ wp-content/themes/gamefoss/src/*
 wp-content/themes/gamefoss/assets/*
 .gitignore
 */.gitignore
+.gitattributes
+*/.gitattributes
+.gitkeep
 */.gitkeep
+.htaccess
 .git-ftp-ignore
 .git-ftp-include
 bitbucket-pipelines.yml
