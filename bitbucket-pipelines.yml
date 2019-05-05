@@ -1,19 +1,20 @@
 image: node:11.15.0
 
 pipelines:
-  default:
-    - step:
-        caches:
-          - node
-        script:
-          - apt-get update
-          - apt-get -qq install git-ftp ruby-full
-          - gem update --system
-          - gem install compass
-          - cd wp-content/themes/gamefoss/src/ 
-          - npm install
-          - npm install -g gulp
-          - npm install -g gulp-cli
-          - gulp build --release
-          - cd ../
-          - git ftp push --all --user $SFTP_username --passwd $SFTP_password --syncroot wp-content/themes/gamefoss ftp://ftp.gamefoss.com.br/
+  branches:
+    master:
+      - step:
+          caches:
+            - node
+          script:
+            - apt-get update
+            - apt-get -qq install git-ftp ruby-full
+            - gem update --system
+            - gem install compass
+            - cd wp-content/themes/gamefoss/src/ 
+            - npm install
+            - npm install -g gulp
+            - npm install -g gulp-cli
+            - gulp build --release
+            - cd ../
+            - git ftp push --all --user $SFTP_username --passwd $SFTP_password --syncroot wp-content/themes/gamefoss ftp://ftp.gamefoss.com.br/
