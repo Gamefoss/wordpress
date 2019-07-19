@@ -55,9 +55,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		// Add base js
 		wp_enqueue_script( 'defer-script-js', get_template_directory_uri() . "/library/js/scripts.min.js", array( 'jquery' ), null, true );
 		wp_enqueue_script( 'defer-layout-js', get_stylesheet_directory_uri() . "/library/js/layout/layout.min.js", array( 'jquery' ), null, true );
-		
-		if ( get_field('google_analytics', 'option') && !is_user_logged_in() )
-			wp_enqueue_script( 'async-analytics-js', get_stylesheet_directory_uri() . "/library/js/modules/analytics.min.js", array( 'jquery' ), null, true );
 
 		// add ajaxurl for REST API
 		wp_localize_script( 'jquery', 'ajax', array(
