@@ -1,0 +1,8 @@
+:php
+	if ( get_field('google_analytics', 'option') && !is_user_logged_in() ) {
+		get_template_part( 'layout/analytics/google-analytics', 'google-analytics' );
+		get_template_part( 'layout/analytics/google-tag-manager', 'google-tag-manager' );
+	}
+
+- get_template_part( 'layout/analytics/facebook', 'facebook' )
+- get_template_part( 'layout/analytics/mautic', 'mautic' )

@@ -23,13 +23,7 @@ head
 	block styles
 
 	block analytics
-		- get_template_part( 'layout/analytics/google-analytics', 'google-analytics' )
-		- get_template_part( 'layout/analytics/google-tag-manager', 'google-tag-manager' )
-		- get_template_part( 'layout/analytics/facebook', 'facebook' )
-		- get_template_part( 'layout/analytics/mautic', 'mautic' )
-	
-	block json-ld
-		- get_template_part( 'layout/google/json-ld', 'json-ld' )
+		- get_template_part( 'layout/analytics/analytics', 'analytics' )
 	
 	block adsense
 		- get_template_part( 'layout/google/adsense', 'adsense' )
