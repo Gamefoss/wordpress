@@ -173,8 +173,8 @@ add_filter( 'allowed_block_types', function( $allowed_blocks ) {
 		'core-embed/soundcloud',
 		'core-embed/vimeo',
 		'core-embed/imgur',
-		'core-embed/reddit'
-
+		'core-embed/reddit',
+		'core/separator'
 	);
 } );
 
