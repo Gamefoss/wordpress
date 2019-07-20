@@ -4,6 +4,8 @@ pipelines:
   branches:
     master:
       - step:
+          name: Production Deploy
+          deployment: production-main
           caches:
             - node
           script:
