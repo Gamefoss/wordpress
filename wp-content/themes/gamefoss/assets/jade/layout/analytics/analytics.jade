@@ -1,0 +1,10 @@
+:php
+	if ( WP_ENV == "production" && !is_user_logged_in() ) {
+		if ( get_field('google_analytics', 'option') ) {
+			wp_enqueue_script( 'async-analytics-js', get_stylesheet_directory_uri() . "/library/js/modules/analytics.min.js", array( 'jquery' ), null, true );
+			get_template_part( 'layout/analytics/google-analytics', 'google-analytics' );
+			get_template_part( 'layout/analytics/google-tag-manager', 'google-tag-manager' );
+		}
+		get_template_part( 'layout/analytics/facebook', 'facebook' );
+		get_template_part( 'layout/analytics/mautic', 'mautic' );
+	}

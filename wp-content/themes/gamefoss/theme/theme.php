@@ -20,7 +20,7 @@ add_action( 'wp_default_scripts', function ( $scripts ) {
 
 // remove guntemberg styles
 add_action( 'wp_print_styles', function () {
-	wp_dequeue_style( 'wp-block-library' );
+	// wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'qts_front_styles' );
 }, 100 );
 
@@ -55,7 +55,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		// Add base js
 		wp_enqueue_script( 'defer-script-js', get_template_directory_uri() . "/library/js/scripts.min.js", array( 'jquery' ), null, true );
 		wp_enqueue_script( 'defer-layout-js', get_stylesheet_directory_uri() . "/library/js/layout/layout.min.js", array( 'jquery' ), null, true );
-		wp_enqueue_script( 'async-analytics-js', get_stylesheet_directory_uri() . "/library/js/modules/analytics.min.js", array( 'jquery' ), null, true );
 
 		// add ajaxurl for REST API
 		wp_localize_script( 'jquery', 'ajax', array(
@@ -149,6 +148,35 @@ add_action('init', function () {
 		remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
 	}
 });
+
+
+// Gutenberg blocks
+add_filter( 'allowed_block_types', function( $allowed_blocks ) {
+	return array(
+		'core/heading',
+		'core/paragraph',
+		'core/image',
+		'core/list',
+		'core/gallery',
+		'core/quote',
+		'core/table',
+		'core/code',
+		'core/html',
+		'core/freeform',
+		'core/shortcode',
+		'core/embed',
+		'core-embed/youtube',
+		'core-embed/twitter',
+		'core-embed/facebook',
+		'core-embed/instagram',
+		'core-embed/spotify',
+		'core-embed/soundcloud',
+		'core-embed/vimeo',
+		'core-embed/imgur',
+		'core-embed/reddit'
+
+	);
+} );
 
 // Customizer
 require_once("customizer.php");
