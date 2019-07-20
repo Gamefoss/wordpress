@@ -1,7 +1,8 @@
-!wp-content/themes/gamefoss/library
+!wp-content/themes/gamefoss/custom_posts
 !wp-content/themes/gamefoss/functions
-!wp-content/themes/gamefoss/modules
 !wp-content/themes/gamefoss/layout
+!wp-content/themes/gamefoss/library
+!wp-content/themes/gamefoss/modules
 !wp-content/themes/gamefoss/pages
 !wp-content/themes/gamefoss/rss
 !wp-content/themes/gamefoss/theme
