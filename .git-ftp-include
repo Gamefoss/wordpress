@@ -1,1 +1,11 @@
 !wp-content/themes/gamefoss/library
+!wp-content/themes/gamefoss/library
+!wp-content/themes/gamefoss/functions
+!wp-content/themes/gamefoss/modules
+!wp-content/themes/gamefoss/pages
+!wp-content/themes/gamefoss/rss
+!wp-content/themes/gamefoss/theme
+!wp-content/themes/gamefoss/*.php
+!wp-content/themes/gamefoss/*.ico
+!wp-content/themes/gamefoss/*.png
+!wp-content/themes/gamefoss/*.css
