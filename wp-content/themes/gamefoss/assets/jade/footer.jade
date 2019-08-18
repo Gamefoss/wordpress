@@ -35,4 +35,10 @@ footer#footer
 			.col-xs-12.col-sm-6
 				p.disclaimer!= "&copy; ". date("Y") . " " . __("[:pb]Todos os direitos reservados[:en]All rights reserved[:]")
 				p.disclaimer!= __("[:pb]Todas as imagens de filmes, jogos, séries e etc são marcas registradas dos seus respectivos proprietários.[:en]All movie images, games, series and etc. are trademarks of their respective owners.[:]")
+				br
+				br
+				p.disclaimer(style="font-size:.6em;display:flex;align-items:center;justify-content:flex-end")!= __("[:pb]Desenvolvido por:[:en]Developed by:[:]")
+					| &nbsp;
+					a(href="http://dihgg.com/?utm_source=gamefoss&utm_medium=footer&utm_campaign=credits&utm_content=gamefoss" target="_blank")
+						img(src!=image('main/dihgg.svg') alt="{Dihgg}" width="75")
 			.cf

@@ -5,18 +5,16 @@ pipelines:
     master:
       - step:
           name: Production Deploy
-          deployment: production-main
+          deployment: production
           caches:
             - node
           script:
             - apt-get update
             - apt-get -qq install git-ftp ruby-full
-            - gem update --system
-            - gem install compass
             - cd wp-content/themes/gamefoss/src/ 
-            - npm install
             - npm install -g gulp
             - npm install -g gulp-cli
+            - npm install
             - gulp build --release
             - cd ../
             - git ftp push --all --user $SFTP_username --passwd $SFTP_password --syncroot wp-content/themes/gamefoss ftp://ftp.gamefoss.com.br/
