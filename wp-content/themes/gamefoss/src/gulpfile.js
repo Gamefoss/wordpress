@@ -10,14 +10,18 @@ var gulp			= require('gulp'),
 	jade			= require('gulp-jade-php'),
 
 	coffee			= require('gulp-coffee'),
-	uglify			= require('gulp-uglify'),
+	uglify			= require('gulp-uglify-es').default,
 
 	imagemin		= require('gulp-imagemin'),
 
-	compass			= require('gulp-compass'),
+	sass			= require('gulp-sass'),
+	compass			= require('compass-importer'),
+	assetFunctions	= require('node-sass-asset-functions'),
 	autoprefixer	= require('gulp-autoprefixer'),
 
 	isRelease = args.release || false;
+
+	sass.compile	= require('node-sass');
 
 // JADE
 gulp.task('jade', function buildHTML() {
@@ -74,19 +78,24 @@ gulp.task('images', function(){
 
 // STYLES
 gulp.task('styles', function(){
-	gulp.src(['../assets/scss/**/*.scss'])
-		.pipe(plumber({
-			errorHandler: function (error) {
-				console.log(error.message);
-				this.emit('end');
-		}}))
-		.pipe(compass({
-			config_file: "config.rb",
-			sass: "../assets/sass",
-			css: "../library/css"
-		}))
-		.pipe(plumber.stop())
-		.pipe(gulp.dest('../library/css/'))
+	gulp.src(['../assets/sass/**/*.scss'])
+	.pipe(plumber({
+		errorHandler: function (error) {
+			console.log(error.message);
+			this.emit('end');
+	}}))
+	.pipe(sass({
+		importer	: compass,
+		functions		: assetFunctions({
+			images_path			: "../images/",
+			http_images_path	: "../images/",
+			fonts_path			: "../fonts/",
+			http_fonts_path		: "../fonts/"
+		  }
+		)
+	}))
+	.pipe(plumber.stop())
+	.pipe(gulp.dest('../library/css/'))
 });
 
 gulp.task('autoprefixer', function () {
