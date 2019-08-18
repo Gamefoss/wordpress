@@ -43,94 +43,6 @@
 			text-transform: uppercase;
 		}
 
-		/*@each $name, $color in $colors {
-			&.#{$name} {
-				> p:first-child::first-letter{
-					color: $color;
-				}
-				
-				blockquote {
-					&:before, &:after {
-						background-color: $color;
-					}
-				}
-				
-				hr {
-					border-color: $color;
-				}
-			}
-		}*/
-
-		/*iframe {
-			display: block;
-			margin: 24px auto;
-			max-width: 80%;
-			width: 100%;
-			height: auto;
-		}
-
-		@include bp(false, $s-sm) {
-			img, .wp-block-image {
-				display: block;
-				margin: 24px auto;
-				max-width: 80%;
-				width: 100%;
-				height: auto;
-			}
-		}
-
-		@include bp($s-sm) {
-			img, .wp-block-image {
-				max-width: 100%;
-				margin: 0;
-				height: auto;
-			}
-
-			.alignleft,
-			.alignright,
-			.aligncenter,
-			.alignnone {
-				display: block;
-				padding: 0 $gutter;
-				// margin: 0;
-				@include bp(false, $s-md) {
-					max-width: 50%;
-				}
-			}
-
-			.alignleft,
-			.alignright {
-				max-width: 50%;
-			}
-			.alignleft {
-				float: left;
-				padding-left: 0;
-			}
-
-			.alignright {
-				float: right;
-				padding-right: 0;
-			}
-
-			.aligncenter,
-			.alignnone {
-				margin: 0 auto;
-			}
-		}
-
-		iframe {
-			@include aspect-ratio(16,9);
-			@include bp($s-sm) {
-				min-height: 260px;
-			}
-			@include bp($s-md) {
-				min-height: 360px;
-			}
-			@include bp($s-lg) {
-				min-height: 400px;
-			}
-		}*/
-
 		blockquote {
 			position: relative;
 			padding: $gutter $gutter $gutter $gutter*2;
@@ -159,10 +71,6 @@
 			@include bp($s-sm) {
 				&.quote {
 					max-width: 45%;
-					// font-size: 1.4em;
-					// font-family: $f-roboto;
-					// font-weight: bold;
-					// text-align: left;
 					margin-left: $gutter;
 					margin-bottom: $gutter;
 				}
@@ -216,24 +124,6 @@
 					float: none !important;
 				}
 			}
-			/*figure {
-				@include bp($s-sm) {
-					&.alignleft,
-					&.alignright {
-						max-width: 80%;
-					}
-					
-					&.alignleft {
-						float: left;
-						margin-right: $gutter;
-					}
-		
-					&.alignright {
-						float: right;
-						margin-left: $gutter;
-					}
-				}
-			}*/
 		}
 
 		.wp-block-gallery {
@@ -261,63 +151,6 @@
 					background: linear-gradient(0, black, transparent);
 				}
 			}
-			/*margin: 0 auto;
-			padding: 0;
-			list-style: none;
-			margin: $gutter auto;
-			
-			.blocks-gallery-item {
-				margin: $gutter auto;
-				@include bp($s-sm) {
-					margin: 0;
-				}
-				figure {
-					position: relative;
-					height: 100%;
-					figcaption {
-						position: absolute;
-						width: 100%;
-						bottom: 0;
-						left: 0;
-						padding: $gutter $gutter/2;
-						color: white;
-						z-index: 1;
-						text-align: center;
-						text-shadow: 1px 1px 1px rgba(black, 0.25);
-						background: linear-gradient(0, black, transparent);
-					}
-				}
-			}
-			
-			&.is-cropped {
-				.blocks-gallery-item {
-					height: 100%;
-					figure {
-						img {
-							height: 100%;
-							object-fit: cover;
-						}
-					}
-				}
-			}
-
-			&:not(.carousel) {
-				@include bp($s-sm) {
-					display: flex;
-					flex-wrap: wrap;
-					margin: 0 $gutter*-1;
-					.blocks-gallery-item {
-						flex-grow: 1;
-						padding: $gutter;
-					}
-					@for $i from 1 to 6 {
-						&.columns-#{$i} .blocks-gallery-item {
-							width: calc(100% / #{$i});						
-						}
-					}
-				}
-
-			}*/
 
 			&.carousel {
 				.blocks-gallery-item {
@@ -343,18 +176,6 @@
 				}
 			}
 		}
-
-		/*.wp-caption {
-			width: 100%;
-			img {
-				margin-bottom: 0;
-			}
-			text-align: center;
-			.wp-caption-text {
-				margin: 0 auto;
-				font-size: rem(16);
-			}
-		}*/
 
 		.google-auto-placed {
 			margin: $gutter*2 auto;
