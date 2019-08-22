@@ -26,6 +26,7 @@
 		"gulp-plumber": "^1.0.1",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^4.0.2",
+		"gulp-sourcemaps": "^2.6.5",
 		"gulp-uglify-es": "^1.0.4",
 		"gulp-uglifyjs": "^0.6.2",
 		"jstransformer-verbatim": "^1.0.0",
