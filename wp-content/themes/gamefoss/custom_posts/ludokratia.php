@@ -54,7 +54,8 @@ function ludokratia() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'							=> array('title', 'editor', 'thumbnail', 'author', 'excerpt')
+		'supports'				=> array('title', 'editor', 'thumbnail', 'author', 'excerpt'),
+		'show_in_rest'			=> true
 	);
 	register_post_type( 'ludokratia', $args );
 }
