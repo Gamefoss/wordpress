@@ -10,7 +10,7 @@ pipelines:
             - node
           script:
             - apt-get update
-            - apt-get -qq install git-ftp ruby-full
+            - apt-get -qq install git-ftp
             - cd wp-content/themes/gamefoss/src/ 
             - npm install -g gulp
             - npm install -g gulp-cli
