@@ -79,6 +79,7 @@ function create_podcast_podcasts() {
 				'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 				'labels'            => $labels,
 				'show_ui'           => true,
+				'show_in_rest'      => true,
 				'rewrite'           => array( 'slug' => 'podcast' )
 		);
 
@@ -103,6 +104,7 @@ function create_podcast_tags() {
 			'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 			'labels'            => $labels,
 			'show_ui'           => true,
+			'show_in_rest'      => true,
 			// 'rewrite'           => array( 'slug' => 'tags' )
 	);
 

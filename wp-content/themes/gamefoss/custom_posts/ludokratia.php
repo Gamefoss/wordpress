@@ -78,6 +78,7 @@ function create_ludokratia_category() {
 			'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 			'labels'            => $labels,
 			'show_ui'           => true,
+			'show_in_rest'      => true,
 			'rewrite'           => array( 'slug' => 'ludokratia' )
 	);
 
@@ -102,6 +103,7 @@ function create_ludokratia_tags() {
 			'hierarchical'      => false, // Set this to 'false' for non-hierarchical taxonomy (like tags)
 			'labels'            => $labels,
 			'show_ui'           => true,
+			'show_in_rest'      => true,
 			// 'rewrite'           => array( 'slug' => 'ludokratia/tags' )
 	);
 
