@@ -54,7 +54,7 @@ function podcast() {
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
-		'supports'				=> array('title', 'editor', 'thumbnail', 'excerpt'),
+		'supports'				=> array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
 		'show_in_rest'			=> true
 		
 	);
