@@ -106,12 +106,6 @@ block main
 					.cf
 					- if ( get_field( "review" ) ) include( locate_template( 'modules/review.php' ) )
 			.cf
-		.visible-xs
-			- ad('square')
-		.visible-sm
-			- ad('leaderboard')
-		.hidden-xs.hidden-sm
-			- ad('large-leaderboard')
 		block comments
 			.wrap
 				.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
@@ -130,6 +124,12 @@ block main
 							})();
 						noscript Ative o javascript para ver os #[a(href="https://disqus.com/?ref_noscript") comentários. ]					
 				.cf
+			.visible-xs
+				- ad('square')
+			.visible-sm
+				- ad('leaderboard')
+			.hidden-xs.hidden-sm
+				- ad('large-leaderboard')
 		block related
 			block related-query
 				:php
