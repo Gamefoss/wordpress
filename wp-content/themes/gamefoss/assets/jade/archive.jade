@@ -40,7 +40,8 @@ block main
 								'orderby'			=> "count",
 								'order'				=> "DESC",
 								'number'			=> 10, // máximo 10
-								'hide_empty'	=> false
+								'hide_empty'		=> false,
+								'exclude'			=> array( 1 )
 							) )
 						
 						- foreach ( $_categories as $i => $_category ):
