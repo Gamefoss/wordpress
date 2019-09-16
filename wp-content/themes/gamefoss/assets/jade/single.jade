@@ -12,6 +12,7 @@ append scripts
 				enable_page_level_ads: true
 			});
 	- endif
+	script(id="dsq-count-scr" src="//gamefoss.disqus.com/count.js" async)
 block main
 	article#single
 		block banner
@@ -113,10 +114,21 @@ block main
 			- ad('large-leaderboard')
 		block comments
 			.wrap
-				.col-xs-12
-					+compound-header(echo('__("[:pb]Comentários[:en]Comments[:]")'))
+				.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 					.comments
-						.fb-comments(data-href!=echo('get_the_permalink()') data-numposts='12' data-width="100%" )
+						#disqus_thread
+						script.
+							var disqus_config = function () {
+								this.page.url = "<?php echo wp_get_canonical_url() ?>";
+								this.page.identifier = "<?php echo get_the_guid() ?>";
+							};
+							(function() {
+								var d = document, s = d.createElement('script');
+								s.src = 'https://gamefoss.disqus.com/embed.js';
+								s.setAttribute('data-timestamp', +new Date());
+								(d.head || d.body).appendChild(s);
+							})();
+						noscript Ative o javascript para ver os #[a(href="https://disqus.com/?ref_noscript") comentários. ]					
 				.cf
 		block related
 			block related-query

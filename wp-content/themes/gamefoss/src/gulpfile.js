@@ -18,6 +18,7 @@ var gulp			= require('gulp'),
 	compass			= require('compass-importer'),
 	assetFunctions	= require('node-sass-asset-functions'),
 	autoprefixer	= require('gulp-autoprefixer'),
+	sourcemaps		= require('gulp-sourcemaps'),
 
 	isRelease = args.release || false;
 
@@ -84,9 +85,11 @@ gulp.task('styles', function(){
 			console.log(error.message);
 			this.emit('end');
 	}}))
+	.pipe(gulpif(!isRelease, sourcemaps.init()))
 	.pipe(sass({
 		importer	: compass,
-		functions		: assetFunctions({
+		outputStyle : isRelease? "compressed" : "nested",
+		functions	: assetFunctions({
 			images_path			: "../images/",
 			http_images_path	: "../images/",
 			fonts_path			: "../fonts/",
@@ -94,6 +97,7 @@ gulp.task('styles', function(){
 		  }
 		)
 	}))
+	.pipe(gulpif(!isRelease, sourcemaps.write('./')))
 	.pipe(plumber.stop())
 	.pipe(gulp.dest('../library/css/'))
 });
@@ -169,7 +173,7 @@ gulp.task('fonts', function () {
 
 
 gulp.task('build', function(){
-	runSequence(['jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'autoprefixer', 'fonts', 'images']);
+	runSequence(['jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'fonts', 'images'], 'autoprefixer');
 });
 
 gulp.task('default', ['build']);

@@ -107,6 +107,7 @@
 
 		.wp-block-image, .blocks-gallery-item {
 			max-width: 100%;
+			width: 100%;
 			img {
 				width: 100%;
 				margin: 0 auto;
@@ -190,8 +191,7 @@
 	}
 
 	.comments {
-		background-color: $c-white;
-		border: 4px solid $c-black;
+		margin: 0 auto;
 	}
 
 	.wp-block-embed__wrapper {
