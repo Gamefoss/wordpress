@@ -1,5 +1,9 @@
 .row {
 	margin: 0 calc((#{$gutter}) * -1);
+	&--flex {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
 .wrap {
