@@ -118,7 +118,6 @@
 		}
 		.wp-block-image {
 			max-width: 100%;
-			width: 100%;
 			figure {
 				@include bp(false, $s-sm) {
 					margin: $gutter auto !important;
