@@ -1,7 +1,6 @@
 var gulp			= require('gulp'),
 	plumber			= require('gulp-plumber'),
 	rename			= require('gulp-rename'),
-	runSequence 	= require('run-sequence');
 	args			= require('yargs').argv,
 	gulpif			= require('gulp-if'),
 	notify			= require('gulp-notify'),
@@ -65,9 +64,6 @@ gulp.task('jade', function buildHTML() {
 
 // IMAGES
 gulp.task('images', function(){
-	if (!isRelease) {
-		console.warn("WARNING: running whitout --release, skipping image minification");
-	}
 	return gulp.src('../assets/images/**/*')
 		.pipe((plumber({
 			errorHandler: notify.onError("Error: <%= error.message %>")
@@ -79,7 +75,7 @@ gulp.task('images', function(){
 
 // STYLES
 gulp.task('styles', function(){
-	gulp.src(['../assets/sass/**/*.scss'])
+	return gulp.src(['../assets/sass/**/*.scss'])
 	.pipe(plumber({
 		errorHandler: function (error) {
 			console.log(error.message);
@@ -103,9 +99,9 @@ gulp.task('styles', function(){
 });
 
 gulp.task('autoprefixer', function () {
-	gulp.src(['../library/css/**/*.css'])
+	return gulp.src(['../library/css/**/*.css'])
 	.pipe(autoprefixer({
-		browsers : ['last 2 versions']
+		overrideBrowserslist : ['last 2 versions']
 	}))
 	.pipe(gulp.dest('../library/css/'));
 });
@@ -171,15 +167,9 @@ gulp.task('fonts', function () {
 		.pipe(gulp.dest('../library/fonts/'))
 });
 
-
-gulp.task('build', function(){
-	runSequence(['jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'fonts', 'images'], 'autoprefixer');
-});
-
-gulp.task('default', ['build']);
+gulp.task('build', gulp.series(gulp.parallel('jade','libs', 'coffee-libs', 'coffee-layout', 'coffee', 'styles', 'fonts', 'images'), 'autoprefixer'));
 
 gulp.task('watch', function() {
-	runSequence(['build']);
 	gulp.watch("../assets/jade/**/*.jade", ['jade']);
 	gulp.watch("../assets/sass/**/*.scss", ['styles']);
 	gulp.watch("../assets/js/**/*.js", ['libs']);
@@ -189,3 +179,5 @@ gulp.task('watch', function() {
 	gulp.watch("../assets/fonts/**/*", ['fonts']);
 	gulp.watch("../assets/images/**/*", ['images']);
 });
+
+gulp.task('default', gulp.series('build'));
