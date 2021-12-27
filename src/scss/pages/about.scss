@@ -1,0 +1,74 @@
+@import "../partials/partials"; // Sass partials
+
+#about {
+	.sobre {
+		margin: $gutter*4 auto;
+	}
+
+	.txt {
+		padding: $gutter*4 $gutter*0.5;
+	}
+
+	.person {
+		display: block;
+		width: 100%;
+		height: 160px;
+		margin-top: $gutter;
+		margin-bottom: $gutter;
+		background: center no-repeat;
+		background-size: cover;
+		position: relative;
+		// overflow: hidden;
+
+		// @include bp($s-sm) {
+		// 	height: 160px;
+		// }
+		// @include bp($s-md) {
+		// 	height: 200px;
+		// }
+		// @include bp($s-lg) {
+		// 	height: 260px;
+		// }
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			@include background-image( linear-gradient( 180deg, rgba($c-black, 0) 0%, $c-black 100%) );
+		}
+		.ball {
+			width: auto;
+			height: 120px;
+			border-radius: 50%;
+			border: solid 2px black;
+			margin: 0 auto;
+			display: block;
+			@include aspect-ratio(1,1);
+			z-index: 1;
+			position: relative;
+			top: -$gutter;
+		}
+		.name {
+			position: absolute;
+			bottom: 6px;
+			left: 6px;
+			z-index: 1;
+		}
+	}
+	.socials {
+		justify-content: flex-start;
+		margin-bottom: $gutter;
+		.social {
+			background-color: $c-black;
+		}
+	}
+
+	.text {
+		margin-bottom: $gutter*2;
+		p {
+			margin: $gutter auto;
+		}
+	}
+}

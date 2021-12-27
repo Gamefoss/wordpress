@@ -1,0 +1,85 @@
+// BREAKPOINTS
+@use "sass:math";
+
+@mixin bp($min-size: false, $max-size: false ) {
+	@if $min-size {
+		@media screen and (min-width: $min-size) {
+			@content;
+		}
+	} @else if $min-size and $max-size {
+		@media screen and (min-width: $min-size) and (max-width: $max-size - 1px) {
+			@content;
+		}
+	} @else {
+		@media screen and (max-width: $max-size - 1px) {
+			@content;
+		}
+	}
+}
+
+// SVG MASK
+@mixin svg-mask ($mask-image, $mask-size: contain, $position: center, $repeat: no-repeat) {
+	-webkit-mask-image: $mask-image;
+	-webkit-mask-size: $mask-size;
+	-webkit-mask-position: $position;
+	-webkit-mask-repeat: $repeat;
+
+	-khtml-mask-image: $mask-image;
+	-khtml-mask-size: $mask-size;
+	-khtml-mask-position: $position;
+	-khtml-mask-repeat: $repeat;
+
+	-moz-mask-image: $mask-image;
+	-moz-mask-size: $mask-size;
+	-moz-mask-position: $position;
+	-moz-mask-repeat: $repeat;
+
+	-ms-mask-image: $mask-image;
+	-ms-mask-size: $mask-size;
+	-ms-mask-position: $position;
+	-ms-mask-repeat: $repeat;
+
+	-o-mask-image: $mask-image;
+	-o-mask-size: $mask-size;
+	-o-mask-position: $position;
+	-o-mask-repeat: $repeat;
+}
+
+// ASPECT RATIO
+@mixin aspect-ratio($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: math.div($height, $width) * 100%;
+	}
+	> * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+
+	$min-vw: 320px;
+	$max-vw: $s-max-width;
+
+	$u1: unit($min-vw);
+	$u2: unit($max-vw);
+	$u3: unit($min-font-size);
+	$u4: unit($max-font-size);
+
+	& {
+		font-size: rem($min-font-size);
+		@include bp($min-vw) {
+			font-size: calc(#{rem($min-font-size)} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+		}
+		@include bp($max-vw) {
+			font-size: rem($max-font-size);
+		}
+	}
+}

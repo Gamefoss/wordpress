@@ -1,0 +1,13 @@
+@import "../../partials/partials";
+
+#archive {
+	#podcast-categories {
+		position: relative;
+		margin-top: -$gutter*4;
+		z-index: 1;
+	}
+	.podcast--container {
+		display: inline-block;
+		float: none;
+	}
+}

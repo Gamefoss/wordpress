@@ -1,0 +1,120 @@
+/*************************
+FONT FACES
+**************************/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/******************************
+FONT GENERAL
+******************************/
+html, body {
+	font-size: 16px;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: $f-roboto;
+	line-height: normal;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/******************************
+FONT TACHYONS
+******************************/
+// font family
+@each $name, $font in (
+	('roboto', $f-roboto)
+	('open', $f-open)
+) {
+	.f--#{$name} {
+		font-family: $font;
+	}
+}
+
+// text transform
+@each $transform in (
+	uppercase,
+	lowercase,
+	capitalize
+) {
+	.tt--#{$transform} {
+		text-transform: $transform;
+	}
+}
+
+// align
+@each $pos in (left, center, right, justify) {
+	.t--#{$pos} {
+		text-align: $pos;
+	}
+}
+
+// font weight
+@each $weight in (lighter, normal, bold) {
+	.f--#{$weight} {
+		font-weight: $weight;
+	}
+}
+
+// color
+@each $name, $color in $colors {
+	.c--#{$name} {
+		color: $color
+	}
+}
+
+
+/******************************
+FONT STYLES
+******************************/
+.title-1,
+.title-2,
+.title-3 {
+	font-weight: bold;
+}
+
+.title-1 {
+	@include fluid-type(20, 36);
+}
+
+.title-2 {
+	@include fluid-type(18, 24);
+}
+
+.title-3 {
+	@include fluid-type(16, 18);
+}
+
+.text {
+	font-family: $f-open;
+	font-weight: lighter;
+	font-size: rem(16);
+	line-height: normal;
+	h1, h2, h3, h4, h5, h6, p {
+		margin: $gutter auto;
+	}
+
+	@for $i from 1 through 3 {
+		h#{$i} {
+			@extend .title-#{$i};
+		}
+	}
+
+	a {
+		text-decoration: underline;
+	}
+}

@@ -1,0 +1,29 @@
+@import "../partials/partials"; // Sass partials
+
+.ad {
+  margin: $gutter*2 auto $gutter*4;
+  @each $name, $width, $height in (
+    // square - rectangle
+    ('square', 200, 200)
+    ('square2', 250, 250)
+    ('mobile-banner', 320, 100)
+    // banner
+    ('leaderboard', 728, 90)
+    ('large-leaderboard', 970, 90)
+    // skyscraprer
+    ('half-page', 300, 600)
+    // auto
+    ('auto', auto, auto)
+  ) {
+    &.ad-#{$name} {
+      width: #{$width}px;
+      height: #{$height}px;
+    }
+  }
+  span {
+    font-size: rem(12);
+    display: block;
+    margin: $gutter*0.5 auto;
+    text-align: center;
+  }
+}

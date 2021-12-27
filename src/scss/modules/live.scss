@@ -1,0 +1,67 @@
+@import "../partials/partials"; // Sass partials
+
+@mixin animation-live($duration: 2s) {
+	will-change: auto;
+	@include keyframes(pulsate) {
+		0%		{ @include opacity(0); }
+		100%	{ @include opacity(1); }
+	}
+	@include animation(pulsate $duration cubic-bezier(0.25, 0, 0.45, 0.95) infinite alternate);
+}
+
+.live {
+	display: table;
+	background: $c-white;
+	min-height: 120px;
+	width: 100%;
+	max-width: 300px;
+	margin: 0 auto;
+	.img, .live-content {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.img {
+		width: 120px;
+		height: 100%;
+		background: $c-black center center no-repeat;
+		background-size: cover;
+	}
+	.live-content {
+		position: relative;
+		padding: $gutter;
+	}
+	.live-badge-container {
+		overflow: hidden;
+	}
+	.live-badge {
+		background: $c-red;
+		color: $c-white;
+		display: inline-block;
+		padding: $gutter*0.5 $gutter $gutter*0.5 $gutter*2;
+		border-radius: 2px;
+		text-transform: uppercase;
+		font-size: $gutter;
+		float: right;
+		position: relative;
+		&:before {
+			content: "";
+			width: $gutter*0.5;
+			height: $gutter*0.5;
+			position: absolute;
+			left: $gutter;
+			margin-left: -3px;
+			top: 50%;
+			margin-top: -3px;
+			border-radius: 50%;
+			background: $c-white;
+			@include animation-live;
+		}
+	}
+	.title-3 {
+		margin: $gutter*0.5 auto;
+	}
+	.icon {
+		background-position: center right;
+		float: right;
+	}
+}

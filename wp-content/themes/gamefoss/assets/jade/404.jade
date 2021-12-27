@@ -1,7 +1,0 @@
-extends page
-block banner-title
-	h1.title-1.tt--uppercase!= __("[:pb]Erro 404![:en]Erro 404![:]")
-	h2.title-2!= __("[:pb]Página não encontrada[:en]Page not found[:]")
-	
-block content
-	!= get_field("page_404", "options")

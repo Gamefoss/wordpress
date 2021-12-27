@@ -1,0 +1,24 @@
+{
+  "exclude": [
+    "./wp-content/themes/gamefoss/node_modules",
+    "gulpfile.ts"
+  ],
+  "include": [
+    "src/scripts"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    "target": "ES3",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "outDir": "./wp-content/themes/gamefoss/library/js",
+    "esModuleInterop": true,
+    "lib": [
+      "es2015",
+      "dom",
+      "es5"
+    ]
+  }
+}

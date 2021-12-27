@@ -1,5 +1,7 @@
 <?php
 
+$env = parse_ini_file('env.ini', false);
+
 // ENVIRONMENT
 switch ($_SERVER['SERVER_NAME']) {
 	case "gamefoss.com":
@@ -12,23 +14,16 @@ switch ($_SERVER['SERVER_NAME']) {
 }
 
 // PROTOCOL CONFIGURATION
-define('WP_PROTOCOL', $_SERVER['HTTPS']? "https://" : "http://");
+define('HTTPS_PROTOCOL', "https://");
+define('WP_PROTOCOL', $_SERVER['HTTPS']? HTTPS_PROTOCOL : "http://");
 
 // DATABASE CONFIGURATION
-switch (WP_ENV) {
-	case "localhost":
-	define('DB_NAME', 'gamefoss');
-	define('DB_USER', 'root');
-	define('DB_PASSWORD', 'root');
-	define('DB_HOST', 'localhost');
-	break;
-	case "production":
-	define('DB_NAME', 'u566229331_gf');
-	define('DB_USER', 'u566229331_gf');
-	define('DB_PASSWORD', 'AoPmWpq8hUa6oadX');
-	define('DB_HOST', 'localhost');
-	break;
-}
+
+define('DB_NAME', $env['DB_NAME']);
+define('DB_USER', $env['DB_USER']);
+define('DB_PASSWORD', $env['DB_PASSWORD']);
+define('DB_HOST', $env['DB_HOST']);
+
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', '');
 $table_prefix  = 'wp_';
@@ -37,34 +32,36 @@ $table_prefix  = 'wp_';
 *	https://api.wordpress.org/secret-key/1.1/salt/
 */
 
-define('AUTH_KEY',         'KJTW47]G^1h9AALjYW/yjEJ[^j^{.zj?*1k.|uo,us6}}IB=Mw~D+7oq/kgEXx)4');
-define('SECURE_AUTH_KEY',  'EX~]]Od` zS#V$=SPiCP6XxRpao~DZAY?zag_.0CIjg]jAhq$qN`dO;!:}/-LmL2');
-define('LOGGED_IN_KEY',    '`_KQeZN.x&6c`$U?j >Pq}zI{`ObK13*bi|c7tf`-)qduxm1/<{IS_W#PJ/u/~.,');
-define('NONCE_KEY',        'YV?&q%u9`UQ>#zl6O~! ]Y&b(ApP.55k^6;m3T6LCdCaoFl}}]eg>T|5fj2r/fK*');
-define('AUTH_SALT',        'mT,OHQcL|3c_kd16@%wJxsp=+K%0Z-G}JH1gyT>^mUd|R13h~G`CM80/dn_|30}b');
-define('SECURE_AUTH_SALT', 's21wUrrUWxTHt_<bY81RrB@@nt}Xa!`@bdOighVM8_cV3cQ?TAqGX)z.:emtt`4s');
-define('LOGGED_IN_SALT',   '3p@IZbuNF(`zp*T@hy=eC:v(cSX K!XTj;] ,$x]a7z.}UX(#xA&`nF@A=hCgyUL');
-define('NONCE_SALT',       'eiYwgkgY#K3xCz<~li h-sae,Lml1w{FZp4[Tna2hQD2H2 2&HLeK1%^U?&qen,Y');
+define('AUTH_KEY', $env['AUTH_KEY']);
+define('SECURE_AUTH_KEY', $env['SECURE_AUTH_KEY']);
+define('LOGGED_IN_KEY', $env['LOGGED_IN_KEY']);
+define('NONCE_KEY', $env['NONCE_KEY']);
+define('AUTH_SALT', $env['AUTH_SALT']);
+define('SECURE_AUTH_SALT', $env['SECURE_AUTH_SALT']);
+define('LOGGED_IN_SALT', $env['LOGGED_IN_SALT']);
+define('NONCE_SALT', $env['NONCE_SALT']);
 
 // ENVIRONMENT CONFIGURATION
 switch (WP_ENV) {
+    case "production":
+		define('WP_DEBUG', false);
+		// Force SSL
+		define('WP_HOME',    HTTPS_PROTOCOL . $_SERVER['SERVER_NAME']);
+		define('WP_SITEURL', HTTPS_PROTOCOL . $_SERVER['SERVER_NAME']);
+		define('FORCE_SSL_ADMIN', true);
+		break;
 	case "localhost":
+	case "development":
+	default:
 		define('WP_SITEURL', WP_PROTOCOL . $_SERVER['SERVER_NAME'] ."/gamefoss");
 		define('WP_HOME',    WP_PROTOCOL . $_SERVER['SERVER_NAME'] . "/gamefoss");
 		define('WP_DEBUG', true);
 		break;
-	case "development":
-		break;
-	case "production":
-		define('WP_DEBUG', false);
-		// Force SSL
-		define('WP_HOME',    "https://" . $_SERVER['SERVER_NAME']);
-		define('WP_SITEURL', "https://" . $_SERVER['SERVER_NAME']);
-		define('FORCE_SSL_ADMIN', true);
-		break;
 }
 
 // WP STUFF
-if ( !defined('ABSPATH') ) define('ABSPATH', dirname(__FILE__) . '/');
+if ( !defined('ABSPATH') ) {
+    define('ABSPATH', dirname(__FILE__) . '/');
+}
 
 require_once(ABSPATH . 'wp-settings.php');

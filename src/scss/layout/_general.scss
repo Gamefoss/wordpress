@@ -1,0 +1,58 @@
+* {
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+ul li {
+	list-style: none;
+}
+
+body {
+	background: $c-bg;
+	&.admin-bar {
+		header#header {
+			top: 32px;
+		}
+	}
+}
+#wrapper {
+	margin-top: 42px;
+}
+
+/* ==== ==== ==== BACKGROUND ==== ==== ==== */
+@each $name, $color in $colors {
+	.bg--#{$name} {
+		background-color: $color;
+	}
+}
+
+.gutter {
+	display: block;
+	height: $gutter;
+	@for $i from 1 to 4 {
+		&.gutter--#{$i} {
+			height: $gutter*$i;
+		}
+	}
+}
+
+.author-link {
+	display: inline-flex;
+	align-items: center;
+	a {
+		display: inline-flex;
+		align-items: center;
+	}
+	img {
+		width: $gutter*2;
+		height: auto;
+		border-radius: 50%;
+		margin-right: 6px;
+	}
+}
+
+a, button {
+	&:hover {
+		@include opacity(0.8);
+	}
+}
