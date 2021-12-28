@@ -1,0 +1,36 @@
+version: '3.2'
+
+services:
+
+  gamefoss-db:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: gamefoss
+      MYSQL_USER: gamefoss
+      MYSQL_PASSWORD: gamefoss
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    ports:
+      - '3306:3306'
+    volumes:
+      - gamefoss-db:/var/lib/mysql
+  wordpress:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - '8080:80'
+    environment:
+      WORDPRESS_DB_HOST: gamefoss-db
+      WORDPRESS_DB_USER: gamefoss
+      WORDPRESS_DB_PASSWORD: gamefoss
+      WORDPRESS_DB_NAME: gamefoss
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - gamefoss-db
+
+volumes:
+  wordpress:
+  gamefoss-db:
