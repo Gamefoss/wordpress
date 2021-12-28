@@ -7,3 +7,4 @@ gamefoss.code-workspace
 .vscode
 /.idea/
 /node_modules/
+*.iml

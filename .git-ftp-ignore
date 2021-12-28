@@ -27,3 +27,5 @@ wp-config.php
 .npmrc
 .htaccess
 *.yml
+*.html
+*.iml

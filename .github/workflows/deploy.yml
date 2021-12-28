@@ -1,0 +1,42 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Dependencies
+      run: npm ci
+
+    - name: Build
+      run: gulp
+
+    - name: Publish
+      uses: sebastianpopp/git-ftp-action@3.0.0
+      with:
+        # URL
+        url: ftp://ftp.gamefoss.com.br/
+        # FTP login name
+        user: ${{ secrets.SFTP_USERNAME }}
+        # FTP password
+        password: ${{ secrets.SFTP_PASSWORD }}
+        # Specifies a local directory to sync from as if it were the git project root path.
+        syncroot: wp-content/themes/gamefoss
+        options: --force

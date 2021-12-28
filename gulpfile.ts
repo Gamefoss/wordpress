@@ -44,6 +44,7 @@ task('jade', () => {
 task('styles', () => {
 	return src('src/scss/**/*.scss')
 		.pipe(sass({
+			quietDeps: true,
 			imagePaths: ['../images/'],
 			includePaths: ['node_modules'],
 			functions: assetFunctions({
@@ -69,7 +70,6 @@ task('scripts', () => {
 		.pipe(tsProject())
 		.on('error', () => {});
 		return tsResult.js
-			.pipe(uglify())
 			.pipe(rename({suffix: '.min'}))
 			.pipe(dest(`${DEST_PATH}/library/js`))
 });
@@ -94,9 +94,18 @@ task('layout', () => {
 task('libs', () => {
 	const libs = ['node_modules/owl.carousel/dist/owl.carousel.js'];
 	return src(libs)
-		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(dest(`${DEST_PATH}/library/js/libs/`))
 });
 
-export default series('theme', parallel('jade', 'styles', 'images', series('scripts', 'babel'), 'libs'));
+task('uglify', () => {
+	return src(`${DEST_PATH}/library/js/**/*`)
+		.pipe(uglify({
+			mangle: false,
+			ie: true,
+			toplevel: true
+		}))
+		.pipe(dest(`${DEST_PATH}/library/js`));
+});
+
+export default series('theme', parallel('jade', 'styles', 'images', series('scripts', 'babel', 'layout', 'libs', 'uglify')));

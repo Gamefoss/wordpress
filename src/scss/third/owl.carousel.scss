@@ -1,1 +1,6 @@
 @use "owl.carousel/dist/assets/owl.carousel.min.css";
+.banner {
+  .banner-carousel, .banner-container {
+    display: block;
+  }
+}
