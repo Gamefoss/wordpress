@@ -18,6 +18,11 @@
 	},
 	"author": "Diego Lopes (dihgg@dihgg.com)",
 	"license": "ISC",
+	"overrides": {
+		"gulp-typescript": {
+			"source-map": "0.7.6"
+		}
+	},
 	"devDependencies": {
 		"@babel/core": "^7.16.5",
 		"@babel/plugin-transform-modules-commonjs": "^7.16.5",
