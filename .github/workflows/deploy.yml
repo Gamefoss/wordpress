@@ -6,37 +6,38 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: wordpress-production
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 22
+        cache: npm
 
     - name: Dependencies
       run: npm ci
 
     - name: Build
-      run: gulp
+      run: npm run build
 
     - name: Publish
-      uses: sebastianpopp/git-ftp-action@3.0.0
+      if: github.event_name == 'push'
+      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
-        # URL
-        url: ftp://ftp.gamefoss.com.br/
-        # FTP login name
-        user: ${{ secrets.SFTP_USERNAME }}
-        # FTP password
+        server: ftp.gamefoss.com.br
+        username: ${{ secrets.SFTP_USERNAME }}
         password: ${{ secrets.SFTP_PASSWORD }}
-        # Specifies a local directory to sync from as if it were the git project root path.
-        syncroot: wp-content/themes/gamefoss
-        options: --force
+        local-dir: ./wp-content/themes/gamefoss/
+        server-dir: /wp-content/themes/gamefoss/

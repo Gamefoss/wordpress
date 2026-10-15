@@ -17,4 +17,4 @@ WORKDIR /var/www/html
 COPY --from=builder /var/www/html/wp-content/themes ./wp-content/themes
 COPY --from=plugins /var/www/html/acf ./wp-content/plugins/acf
 COPY ./wp-config.php ./
-COPY env.ini ./
+COPY example.env.ini ./env.ini
